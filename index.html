@@ -1,1 +1,84 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Annual Event Countdowns</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f9f9f9 }
+    h1 { text-align: center; }
+    ul { list-style: none; padding: 0; max-width: 600px; margin: auto; }
+    li { 
+      background: #fff; 
+      margin-bottom: 1rem; 
+      padding: 1rem; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .info { display: flex; flex-direction: column; }
+    .title { font-weight: bold; font-size: 1.1em; }
+    .date { color: #666; font-size: 0.9em; }
+    .countdown { font-family: monospace; font-size: 1.05em; }
+  </style>
+</head>
+<body>
+
+  <h1>Upcoming Events</h1>
+  <ul id="eventsList"></ul>
+
+  <script>
+    // 1. Define your events here (month-day format)
+    const events = [
+      { title: 'Resha Birthday', monthDayYear: '01-01' },
+      { title: 'First Chat', monthDayYear: '07-31' },
+      { title: 'First Met', monthDayYear: '12-25' },
+      // add more as needed...
+    ];
+
+    // 2. Compute and render the list + countdowns
+    function renderCountdowns() {
+      const now = new Date();
+      const list = document.getElementById('eventsList');
+      list.innerHTML = ''; // clear
+
+      events.forEach(evt => {
+        // parse month & day
+        const [mm, dd] = evt.monthDay.split('-').map(n => parseInt(n, 10));
+        let year = now.getFullYear();
+        let nextDate = new Date(year, mm - 1, dd);
+
+        // if already passed, bump to next year
+        if (nextDate < now) {
+          nextDate = new Date(year + 1, mm - 1, dd);
+        }
+
+        // time difference
+        const diff = nextDate - now;
+        const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        // build item
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div class="info">
+            <div class="title">${evt.title}</div>
+            <div class="date">${nextDate.toLocaleDateString()}</div>
+          </div>
+          <div class="countdown">
+            ${days}d ${hours}h ${minutes}m ${seconds}s
+          </div>
+        `;
+        list.appendChild(li);
+      });
+    }
+
+    // initial render & live update
+    renderCountdowns();7
+    setInterval(renderCountdowns, 1000);
+  </script>
+</body>
+</html>
