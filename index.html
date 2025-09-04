@@ -1,185 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Portfolio Website</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- linking css file -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- bootstrap CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- font awesome -->
-  <script src="https://kit.fontawesome.com/31149d48b0.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Annual Event Countdowns</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; background: #f9f9f9 }
+    h1 { text-align: center; }
+    ul { list-style: none; padding: 0; max-width: 600px; margin: auto; }
+    li { 
+      background: #fff; 
+      margin-bottom: 1rem; 
+      padding: 1rem; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+    }
+    .info { display: flex; flex-direction: column; }
+    .title { font-weight: bold; font-size: 1.1em; }
+    .date { color: #666; font-size: 0.9em; }
+    .countdown { font-family: monospace; font-size: 1.05em; }
+  </style>
 </head>
-
 <body>
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark navbarScroll">
-    <div class="container">
-      <a class="navbar-brand" href="#">Abhishek</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item active"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
-  <!-- main banner -->
-  <section class="bgimage" id="home">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-lg-12 hero-text">
-          <h2 class="hero_title">Hello, I’m Abhishek</h2>
-          <p class="hero_desc">I am a Web Developer and YouTuber</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <h1>Upcoming Events</h1>
+  <ul id="eventsList"></ul>
 
-  <!-- about section -->
-  <section id="about">
-    <div class="container mt-4 pt-4">
-      <h1 class="text-center">About Me</h1>
-      <div class="row mt-4">
-        <div class="col-lg-4">
-          <img src="https://i.postimg.cc/fRPMMpNq/Abhishek1.jpg" class="imageAboutPage" alt="">
-        </div>
-        <div class="col-lg-8">
-          <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s...</p>
-          <div class="row mt-3">
-            <div class="col-md-6">
-              <ul>
-                <li>Name: Abhishek Thakur</li>
-                <li>Home: Champaran</li>
-                <li>Work: Web Developer</li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul>
-                <li>Name: Awanish</li>
-                <li>Home: Noida</li>
-                <li>Work: Frontend Developer</li>
-              </ul>
-            </div>
+  <script>
+    // 1. Define your events here (month-day format)
+    const events = [
+      { title: 'Resha Birthday', monthDayYear: '01-01' },
+      { title: 'First Chat', monthDayYear: '07-31' },
+      { title: 'First Met', monthDayYear: '12-25' },
+      // add more as needed...
+    ];
+
+    // 2. Compute and render the list + countdowns
+    function renderCountdowns() {
+      const now = new Date();
+      const list = document.getElementById('eventsList');
+      list.innerHTML = ''; // clear
+
+      events.forEach(evt => {
+        // parse month & day
+        const [mm, dd] = evt.monthDay.split('-').map(n => parseInt(n, 10));
+        let year = now.getFullYear();
+        let nextDate = new Date(year, mm - 1, dd);
+
+        // if already passed, bump to next year
+        if (nextDate < now) {
+          nextDate = new Date(year + 1, mm - 1, dd);
+        }
+
+        // time difference
+        const diff = nextDate - now;
+        const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        // build item
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div class="info">
+            <div class="title">${evt.title}</div>
+            <div class="date">${nextDate.toLocaleDateString()}</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- services section -->
-  <section id="services">
-    <div class="container">
-      <h1 class="text-center">Services</h1>
-      <div class="row">
-        <div class="col-lg-4 mt-4">
-          <div class="card servicesText">
-            <div class="card-body">
-              <i class="fas servicesIcon fa-clock"></i>
-              <h4 class="card-title mt-3">Apps Development</h4>
-              <p class="card-text mt-3">Some quick example text...</p>
-            </div>
+          <div class="countdown">
+            ${days}d ${hours}h ${minutes}m ${seconds}s
           </div>
-        </div>
+        `;
+        list.appendChild(li);
+      });
+    }
 
-        <div class="col-lg-4 mt-4">
-          <div class="card servicesText">
-            <div class="card-body">
-              <i class="fas servicesIcon fa-layer-group"></i>
-              <h4 class="card-title mt-3">Full Stack Developer</h4>
-              <p class="card-text mt-3">Some quick example text...</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 mt-4">
-          <div class="card servicesText">
-            <div class="card-body">
-              <i class="far servicesIcon fa-check-circle"></i>
-              <h4 class="card-title mt-3">Website Design</h4>
-              <p class="card-text mt-3">Some quick example text...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- portfolio section -->
-  <section id="portfolio">
-    <div class="container mt-3">
-      <h1 class="text-center">Portfolio</h1>
-      <div class="row">
-        <div class="col-lg-4 mt-4">
-          <div class="card">
-            <img class="card-img-top" src="https://images.pexels.com/photos/34407/pexels-photo.jpg" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">Subscribe YouTube</h4>
-              <p class="card-text">Lorem Ipsum is simply dummy text...</p>
-              <div class="text-center"><a href="#" class="btn btn-success">Link</a></div>
-            </div>
-          </div>
-        </div>
-        <!-- Repeat cards as needed -->
-      </div>
-    </div>
-  </section>
-
-  <!-- contact section -->
-  <section id="contact">
-    <div class="container mt-3 contactContent">
-      <h1 class="text-center">Contact Me</h1>
-      <div class="row mt-4">
-        <div class="col-lg-6">
-          <!-- google map -->
-          <div style="max-width:100%;overflow:hidden;width:500px;height:500px;">
-            <iframe style="height:100%;width:100%;border:0;" frameborder="0"
-              src="https://www.google.com/maps/embed?pb=!1m18!..."></iframe>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <form>
-            <input type="text" class="form-control form-control-lg" placeholder="Name">
-            <input type="email" class="form-control mt-3" placeholder="Email">
-            <input type="text" class="form-control mt-3" placeholder="Subject">
-            <div class="mb-3 mt-3">
-              <textarea class="form-control" rows="5" id="comment" name="text" placeholder="Portfolio Details"></textarea>
-            </div>
-            <button type="button" class="btn btn-success mt-3">Contact Me</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- footer section -->
-  <footer id="footer">
-    <div class="container-fluid">
-      <div class="social-icons mt-4">
-        <a href="https://www.facebook.com/abhishek95725" target="_blank"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://www.github.com/" target="_blank"><i class="fab fa-github"></i></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- load javascript -->
-  <script src="script/script.js"></script>
+    // initial render & live update
+    renderCountdowns();7
+    setInterval(renderCountdowns, 1000);
+  </script>
 </body>
 </html>
