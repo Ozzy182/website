@@ -89,7 +89,16 @@ img{
         background-color: #fff;
         padding: 12px 15px;
         border-radius: 8px;
-        margin-bottom: 15px;
         font-weight: bold;
+    }
+    li:not(:last-child) .btn{
+        margin-bottom: 15px;
+    }
+}
+.socialmedia{
+    ul{
+        display: flex;
+        justify-content: center;
+        gap: 25px;
     }
 }
