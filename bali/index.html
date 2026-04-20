@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bali Honeymoon · 4–10 May 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: 'Lato', sans-serif; background: #FAF7F2; color: #3A3028; overflow-x: hidden; }
+img { display: block; max-width: 100%; }
+a { text-decoration: none; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #E8DFD0; }
+::-webkit-scrollbar-thumb { background: #C9A96E; border-radius: 3px; }
+
+/* ── CSS VARS ── */
+:root {
+  --cream: #FAF7F2;
+  --beige: #E8DFD0;
+  --warm-beige: #F0E8D8;
+  --gold: #C9A96E;
+  --gold-light: #E8D5A8;
+  --dark-brown: #2C1F14;
+  --mid-brown: #6B4C35;
+  --charcoal: #3A3028;
+  --text-muted: #8A7968;
+  --olive: #8A9B72;
+  --sky: #8BB5C8;
+  --blush: #C4768A;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp   { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn   { from { opacity:0; } to { opacity:1; } }
+@keyframes scrollPulse { 0%,100% { opacity:.35; transform:scaleY(.6) translateY(0); } 50% { opacity:.9; transform:scaleY(1) translateY(6px); } }
+
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity .8s ease, transform .8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .4s; }
+
+/* ── NAV ── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 56px;
+  background: transparent;
+  transition: background .4s ease, backdrop-filter .4s ease, border-bottom .4s ease;
+}
+#nav.scrolled {
+  background: rgba(28,18,10,.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(201,169,110,.2);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.1rem; color: var(--gold-light); letter-spacing: .12em;
+}
+.nav-links { display: flex; gap: 36px; }
+.nav-links a {
+  font-size: .68rem; color: rgba(255,255,255,.65);
+  letter-spacing: .18em; text-transform: uppercase;
+  transition: color .25s;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; padding:4px; }
+.nav-toggle span { display:block; width:22px; height:1px; background:rgba(255,255,255,.7); transition:all .3s; }
+
+/* ── HERO ── */
+#hero {
+  position: relative; height: 100vh; min-height: 600px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1800&q=85&auto=format');
+  background-size: cover; background-position: center 30%;
+  will-change: transform;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(14,7,2,.3) 0%, rgba(20,12,5,.52) 55%, rgba(8,4,1,.78) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2; text-align: center;
+  padding: 0 24px; max-width: 740px;
+}
+.hero-eyebrow {
+  font-size: .68rem; color: var(--gold-light); letter-spacing: .34em;
+  text-transform: uppercase; margin-bottom: 20px;
+  animation: fadeIn 1.4s ease .2s both;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(4rem, 10vw, 7.8rem);
+  line-height: .9; color: #fff; letter-spacing: .025em;
+  margin-bottom: 22px;
+  animation: fadeUp 1.2s ease .4s both;
+}
+.hero-date {
+  font-size: .76rem; color: var(--gold-light); letter-spacing: .26em;
+  margin-bottom: 14px;
+  animation: fadeUp 1s ease .65s both;
+}
+.hero-sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic; font-size: 1.3rem;
+  color: rgba(245,240,232,.82); margin-bottom: 46px;
+  animation: fadeUp 1s ease .82s both;
+}
+.hero-cta {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.72);
+  color: #fff; padding: 14px 40px;
+  font-size: .7rem; letter-spacing: .24em; text-transform: uppercase;
+  border-radius: 1px;
+  transition: all .3s ease;
+  animation: fadeUp 1s ease 1s both;
+}
+.hero-cta:hover { background: rgba(255,255,255,.1); border-color: var(--gold-light); color: var(--gold-light); }
+.scroll-cue {
+  position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+  text-align: center; z-index: 2;
+  animation: fadeIn 1s ease 1.6s both;
+}
+.scroll-cue p { font-size: .58rem; color: rgba(255,255,255,.4); letter-spacing: .28em; text-transform: uppercase; margin-bottom: 8px; }
+.scroll-line { width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,.45), transparent); margin: 0 auto; animation: scrollPulse 2.4s ease infinite; }
+
+/* ── SECTION BASE ── */
+.section { padding: 90px 56px; }
+.section-eyebrow { font-size: .63rem; color: var(--gold); letter-spacing: .32em; text-transform: uppercase; text-align: center; margin-bottom: 14px; }
+.section-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 4vw, 3.3rem); font-weight: 300;
+  text-align: center; margin-bottom: 56px;
+}
+.section-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1rem; color: var(--text-muted); text-align: center; margin-top: -36px; margin-bottom: 52px; }
+.gold-divider { width: 44px; height: 1px; background: var(--gold); margin: 0 auto 28px; }
+
+/* ── OVERVIEW ── */
+#overview { background: var(--dark-brown); }
+#overview .section-title { color: #F0E8D8; }
+.overview-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2px; max-width: 960px; margin: 0 auto;
+}
+.overview-card {
+  background: rgba(255,255,255,.04); padding: 36px 28px;
+  border-top: 2px solid var(--gold); text-align: center;
+}
+.overview-card .label { font-size: .62rem; color: var(--gold); letter-spacing: .24em; text-transform: uppercase; margin-bottom: 12px; }
+.overview-card .value { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.8rem; color: #F0E8D8; margin-bottom: 6px; }
+.overview-card .sub { font-size: .72rem; color: rgba(232,218,200,.5); letter-spacing: .04em; }
+
+/* ── STAYS ── */
+#stays { background: var(--cream); }
+#stays .section-title { color: var(--dark-brown); }
+.stays-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; max-width: 840px; margin: 0 auto; }
+.stay-card { overflow: hidden; border-radius: 2px; box-shadow: 0 4px 32px rgba(44,31,20,.1); }
+.stay-img {
+  height: 220px; background-size: cover; background-position: center;
+  position: relative;
+}
+.stay-img-overlay { position: absolute; inset: 0; background: rgba(20,12,5,.3); }
+.stay-badge {
+  position: absolute; bottom: 18px; left: 18px;
+  font-size: .62rem; color: var(--gold-light); letter-spacing: .2em;
+  background: rgba(20,12,5,.6); padding: 4px 10px; text-transform: uppercase;
+}
+.stay-body { background: #F0E8D8; padding: 24px 28px; }
+.stay-location { font-size: .65rem; color: var(--olive); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 6px; }
+.stay-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.5rem; color: var(--dark-brown); font-weight: 500; margin-bottom: 6px; }
+.stay-note { font-size: .74rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 14px; }
+.stay-nights { font-size: .65rem; background: var(--beige); color: var(--mid-brown); padding: 4px 12px; border-radius: 20px; display: inline-block; }
+
+/* ── PRE-BOOKING ── */
+#prebooking { background: var(--beige); }
+#prebooking .section-title { color: var(--dark-brown); }
+.prebooking-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; max-width: 960px; margin: 0 auto; }
+.prebooking-card {
+  background: var(--cream); padding: 28px 20px;
+  border-bottom: 3px solid var(--gold); border-radius: 2px; text-align: center;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.prebooking-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(44,31,20,.12); }
+.prebooking-icon { font-size: 22px; margin-bottom: 14px; }
+.prebooking-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; color: var(--dark-brown); font-weight: 600; margin-bottom: 8px; }
+.prebooking-note { font-size: .72rem; color: var(--text-muted); line-height: 1.65; }
+
+/* ── ITINERARY ── */
+#itinerary { background: var(--cream); }
+#itinerary .section-title { color: var(--dark-brown); }
+.days-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 3px; }
+
+/* Day card */
+.day-card { border-left: 3px solid var(--gold); background: var(--cream); overflow: hidden; }
+.day-header {
+  display: grid; grid-template-columns: 80px 1fr 44px;
+  align-items: stretch; cursor: pointer;
+}
+.day-num {
+  background: var(--charcoal); color: var(--gold);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 26px 10px; transition: background .3s ease;
+  flex-shrink: 0;
+}
+.day-card.open .day-num { background: var(--dark-brown); }
+.day-num .lbl { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; opacity: .65; margin-bottom: 2px; }
+.day-num .n { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.3rem; line-height: 1; font-weight: 600; }
+.day-info { padding: 20px 24px; }
+.day-date { font-size: .66rem; color: var(--gold); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 4px; }
+.day-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.52rem; color: var(--dark-brown); font-weight: 600; margin-bottom: 4px; }
+.day-mood { font-size: .78rem; color: var(--text-muted); font-style: italic; margin-bottom: 12px; }
+.day-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.day-tag { font-size: .67rem; background: var(--beige); color: var(--mid-brown); padding: 3px 10px; border-radius: 20px; }
+.day-chevron {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); padding: 0 14px; flex-shrink: 0;
+}
+.day-chevron svg { transition: transform .35s ease; }
+.day-card.open .day-chevron svg { transform: rotate(180deg); }
+
+/* Day body */
+.day-body { overflow: hidden; max-height: 0; transition: max-height .55s cubic-bezier(.4,0,.2,1); }
+.day-body-inner { padding: 0 24px 4px 103px; border-top: 1px solid var(--beige); }
+
+/* Vibe/Tip row */
+.vibe-tip { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 18px 0 4px; }
+.vibe-box, .tip-box { border-radius: 6px; padding: 12px 16px; }
+.vibe-box { background: var(--beige); }
+.tip-box { background: rgba(201,169,110,.1); border-left: 2px solid var(--gold); }
+.vt-label { font-family: 'Cormorant Garamond', Georgia, serif; font-size: .63rem; color: var(--gold); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 4px; }
+.vt-text { font-size: .8rem; color: var(--mid-brown); }
+
+/* Accordion */
+.accordion { border-top: 1px solid rgba(201,169,110,.25); }
+.accordion-trigger {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0; background: none; border: none;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: .93rem; color: var(--gold); letter-spacing: .1em; text-transform: uppercase;
+  transition: opacity .2s;
+}
+.accordion-trigger:hover { opacity: .8; }
+.accordion-trigger .acc-label { display: flex; align-items: center; gap: 10px; font-size: .88rem; }
+.acc-plus {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1px solid var(--gold); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; line-height: 1; flex-shrink: 0;
+  transition: transform .3s ease;
+}
+.accordion.open .acc-plus { transform: rotate(45deg); }
+.accordion-body { overflow: hidden; max-height: 0; transition: max-height .5s cubic-bezier(.4,0,.2,1); }
+.accordion-inner { padding-bottom: 16px; }
+
+/* Timeline */
+.timeline-row { display: grid; grid-template-columns: 90px 1fr; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--beige); }
+.timeline-row:last-child { border-bottom: none; }
+.t-time { font-size: .73rem; color: var(--gold); font-weight: 700; letter-spacing: .04em; }
+.t-act { font-size: .8rem; color: var(--charcoal); }
+
+/* Outfit */
+.outfit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.outfit-col-label { font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.outfit-col-label.him { color: var(--sky); }
+.outfit-col-label.her { color: var(--blush); }
+.outfit-col-label.carry { color: var(--olive); }
+.outfit-item { font-size: .78rem; color: var(--charcoal); padding: 4px 0; border-bottom: 1px solid var(--beige); }
+.outfit-item:last-child { border-bottom: none; }
+.carry-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.carry-tag { font-size: .72rem; background: var(--beige); color: var(--mid-brown); padding: 3px 10px; border-radius: 20px; }
+.outfit-extra { margin-top: 14px; border-top: 1px solid var(--beige); padding-top: 14px; }
+.outfit-extra-label { font-family: 'Cormorant Garamond', Georgia, serif; font-size: .68rem; color: var(--gold); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 10px; }
+
+/* ── OUTFIT PHILOSOPHY ── */
+#outfits { background: var(--dark-brown); }
+#outfits .section-title { color: #F0E8D8; }
+.philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2px; max-width: 860px; margin: 0 auto 52px; }
+.philosophy-card { background: rgba(255,255,255,.04); padding: 30px 22px; border-top: 1px solid rgba(201,169,110,.25); }
+.philosophy-icon { font-family: 'Cormorant Garamond', Georgia, serif; color: var(--gold); font-size: 1.2rem; margin-bottom: 14px; }
+.philosophy-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.05rem; color: #F0E8D8; font-weight: 500; margin-bottom: 10px; }
+.philosophy-body { font-size: .76rem; color: rgba(232,218,200,.58); line-height: 1.75; }
+.palette-section { text-align: center; }
+.palette-label { font-size: .63rem; color: var(--gold); letter-spacing: .26em; text-transform: uppercase; margin-bottom: 20px; }
+.palette-swatches { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.swatch { text-align: center; }
+.swatch-circle { width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 7px; border: 1px solid rgba(255,255,255,.12); }
+.swatch-name { font-size: .58rem; color: rgba(232,218,200,.45); letter-spacing: .07em; }
+
+/* ── CLOSING ── */
+#closing {
+  position: relative; height: 72vh; min-height: 480px;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.closing-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1600&q=80');
+  background-size: cover; background-position: center 40%;
+}
+.closing-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,5,2,.58), rgba(20,12,5,.78)); }
+.closing-content { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 640px; }
+.closing-eyebrow { font-size: .63rem; color: var(--gold-light); letter-spacing: .32em; text-transform: uppercase; margin-bottom: 20px; }
+.closing-title {
+  font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 300;
+  font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.15;
+  color: #fff; margin-bottom: 22px;
+}
+.closing-body {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic; font-size: 1.1rem;
+  color: rgba(245,240,232,.72); line-height: 1.85; margin-bottom: 36px;
+}
+.closing-line { width: 44px; height: 1px; background: var(--gold); margin: 0 auto 22px; }
+.closing-date { font-size: .7rem; color: var(--gold); letter-spacing: .24em; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark-brown); padding: 30px 56px; text-align: center;
+  border-top: 1px solid rgba(201,169,110,.15);
+}
+footer .f-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1rem; color: var(--gold); margin-bottom: 6px; }
+footer .f-sub { font-size: .66rem; color: rgba(232,218,200,.3); letter-spacing: .1em; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .section { padding: 70px 24px; }
+  #nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .nav-links.open { display: flex; flex-direction: column; gap: 18px; position: absolute; top: 100%; left: 0; right: 0; background: rgba(28,18,10,.97); padding: 24px; border-top: 1px solid rgba(201,169,110,.2); }
+  .day-header { grid-template-columns: 64px 1fr 36px; }
+  .day-num .n { font-size: 1.8rem; }
+  .day-body-inner { padding-left: 84px; }
+  .vibe-tip { grid-template-columns: 1fr; }
+  .outfit-grid { grid-template-columns: 1fr; }
+  footer { padding: 28px 24px; }
+  .day-title { font-size: 1.2rem; }
+  .timeline-row { grid-template-columns: 80px 1fr; }
+}
+@media (max-width: 480px) {
+  .day-body-inner { padding-left: 24px; }
+  .day-header { grid-template-columns: 54px 1fr 32px; }
+  .day-num .n { font-size: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <span class="nav-logo">B &amp; H</span>
+  <div class="nav-links" id="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#stays">Stays</a>
+    <a href="#itinerary">Itinerary</a>
+    <a href="#outfits">Outfits</a>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">A Private Journey</p>
+    <h1 class="hero-title">Bali<br>Honeymoon</h1>
+    <p class="hero-date">4 May – 10 May 2026</p>
+    <p class="hero-sub">Seven days of temples, tides &amp; togetherness</p>
+    <a href="#itinerary" class="hero-cta">Begin the Journey</a>
+  </div>
+  <div class="scroll-cue">
+    <p>Scroll</p>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview" class="section">
+  <p class="section-eyebrow">The Journey</p>
+  <h2 class="section-title">Overview</h2>
+  <div class="overview-grid">
+    <div class="overview-card reveal">
+      <p class="label">Duration</p>
+      <p class="value">7 Days</p>
+      <p class="sub">6 Nights</p>
+    </div>
+    <div class="overview-card reveal reveal-d1">
+      <p class="label">Style</p>
+      <p class="value">Relaxed</p>
+      <p class="sub">Romantic · Light Adventure</p>
+    </div>
+    <div class="overview-card reveal reveal-d2">
+      <p class="label">Transport</p>
+      <p class="value">Private Driver</p>
+      <p class="sub">Boat Transfers Included</p>
+    </div>
+    <div class="overview-card reveal reveal-d3">
+      <p class="label">Pacing</p>
+      <p class="value">Balanced</p>
+      <p class="sub">No overloaded days</p>
+    </div>
+  </div>
+</section>
+
+<!-- STAYS -->
+<section id="stays" class="section">
+  <p class="section-eyebrow">Where You'll Rest</p>
+  <h2 class="section-title">Stay Plan</h2>
+  <div class="stays-grid">
+    <div class="stay-card reveal">
+      <div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=80')">
+        <div class="stay-img-overlay"></div>
+        <span class="stay-badge">4 – 5 May</span>
+      </div>
+      <div class="stay-body">
+        <p class="stay-location">Seminyak</p>
+        <h3 class="stay-name">The Bali Dream Villa</h3>
+        <p class="stay-note">Your arrival sanctuary — beachside elegance to ease you into the island</p>
+        <span class="stay-nights">1 Night</span>
+      </div>
+    </div>
+    <div class="stay-card reveal reveal-d2">
+      <div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1540541338537-1220059bab68?w=700&q=80')">
+        <div class="stay-img-overlay"></div>
+        <span class="stay-badge">5 – 10 May</span>
+      </div>
+      <div class="stay-body">
+        <p class="stay-location">Central Bali</p>
+        <h3 class="stay-name">Destiny Boutique Hotel</h3>
+        <p class="stay-note">Your base for the heart of the journey — romance at every turn</p>
+        <span class="stay-nights">5 Nights</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRE-BOOKING -->
+<section id="prebooking" class="section">
+  <p class="section-eyebrow">Prepare in Advance</p>
+  <h2 class="section-title">Pre-Booking Reminders</h2>
+  <p class="section-sub">These experiences are popular — secure your spots before you fly</p>
+  <div class="prebooking-grid">
+    <div class="prebooking-card reveal">
+      <div class="prebooking-icon">🚤</div>
+      <h4 class="prebooking-name">West Nusa Penida Tour</h4>
+      <p class="prebooking-note">Day 3 — Book speedboat + guide in advance</p>
+    </div>
+    <div class="prebooking-card reveal reveal-d1">
+      <div class="prebooking-icon">🤿</div>
+      <h4 class="prebooking-name">Underwater Sea Walk</h4>
+      <p class="prebooking-note">Day 4 — Limited slots, book early</p>
+    </div>
+    <div class="prebooking-card reveal reveal-d2">
+      <div class="prebooking-icon">🔥</div>
+      <h4 class="prebooking-name">Uluwatu Kecak Dance</h4>
+      <p class="prebooking-note">Day 4 — Evening show, ticket required</p>
+    </div>
+    <div class="prebooking-card reveal reveal-d3">
+      <div class="prebooking-icon">🏍</div>
+      <h4 class="prebooking-name">ATV / Quad Bike</h4>
+      <p class="prebooking-note">Day 5 — Popular activity, secure your slot</p>
+    </div>
+    <div class="prebooking-card reveal reveal-d4">
+      <div class="prebooking-icon">🌿</div>
+      <h4 class="prebooking-name">Bali Swing</h4>
+      <p class="prebooking-note">Day 5 — Iconic couple experience, pre-book</p>
+    </div>
+  </div>
+</section>
+
+<!-- ITINERARY -->
+<section id="itinerary" class="section">
+  <p class="section-eyebrow">Day by Day</p>
+  <h2 class="section-title">The Itinerary</h2>
+  <p class="section-sub">Click each day to unfold your story</p>
+
+  <div class="days-list" id="days-list">
+    <!-- Days injected by JS -->
+  </div>
+</section>
+
+<!-- OUTFITS -->
+<section id="outfits" class="section">
+  <p class="section-eyebrow">Wardrobe Notes</p>
+  <h2 class="section-title">Outfit Philosophy</h2>
+  <div class="philosophy-grid">
+    <div class="philosophy-card reveal">
+      <div class="philosophy-icon">◈</div>
+      <h4 class="philosophy-title">Soft Tropical Palette</h4>
+      <p class="philosophy-body">White, beige, olive, sky blue &amp; pastels — colours that glow in golden Bali light</p>
+    </div>
+    <div class="philosophy-card reveal reveal-d1">
+      <div class="philosophy-icon">◈</div>
+      <h4 class="philosophy-title">Coordinate, Don't Match</h4>
+      <p class="philosophy-body">Harmony over identical looks — let each person's style shine while complementing the other</p>
+    </div>
+    <div class="philosophy-card reveal reveal-d2">
+      <div class="philosophy-icon">◈</div>
+      <h4 class="philosophy-title">Avoid Loud Colours</h4>
+      <p class="philosophy-body">Neon and loud tones clash in photos — keep it elegant and the shots will feel timeless</p>
+    </div>
+    <div class="philosophy-card reveal reveal-d3">
+      <div class="philosophy-icon">◈</div>
+      <h4 class="philosophy-title">Backup Outfits</h4>
+      <p class="philosophy-body">Pack 1–2 extra outfits for spontaneous photo moments or unexpected weather changes</p>
+    </div>
+  </div>
+  <div class="palette-section reveal">
+    <p class="palette-label">Your Colour Story</p>
+    <div class="palette-swatches">
+      <div class="swatch"><div class="swatch-circle" style="background:#FAF7F2"></div><p class="swatch-name">Warm White</p></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#E8DFD0"></div><p class="swatch-name">Beige</p></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#8BB5C8"></div><p class="swatch-name">Sky Blue</p></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#8A9B72"></div><p class="swatch-name">Olive</p></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#C9A96E"></div><p class="swatch-name">Gold</p></div>
+      <div class="swatch"><div class="swatch-circle" style="background:#D4A5A5"></div><p class="swatch-name">Blush</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section id="closing">
+  <div class="closing-bg"></div>
+  <div class="closing-overlay"></div>
+  <div class="closing-content reveal">
+    <p class="closing-eyebrow">Until the Next Adventure</p>
+    <h2 class="closing-title">May these seven days<br>become your forever</h2>
+    <p class="closing-body">The incense, the ocean, the golden light through temple gates —<br>Bali will leave its mark on both of you.</p>
+    <div class="closing-line"></div>
+    <p class="closing-date">4 – 10 MAY 2026</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="f-title">Bali Honeymoon · 2026</p>
+  <p class="f-sub">A private journey, crafted with love.</p>
+</footer>
+
+<script>
+/* ─────────────────────────────────────────
+   DATA
+───────────────────────────────────────── */
+const DAYS = [
+  {
+    num: 1, title: "Arrival & Seminyak", date: "May 4",
+    vibe: "Soft, romantic, effortless",
+    mood: "Let the island welcome you slowly",
+    highlights: ["Airport Arrival","Bali Dream Villa","Seminyak Beach Walk","Romantic Dinner"],
+    tip: "Keep this day light — focus on rest after travel.",
+    timeline: [
+      {time:"1:30 PM", act:"Arrive in Bali"},
+      {time:"3:00 PM", act:"Transfer to hotel"},
+      {time:"4:00 PM", act:"Check-in & freshen up"},
+      {time:"5:30 PM", act:"Beach / Seminyak walk"},
+      {time:"6:30 PM", act:"Romantic dinner"},
+    ],
+    him: ["White/light linen shirt","Beige shorts or chinos","Sandals / loafers"],
+    her: ["Flowy sundress (white / pastel / floral)","Sandals"],
+    extra: { label:"Evening Upgrade", him:["Linen shirt + chinos"], her:["Elegant dress"] }
+  },
+  {
+    num: 2, title: "Bedugul Tour", date: "May 5",
+    vibe: "Scenic, aesthetic, cozy",
+    mood: "Mountain mist and sacred water temples",
+    highlights: ["Ulun Danu Temple","Handara Gate","Scenic Mountain Drive","Hotel Switch"],
+    tip: "Smooth transfer day — enjoy the journey.",
+    timeline: [
+      {time:"8:00 AM", act:"Breakfast"},
+      {time:"9:00 AM", act:"Check out of Seminyak villa"},
+      {time:"11:30 AM", act:"Ulun Danu Temple"},
+      {time:"12:45 PM", act:"Handara Gate"},
+      {time:"1:30 PM", act:"Lunch"},
+      {time:"2:45 PM", act:"Optional waterfall visit"},
+      {time:"5:30 PM", act:"Check-in at Destiny Boutique Hotel"},
+      {time:"Evening", act:"Dinner & relax"},
+    ],
+    him: ["Olive/beige t-shirt","Light jacket (important – cooler area)","Shorts or trousers","Sneakers"],
+    her: ["Long flowy dress","Light shawl/jacket","Sandals"],
+  },
+  {
+    num: 3, title: "West Nusa Penida", date: "May 6",
+    vibe: "Adventure, practical",
+    mood: "Raw cliffs, turquoise waters, island magic",
+    highlights: ["Kelingking Beach","Angel's Billabong","Broken Beach","Speedboat Transfer"],
+    tip: "Most tiring day — keep the evening relaxed.",
+    timeline: [
+      {time:"6:00 AM", act:"Pickup"},
+      {time:"7:30 AM", act:"Speedboat to Nusa Penida"},
+      {time:"9:00 AM", act:"Kelingking Beach"},
+      {time:"10:30 AM", act:"Angel's Billabong"},
+      {time:"11:20 AM", act:"Broken Beach"},
+      {time:"12:15 PM", act:"Lunch"},
+      {time:"3:00 PM", act:"Return boat"},
+      {time:"5:00 PM", act:"Back at hotel"},
+    ],
+    him: ["Quick-dry t-shirt","Athletic shorts","Sneakers"],
+    her: ["Tank top / breathable tee","Shorts / activewear","Sneakers"],
+    carry: ["Change of clothes","Flip-flops","Sunglasses","Small cash (very useful here)"],
+  },
+  {
+    num: 4, title: "South Bali Experience", date: "May 7",
+    vibe: "Beach + culture",
+    mood: "Waves, underwater wonder, and fire dance at dusk",
+    highlights: ["Underwater Sea Walk","Blue Point Beach","Uluwatu Temple","Kecak Dance"],
+    tip: "Stay on schedule to avoid rushing.",
+    timeline: [
+      {time:"8:00 AM", act:"Breakfast"},
+      {time:"9:00 AM", act:"Underwater Sea Walk"},
+      {time:"12:30 PM", act:"Lunch at Malini Cafe"},
+      {time:"2:00 PM", act:"Blue Point Beach (Suluban)"},
+      {time:"4:00 PM", act:"Uluwatu Temple"},
+      {time:"6:00 PM", act:"Kecak Dance"},
+      {time:"Evening", act:"Dinner"},
+    ],
+    him: ["Swim shorts","Open shirt","Flip-flops"],
+    her: ["Swimsuit + cover-up","Beach dress"],
+    extra: { label:"Temple Add-on", him:["T-shirt (sarong provided)"], her:["Scarf / covered shoulders"] }
+  },
+  {
+    num: 5, title: "Ubud Adventure Day", date: "May 8",
+    vibe: "Instagram + adventure",
+    mood: "Jungle swings, waterfalls, and muddy thrills",
+    highlights: ["Tegenungan Waterfall","Bali Swing","ATV Ride","Taman Dedari Lunch"],
+    tip: "ATV will get very muddy — plan clothing change accordingly.",
+    timeline: [
+      {time:"8:00 AM", act:"Leave for Ubud"},
+      {time:"9:30 AM", act:"Waterfall visit"},
+      {time:"11:00 AM", act:"Bali Swing"},
+      {time:"12:30 PM", act:"Lunch at Taman Dedari"},
+      {time:"2:30 PM", act:"ATV Ride"},
+      {time:"5:30 PM", act:"Return to hotel"},
+    ],
+    him: ["White/pastel shirt (swing)","Neutral shorts","→ Change: t-shirt + shorts for ATV"],
+    her: ["Long flowy dress (swing)","→ Change: activewear for ATV"],
+    carry: ["Extra change of clothes","Plastic bag for muddy clothes"],
+  },
+  {
+    num: 6, title: "East Bali & Heaven Gate", date: "May 9",
+    vibe: "Iconic + dreamy (main photo day)",
+    mood: "The photo of a lifetime at the gates of heaven",
+    highlights: ["Lempuyang Temple (Heaven Gate)","Tirta Gangga Water Palace","Sunrise Shoot"],
+    tip: "Arrive early to beat crowds and get better photos.",
+    timeline: [
+      {time:"3:30 AM", act:"Depart from hotel"},
+      {time:"6:00 AM", act:"Arrive at Heaven Gate"},
+      {time:"8:30 AM", act:"Breakfast"},
+      {time:"10:00 AM", act:"Tirta Gangga Water Palace"},
+      {time:"1:00 PM", act:"Return journey"},
+      {time:"Evening", act:"Rest & pack for departure"},
+    ],
+    him: ["White/cream shirt","Beige trousers","Sandals/shoes"],
+    her: ["Elegant long dress (white/red/pastel)"],
+    carry: ["Light jacket (early morning cold)"],
+  },
+  {
+    num: 7, title: "Departure", date: "May 10",
+    vibe: "Relaxed + clean",
+    mood: "Carry Bali home in your hearts",
+    highlights: ["Early checkout","Airport transfer","Flight home"],
+    tip: "Confirm transfer + request breakfast box the night before.",
+    timeline: [
+      {time:"3:45 AM", act:"Leave hotel"},
+      {time:"5:00 AM", act:"Arrive at airport"},
+      {time:"8:25 AM", act:"Flight departs"},
+    ],
+    him: ["Comfortable travel outfit","Light jacket"],
+    her: ["Comfortable travel outfit"],
+  }
+];
+
+/* ─────────────────────────────────────────
+   BUILD DAY CARDS
+───────────────────────────────────────── */
+function buildTimeline(rows) {
+  return rows.map(r => `
+    <div class="timeline-row">
+      <span class="t-time">${r.time}</span>
+      <span class="t-act">${r.act}</span>
+    </div>`).join('');
+}
+
+function buildOutfit(day) {
+  let html = `<div class="outfit-grid">
+    <div>
+      <p class="outfit-col-label him">Him</p>
+      ${day.him.map(i=>`<div class="outfit-item">${i}</div>`).join('')}
+    </div>
+    <div>
+      <p class="outfit-col-label her">Her</p>
+      ${day.her.map(i=>`<div class="outfit-item">${i}</div>`).join('')}
+    </div>
+  </div>`;
+
+  if (day.carry) {
+    html += `<div class="carry-tags">
+      <p class="outfit-col-label carry" style="width:100%;margin-bottom:8px;">Carry</p>
+      ${day.carry.map(i=>`<span class="carry-tag">${i}</span>`).join('')}
+    </div>`;
+  }
+
+  if (day.extra) {
+    html += `<div class="outfit-extra">
+      <p class="outfit-extra-label">${day.extra.label}</p>
+      <div class="outfit-grid">
+        <div>
+          <p class="outfit-col-label him">Him</p>
+          ${day.extra.him.map(i=>`<div class="outfit-item">${i}</div>`).join('')}
+        </div>
+        <div>
+          <p class="outfit-col-label her">Her</p>
+          ${day.extra.her.map(i=>`<div class="outfit-item">${i}</div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  }
+  return html;
+}
+
+function buildDayCard(day, index) {
+  const tags = day.highlights.map(h => `<span class="day-tag">${h}</span>`).join('');
+  const timelineHTML = buildTimeline(day.timeline);
+  const outfitHTML = buildOutfit(day);
+
+  return `
+  <div class="day-card reveal" style="transition-delay:${index * 0.07}s" data-day="${day.num}">
+    <div class="day-header" role="button" tabindex="0" aria-expanded="false">
+      <div class="day-num">
+        <span class="lbl">Day</span>
+        <span class="n">${day.num}</span>
+      </div>
+      <div class="day-info">
+        <p class="day-date">${day.date}</p>
+        <h3 class="day-title">${day.title}</h3>
+        <p class="day-mood">${day.mood}</p>
+        <div class="day-tags">${tags}</div>
+      </div>
+      <div class="day-chevron">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 6l5 5 5-5" stroke="#C9A96E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="day-body">
+      <div class="day-body-inner">
+        <div class="vibe-tip">
+          <div class="vibe-box">
+            <p class="vt-label">Vibe</p>
+            <p class="vt-text">${day.vibe}</p>
+          </div>
+          <div class="tip-box">
+            <p class="vt-label">Tip</p>
+            <p class="vt-text">${day.tip}</p>
+          </div>
+        </div>
+
+        <div class="accordion" data-acc="timeline-${day.num}">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="acc-label"><span>◎</span> Timeline</span>
+            <span class="acc-plus">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">${timelineHTML}</div>
+          </div>
+        </div>
+
+        <div class="accordion" data-acc="outfit-${day.num}">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="acc-label"><span>✦</span> Outfit Guide</span>
+            <span class="acc-plus">+</span>
+          </button>
+          <div class="accordion-body">
+            <div class="accordion-inner">${outfitHTML}</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>`;
+}
+
+// Inject all days
+const daysList = document.getElementById('days-list');
+daysList.innerHTML = DAYS.map((d, i) => buildDayCard(d, i)).join('');
+
+/* ─────────────────────────────────────────
+   DAY CARD TOGGLE
+───────────────────────────────────────── */
+daysList.addEventListener('click', e => {
+  const header = e.target.closest('.day-header');
+  if (!header) return;
+  const card = header.closest('.day-card');
+  const body = card.querySelector('.day-body');
+  const isOpen = card.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.day-card.open').forEach(c => {
+    c.classList.remove('open');
+    c.querySelector('.day-body').style.maxHeight = '0';
+    c.querySelector('.day-header').setAttribute('aria-expanded','false');
+  });
+
+  if (!isOpen) {
+    card.classList.add('open');
+    body.style.maxHeight = body.scrollHeight + 1200 + 'px';
+    header.setAttribute('aria-expanded','true');
+  }
+});
+
+daysList.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') {
+    const header = e.target.closest('.day-header');
+    if (header) { e.preventDefault(); header.click(); }
+  }
+});
+
+/* ─────────────────────────────────────────
+   ACCORDION TOGGLE (inside day cards)
+───────────────────────────────────────── */
+daysList.addEventListener('click', e => {
+  const btn = e.target.closest('.accordion-trigger');
+  if (!btn) return;
+  e.stopPropagation();
+  const acc = btn.closest('.accordion');
+  const body = acc.querySelector('.accordion-body');
+  const isOpen = acc.classList.contains('open');
+
+  acc.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  body.style.maxHeight = isOpen ? '0' : body.scrollHeight + 'px';
+
+  // Expand parent day-body to fit
+  const dayBody = acc.closest('.day-body');
+  if (dayBody && !isOpen) {
+    const current = parseInt(dayBody.style.maxHeight) || 0;
+    dayBody.style.maxHeight = Math.max(current, dayBody.scrollHeight + 1200) + 'px';
+  }
+});
+
+/* ─────────────────────────────────────────
+   NAV
+───────────────────────────────────────── */
+const nav = document.getElementById('nav');
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, {passive:true});
+
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+/* ─────────────────────────────────────────
+   PARALLAX
+───────────────────────────────────────── */
+const heroBg = document.getElementById('hero-bg');
+window.addEventListener('scroll', () => {
+  if (window.scrollY < window.innerHeight) {
+    heroBg.style.transform = `translateY(${window.scrollY * 0.28}px)`;
+  }
+}, {passive:true});
+
+/* ─────────────────────────────────────────
+   REVEAL ON SCROLL
+───────────────────────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+function observeRevealEls() {
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+}
+observeRevealEls();
+
+// Re-observe after day cards injected
+setTimeout(observeRevealEls, 100);
+</script>
+</body>
+</html>
