@@ -362,7 +362,7 @@ footer .f-sub { font-size: .66rem; color: rgba(232,218,200,.3); letter-spacing: 
 
 <!-- NAV -->
 <nav id="nav">
-  <span class="nav-logo">B &amp; H</span>
+  <span class="nav-logo">Bali 🔥</span>
   <div class="nav-links" id="nav-links">
     <a href="#overview">Overview</a>
     <a href="#stays">Stays</a>
@@ -425,26 +425,26 @@ footer .f-sub { font-size: .66rem; color: rgba(232,218,200,.3); letter-spacing: 
   <h2 class="section-title">Stay Plan</h2>
   <div class="stays-grid">
     <div class="stay-card reveal">
-      <div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=80')">
+      <div class="stay-img" style="background-image:url('/bali/img/hotel-1.jpg')">
         <div class="stay-img-overlay"></div>
         <span class="stay-badge">4 – 5 May</span>
       </div>
       <div class="stay-body">
         <p class="stay-location">Seminyak</p>
         <h3 class="stay-name">The Bali Dream Villa</h3>
-        <p class="stay-note">Your arrival sanctuary — beachside elegance to ease you into the island</p>
+        <p class="stay-note">Your arrival sanctuary — beachside elegance to ease you into the island.</p>
         <span class="stay-nights">1 Night</span>
       </div>
     </div>
     <div class="stay-card reveal reveal-d2">
-      <div class="stay-img" style="background-image:url('https://images.unsplash.com/photo-1540541338537-1220059bab68?w=700&q=80')">
+      <div class="stay-img" style="background-image:url('/bali/img/hotel-2.jpg')">
         <div class="stay-img-overlay"></div>
         <span class="stay-badge">5 – 10 May</span>
       </div>
       <div class="stay-body">
         <p class="stay-location">Central Bali</p>
         <h3 class="stay-name">Destiny Boutique Hotel</h3>
-        <p class="stay-note">Your base for the heart of the journey — romance at every turn</p>
+        <p class="stay-note">Your base for the heart of the journey — romance at every turn, near the beach.</p>
         <span class="stay-nights">5 Nights</span>
       </div>
     </div>
@@ -600,7 +600,7 @@ const DAYS = [
     vibe: "Adventure, practical",
     mood: "Raw cliffs, turquoise waters, island magic",
     highlights: ["Kelingking Beach","Angel's Billabong","Broken Beach","Speedboat Transfer"],
-    tip: "Most tiring day — keep the evening relaxed.",
+    tip: "Most tiring day — keep the evening relaxed. <br>Add diamond beach if possible.",
     timeline: [
       {time:"6:00 AM", act:"Pickup"},
       {time:"7:30 AM", act:"Speedboat to Nusa Penida"},
@@ -775,7 +775,7 @@ function buildDayCard(day, index) {
         <div class="accordion" data-acc="timeline-${day.num}">
           <button class="accordion-trigger" aria-expanded="false">
             <span class="acc-label"><span>◎</span> Timeline</span>
-            <span class="acc-plus">+</span>
+            <span class="acc-plus">＋</span>
           </button>
           <div class="accordion-body">
             <div class="accordion-inner">${timelineHTML}</div>
@@ -785,7 +785,7 @@ function buildDayCard(day, index) {
         <div class="accordion" data-acc="outfit-${day.num}">
           <button class="accordion-trigger" aria-expanded="false">
             <span class="acc-label"><span>✦</span> Outfit Guide</span>
-            <span class="acc-plus">+</span>
+            <span class="acc-plus">＋</span>
           </button>
           <div class="accordion-body">
             <div class="accordion-inner">${outfitHTML}</div>
