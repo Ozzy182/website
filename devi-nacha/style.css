@@ -1514,7 +1514,7 @@ footer {
   :root { --section-padding: 4rem 1.25rem; }
 
   /* Nav */
-  .nav-toggle { display: flex; }
+  .nav-toggle { display: flex; z-index: 1001;}
 
   .nav-links {
     position: fixed;
@@ -1563,6 +1563,13 @@ footer {
     text-align: left;
   }
   .timeline-dot { left: 5px; transform: none; }
+
+  /* Left items */
+  .timeline-item:not(.timeline-right) {
+    padding-right: 0;
+    flex-direction: row-reverse;
+    text-align: left;
+  }
 
   /* Preservation */
   .preservation-cards { grid-template-columns: 1fr; }
