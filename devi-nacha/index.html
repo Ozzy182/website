@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kilagha Dī Pyākhan — Sacred Masked Dance of Kathmandu</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Cormorant Garamond (display) + Crimson Pro (body) + Noto Serif Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+Devanagari:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== LOADING SCREEN ========== -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-mandala">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="60" r="55" fill="none" stroke="#c8732a" stroke-width="1.5" stroke-dasharray="4 4" class="spin-slow"/>
+          <circle cx="60" cy="60" r="40" fill="none" stroke="#8b1a2e" stroke-width="1" stroke-dasharray="2 6" class="spin-reverse"/>
+          <polygon points="60,15 70,45 100,45 76,62 85,92 60,74 35,92 44,62 20,45 50,45" fill="none" stroke="#c8732a" stroke-width="1.2"/>
+          <circle cx="60" cy="60" r="8" fill="#c8732a"/>
+        </svg>
+      </div>
+      <p class="loader-text">Kilagha Dī Pyākhan</p>
+      <p class="loader-sub">किलागल दी प्याखं</p>
+    </div>
+  </div>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-deva">दी</span>
+        <span class="logo-text">Kilagha Dī Pyākhan</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#deities">Deities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#timeline">Festival</a></li>
+        <li><a href="#music">Music</a></li>
+        <li><a href="#preservation">Preserve</a></li>
+        <li><a href="#contact" class="nav-cta">Connect</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero">
+    <!-- Floating particles (incense smoke / festival lights) -->
+    <div id="particles-container" aria-hidden="true"></div>
+
+    <!-- Decorative mandala background -->
+    <div class="hero-mandala-bg" aria-hidden="true">
+      <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" class="mandala-svg">
+        <g opacity="0.12" fill="none" stroke="#f5c878" stroke-width="1">
+          <circle cx="400" cy="400" r="350"/>
+          <circle cx="400" cy="400" r="280"/>
+          <circle cx="400" cy="400" r="210"/>
+          <circle cx="400" cy="400" r="140"/>
+          <circle cx="400" cy="400" r="70"/>
+          <!-- Radial lines -->
+          <line x1="400" y1="50" x2="400" y2="750"/>
+          <line x1="50" y1="400" x2="750" y2="400"/>
+          <line x1="153" y1="153" x2="647" y2="647"/>
+          <line x1="647" y1="153" x2="153" y2="647"/>
+          <line x1="75" y1="275" x2="725" y2="525"/>
+          <line x1="75" y1="525" x2="725" y2="275"/>
+          <line x1="275" y1="75" x2="525" y2="725"/>
+          <line x1="525" y1="75" x2="275" y2="725"/>
+          <!-- Lotus petals -->
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(0,400,400)"/>
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(45,400,400)"/>
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(90,400,400)"/>
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(135,400,400)"/>
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(180,400,400)"/>
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(225,400,400)"/>
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(270,400,400)"/>
+          <ellipse cx="400" cy="230" rx="25" ry="60" transform="rotate(315,400,400)"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Hero image placeholder (warm festival scene) -->
+    <div class="hero-image-wrap">
+      <div class="hero-image-placeholder" role="img" aria-label="Kilagha Dī Pyākhan masked dance performance during Indra Jatra">
+        <div class="hero-img-overlay"></div>
+        <!-- Symbolic masked figure SVG for placeholder -->
+        <svg class="hero-mask-art" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stylised deity mask silhouette -->
+          <g opacity="0.28">
+            <ellipse cx="200" cy="200" rx="100" ry="120" fill="#8b1a2e"/>
+            <circle cx="165" cy="185" r="18" fill="#f5c878"/>
+            <circle cx="235" cy="185" r="18" fill="#f5c878"/>
+            <circle cx="165" cy="185" r="8" fill="#2d1406"/>
+            <circle cx="235" cy="185" r="8" fill="#2d1406"/>
+            <path d="M165,230 Q200,260 235,230" stroke="#f5c878" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <!-- Crown -->
+            <path d="M130,105 L145,70 L160,100 L175,55 L200,95 L225,55 L240,100 L255,70 L270,105" stroke="#f5c878" stroke-width="3" fill="none"/>
+            <!-- Fangs -->
+            <path d="M185,245 L180,270" stroke="#f5c878" stroke-width="3" stroke-linecap="round"/>
+            <path d="M215,245 L220,270" stroke="#f5c878" stroke-width="3" stroke-linecap="round"/>
+            <!-- Halo/aura circles -->
+            <circle cx="200" cy="200" r="140" fill="none" stroke="#c8732a" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
+            <circle cx="200" cy="200" r="160" fill="none" stroke="#f5c878" stroke-width="0.8" stroke-dasharray="3 8" opacity="0.4"/>
+            <!-- Body -->
+            <path d="M120,320 Q200,290 280,320 L300,450 Q200,480 100,450Z" fill="#8b1a2e" opacity="0.7"/>
+            <!-- Arms -->
+            <path d="M125,340 L60,300 M275,340 L340,300" stroke="#8b1a2e" stroke-width="20" stroke-linecap="round" opacity="0.7"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Hero Text -->
+    <div class="hero-content">
+      <p class="hero-eyebrow fade-in-up" style="animation-delay:0.3s">किलागल दी प्याखं · Kilagal, Kathmandu</p>
+      <h1 class="hero-title fade-in-up" style="animation-delay:0.5s">
+        Kilagha Dī<br /><em>Pyākhan</em>
+      </h1>
+      <p class="hero-subtitle fade-in-up" style="animation-delay:0.7s">
+        Sacred Masked Dance Tradition of Kathmandu
+      </p>
+      <div class="hero-divider fade-in-up" style="animation-delay:0.9s">
+        <span></span><svg viewBox="0 0 30 12" width="30"><path d="M0,6 Q7.5,0 15,6 Q22.5,12 30,6" stroke="#f5c878" stroke-width="1.5" fill="none"/></svg><span></span>
+      </div>
+      <p class="hero-desc fade-in-up" style="animation-delay:1.1s">
+        A living expression of faith, performed through generations by the Jyapu Newars<br class="hide-mobile"/> during the Indra Jatra festival — where the divine walks among mortals.
+      </p>
+      <a href="#about" class="hero-btn fade-in-up" style="animation-delay:1.3s">Discover the Tradition</a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="scroll-dot"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT SECTION ========== -->
+  <section id="about" class="section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Living Heritage</p>
+        <h2 class="section-title">The Sacred Tradition</h2>
+        <div class="ornament-line"><span></span><span class="ornament-diamond"></span><span></span></div>
+      </div>
+
+      <div class="about-intro reveal">
+        <p>
+          <strong>Kilagha Dī Pyākhan</strong> — also known as <em>Dee Pyakhan</em> or <em>Dya Pyakhan</em> — is an ancient masked deity dance performed exclusively in the historic neighborhood of <strong>Kilagal</strong> in Kathmandu, Nepal. Rooted in the devotional traditions of the <strong>Newar</strong> community, this sacred performance is enacted each year during <strong>Indra Jatra</strong> (Yenya), the grandest festival of Kathmandu Valley.
+        </p>
+      </div>
+
+      <div class="about-cards">
+        <!-- Card 1 -->
+        <div class="about-card reveal">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="28" fill="none" stroke="#c8732a" stroke-width="1.5"/><path d="M30,10 L35,25 H50 L38,34 L43,49 L30,40 L17,49 L22,34 L10,25 H25Z" fill="#c8732a" opacity="0.8"/></svg>
+          </div>
+          <h3>Kilagal — The Sacred Quarter</h3>
+          <p>Nestled in the heart of old Kathmandu, Kilagal is one of the city's most revered Newar localities. Its ancient courtyards, elaborately carved temples, and community <em>guthi</em> halls have sheltered this dance tradition for centuries, making it inseparable from the quarter's identity.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="about-card reveal" style="transition-delay:0.15s">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="28" fill="none" stroke="#c8732a" stroke-width="1.5"/><rect x="18" y="20" width="24" height="28" rx="2" fill="none" stroke="#c8732a" stroke-width="1.5"/><line x1="22" y1="27" x2="38" y2="27" stroke="#c8732a" stroke-width="1.2"/><line x1="22" y1="32" x2="38" y2="32" stroke="#c8732a" stroke-width="1.2"/><line x1="22" y1="37" x2="32" y2="37" stroke="#c8732a" stroke-width="1.2"/></svg>
+          </div>
+          <h3>Jyapu Newars — Guardians of Culture</h3>
+          <p>The <strong>Jyapu</strong> — the farming community within the Newar ethnic group — are the traditional custodians of Dī Pyākhan. Their <em>guthi</em> (community institution) organises, funds, and perpetuates the performance, ensuring that sacred costumes, music, and dance steps pass faithfully from father to son across generations.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="about-card reveal" style="transition-delay:0.3s">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="28" fill="none" stroke="#c8732a" stroke-width="1.5"/><path d="M20,40 Q30,15 40,40" fill="none" stroke="#c8732a" stroke-width="1.5"/><circle cx="30" cy="28" r="5" fill="#c8732a" opacity="0.7"/></svg>
+          </div>
+          <h3>Indra Jatra — The Grand Stage</h3>
+          <p><strong>Indra Jatra</strong>, known locally as <em>Yenya</em>, is an eight-day festival honouring Indra, god of rain, and the departed ancestors. Dī Pyākhan is performed on specific auspicious days, its procession winding through Kilagal's narrow lanes as drums echo off centuries-old brick facades and marigold garlands fill the air.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="about-card reveal" style="transition-delay:0.45s">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="28" fill="none" stroke="#c8732a" stroke-width="1.5"/><path d="M30,15 L30,45 M18,20 Q30,10 42,20" stroke="#c8732a" stroke-width="1.5" fill="none" stroke-linecap="round"/><circle cx="30" cy="40" r="6" fill="none" stroke="#c8732a" stroke-width="1.3"/></svg>
+          </div>
+          <h3>Ritual & Spiritual Meaning</h3>
+          <p>Every element of Dī Pyākhan carries deep meaning — the masks are consecrated before dawn, the costumes are worn ritually, and the performers undergo purification rites. The dance is not entertainment; it is <em>puja</em> in motion — an act of devotion where human bodies become temporary vessels for the divine.</p>
+        </div>
+      </div>
+
+      <!-- Historical context pull-quote -->
+      <blockquote class="about-quote reveal">
+        <p>"When the masks are worn and the dhime drums strike, it is not a man who dances — it is the deity itself that moves through the lanes of Kilagal."</p>
+        <cite>— Elder of the Kilagal Guthi</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ========== DEITIES & CHARACTERS ========== -->
+  <section id="deities" class="section section-alt">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">The Divine Cast</p>
+        <h2 class="section-title">Deities &amp; Characters</h2>
+        <div class="ornament-line"><span></span><span class="ornament-diamond"></span><span></span></div>
+        <p class="section-intro">Six sacred figures manifest through the dance — each a window into the vast Newar cosmological universe.</p>
+      </div>
+
+      <div class="deity-grid">
+
+        <!-- Bhairav -->
+        <div class="deity-card reveal" style="transition-delay:0s">
+          <div class="deity-card-inner">
+            <div class="deity-front">
+              <div class="deity-image" style="background-color:#5a0e1a;">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="deity-svg">
+                  <!-- Bhairav: fierce face, multiple eyes, fangs, elaborate crown -->
+                  <ellipse cx="100" cy="120" rx="65" ry="75" fill="#8b1a2e"/>
+                  <!-- Crown flames -->
+                  <path d="M60,55 L70,20 L80,50 L90,10 L100,45 L110,10 L120,50 L130,20 L140,55" fill="#c8732a" stroke="#f5c878" stroke-width="1"/>
+                  <!-- Third eye -->
+                  <ellipse cx="100" cy="90" rx="12" ry="8" fill="#f5c878" stroke="#2d1406" stroke-width="1.5"/>
+                  <circle cx="100" cy="90" r="4" fill="#2d1406"/>
+                  <!-- Regular eyes -->
+                  <ellipse cx="78" cy="115" rx="14" ry="10" fill="#f5c878"/>
+                  <ellipse cx="122" cy="115" rx="14" ry="10" fill="#f5c878"/>
+                  <circle cx="78" cy="115" r="5" fill="#2d1406"/>
+                  <circle cx="122" cy="115" r="5" fill="#2d1406"/>
+                  <!-- Fangs -->
+                  <path d="M88,150 L83,175 M112,150 L117,175" stroke="#f5c878" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Necklace -->
+                  <path d="M55,175 Q100,195 145,175" stroke="#f5c878" stroke-width="2" fill="none"/>
+                  <!-- Aura -->
+                  <circle cx="100" cy="120" r="82" fill="none" stroke="#c8732a" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+                </svg>
+              </div>
+              <div class="deity-info">
+                <h3 class="deity-name">Bhairav</h3>
+                <p class="deity-role">भैरव — The Wrathful Guardian</p>
+              </div>
+            </div>
+            <div class="deity-back">
+              <h3>Bhairav</h3>
+              <p>The supreme deity of the Dī Pyākhan, Bhairav is the fierce manifestation of Shiva. His terrifying mask — adorned with bulging eyes, fangs, and a crown of skulls — embodies cosmic power that protects Kilagal. He leads the procession, radiating divine wrath that purifies the path.</p>
+              <span class="deity-badge">Lead Deity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kumari -->
+        <div class="deity-card reveal" style="transition-delay:0.1s">
+          <div class="deity-card-inner">
+            <div class="deity-front">
+              <div class="deity-image" style="background-color:#2d5a3d;">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="deity-svg">
+                  <!-- Kumari: serene goddess, third eye, ornate crown, golden hue -->
+                  <ellipse cx="100" cy="125" rx="55" ry="68" fill="#d4956a"/>
+                  <!-- Crown -->
+                  <path d="M55,72 L65,45 L80,68 L100,40 L120,68 L135,45 L145,72" fill="#f5c878" stroke="#c8732a" stroke-width="1.5"/>
+                  <circle cx="100" cy="72" r="8" fill="#c8732a"/>
+                  <!-- Third eye -->
+                  <ellipse cx="100" cy="98" rx="10" ry="7" fill="#c8732a"/>
+                  <circle cx="100" cy="98" r="3" fill="#2d1406"/>
+                  <!-- Eyes -->
+                  <path d="M75,118 Q88,108 100,118 Q88,128 75,118Z" fill="#2d1406"/>
+                  <path d="M125,118 Q112,108 100,118 Q112,128 125,118Z" fill="#2d1406"/>
+                  <!-- Serene lips -->
+                  <path d="M86,148 Q100,158 114,148" stroke="#8b1a2e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                  <!-- Jewellery -->
+                  <circle cx="75" cy="108" r="4" fill="#f5c878"/>
+                  <circle cx="125" cy="108" r="4" fill="#f5c878"/>
+                  <path d="M60,170 Q100,185 140,170" stroke="#f5c878" stroke-width="2" fill="none"/>
+                  <circle cx="100" cy="120" r="70" fill="none" stroke="#f5c878" stroke-width="0.8" stroke-dasharray="3 6" opacity="0.5"/>
+                </svg>
+              </div>
+              <div class="deity-info">
+                <h3 class="deity-name">Kumari</h3>
+                <p class="deity-role">कुमारी — The Living Goddess</p>
+              </div>
+            </div>
+            <div class="deity-back">
+              <h3>Kumari</h3>
+              <p>Representing the living goddess tradition of Nepal, Kumari embodies the pre-pubescent divine feminine. Her serene golden mask contrasts with Bhairav's ferocity, symbolising grace and benevolent power. Her presence in the dance sanctifies all who witness it.</p>
+              <span class="deity-badge">Divine Feminine</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chandi -->
+        <div class="deity-card reveal" style="transition-delay:0.2s">
+          <div class="deity-card-inner">
+            <div class="deity-front">
+              <div class="deity-image" style="background-color:#4a2060;">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="deity-svg">
+                  <!-- Chandi: fierce goddess, many arms, warrior energy -->
+                  <ellipse cx="100" cy="118" rx="60" ry="72" fill="#7a2a50"/>
+                  <!-- Wild hair -->
+                  <path d="M50,80 Q30,40 60,60 Q40,30 75,55 Q65,25 100,50 Q135,25 125,55 Q160,30 140,60 Q170,40 150,80" fill="#2d1406" opacity="0.9"/>
+                  <!-- Crown gem -->
+                  <polygon points="100,48 108,65 126,65 112,75 118,92 100,82 82,92 88,75 74,65 92,65" fill="#f5c878"/>
+                  <!-- Eyes: fierce -->
+                  <ellipse cx="80" cy="110" rx="14" ry="11" fill="#f5c878"/>
+                  <ellipse cx="120" cy="110" rx="14" ry="11" fill="#f5c878"/>
+                  <circle cx="80" cy="110" r="5" fill="#c8732a"/>
+                  <circle cx="120" cy="110" r="5" fill="#c8732a"/>
+                  <!-- Open mouth with fangs -->
+                  <path d="M80,145 Q100,165 120,145" fill="#8b1a2e"/>
+                  <line x1="93" y1="148" x2="90" y2="165" stroke="#f5c878" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="107" y1="148" x2="110" y2="165" stroke="#f5c878" stroke-width="2.5" stroke-linecap="round"/>
+                  <!-- Arms suggested -->
+                  <path d="M45,160 L35,130 M155,160 L165,130 M40,180 L25,155 M160,180 L175,155" stroke="#7a2a50" stroke-width="12" stroke-linecap="round" opacity="0.8"/>
+                  <circle cx="100" cy="118" r="78" fill="none" stroke="#7a2a50" stroke-width="1.2" stroke-dasharray="5 3" opacity="0.4"/>
+                </svg>
+              </div>
+              <div class="deity-info">
+                <h3 class="deity-name">Chandi</h3>
+                <p class="deity-role">चण्डी — The Fierce Warrior</p>
+              </div>
+            </div>
+            <div class="deity-back">
+              <h3>Chandi</h3>
+              <p>Chandi — the fierce, multi-armed warrior goddess — appears as the slayer of demons. In the dance, her dynamic movements represent the cosmic battle between order and chaos. Her wild energy and powerful gestures are considered particularly potent in warding off evil.</p>
+              <span class="deity-badge">Warrior Goddess</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Daitya -->
+        <div class="deity-card reveal" style="transition-delay:0.3s">
+          <div class="deity-card-inner">
+            <div class="deity-front">
+              <div class="deity-image" style="background-color:#1a3a2a;">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="deity-svg">
+                  <!-- Daitya: demon figure, large, menacing, dark green/blue -->
+                  <ellipse cx="100" cy="130" rx="70" ry="80" fill="#1e5c3a"/>
+                  <!-- Horns -->
+                  <path d="M70,68 L55,30 L80,58" fill="#2d8a50"/>
+                  <path d="M130,68 L145,30 L120,58" fill="#2d8a50"/>
+                  <!-- Bulging eyes -->
+                  <circle cx="78" cy="110" r="18" fill="#f5c878"/>
+                  <circle cx="122" cy="110" r="18" fill="#f5c878"/>
+                  <circle cx="78" cy="110" r="9" fill="#2d1406"/>
+                  <circle cx="122" cy="110" r="9" fill="#2d1406"/>
+                  <circle cx="83" cy="105" r="3" fill="white"/>
+                  <circle cx="127" cy="105" r="3" fill="white"/>
+                  <!-- Gaping mouth -->
+                  <path d="M70,155 Q100,185 130,155 L125,170 Q100,195 75,170Z" fill="#2d1406"/>
+                  <line x1="85" y1="157" x2="83" y2="180" stroke="#f5c878" stroke-width="3" stroke-linecap="round"/>
+                  <line x1="115" y1="157" x2="117" y2="180" stroke="#f5c878" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Belly -->
+                  <ellipse cx="100" cy="185" rx="50" ry="30" fill="#1e5c3a" opacity="0.7"/>
+                </svg>
+              </div>
+              <div class="deity-info">
+                <h3 class="deity-name">Daitya</h3>
+                <p class="deity-role">दैत्य — The Demon</p>
+              </div>
+            </div>
+            <div class="deity-back">
+              <h3>Daitya</h3>
+              <p>The Daitya represents the demonic forces of the universe — necessary counterparts to the divine. In Dī Pyākhan, the demon's exaggerated mask and lumbering dance create comic terror, delighting crowds while carrying the deeper message that darkness must be confronted and overcome.</p>
+              <span class="deity-badge">Cosmic Antagonist</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Khya -->
+        <div class="deity-card reveal" style="transition-delay:0.4s">
+          <div class="deity-card-inner">
+            <div class="deity-front">
+              <div class="deity-image" style="background-color:#3a2a10;">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="deity-svg">
+                  <!-- Khya: spirit/ghost figure, elongated, ethereal -->
+                  <ellipse cx="100" cy="115" rx="50" ry="70" fill="#8a6020"/>
+                  <!-- Elongated head -->
+                  <ellipse cx="100" cy="78" rx="40" ry="55" fill="#c8a050"/>
+                  <!-- Hollow eyes -->
+                  <ellipse cx="84" cy="72" rx="12" ry="16" fill="#2d1406"/>
+                  <ellipse cx="116" cy="72" rx="12" ry="16" fill="#2d1406"/>
+                  <ellipse cx="84" cy="72" rx="6" ry="9" fill="#c8732a" opacity="0.7"/>
+                  <ellipse cx="116" cy="72" rx="6" ry="9" fill="#c8732a" opacity="0.7"/>
+                  <!-- Pointed nose -->
+                  <path d="M92,92 L100,108 L108,92" fill="#8a6020"/>
+                  <!-- Thin mouth -->
+                  <line x1="82" y1="118" x2="118" y2="118" stroke="#2d1406" stroke-width="3" stroke-linecap="round"/>
+                  <!-- Spirit wisps -->
+                  <path d="M55,150 Q40,130 50,110 M145,150 Q160,130 150,110" stroke="#c8a050" stroke-width="2" fill="none" stroke-dasharray="4 4" opacity="0.6"/>
+                  <!-- Body robes -->
+                  <path d="M55,155 Q100,180 145,155 L155,220 Q100,240 45,220Z" fill="#8a6020" opacity="0.8"/>
+                </svg>
+              </div>
+              <div class="deity-info">
+                <h3 class="deity-name">Khya</h3>
+                <p class="deity-role">ख्या — The Spirit</p>
+              </div>
+            </div>
+            <div class="deity-back">
+              <h3>Khya</h3>
+              <p>Khya is a spirit entity from Newar mythology — ethereal, unpredictable, and dwelling between worlds. In the procession, the Khya character moves with an otherworldly fluidity that distinguishes it from the deities. It serves as a reminder of the spirit world's omnipresence in Newar cosmology.</p>
+              <span class="deity-badge">Spirit Entity</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Beta -->
+        <div class="deity-card reveal" style="transition-delay:0.5s">
+          <div class="deity-card-inner">
+            <div class="deity-front">
+              <div class="deity-image" style="background-color:#3a1a10;">
+                <svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg" class="deity-svg">
+                  <!-- Beta: attendant/companion figure -->
+                  <ellipse cx="100" cy="120" rx="58" ry="72" fill="#b05020"/>
+                  <!-- Turbaned head -->
+                  <ellipse cx="100" cy="90" rx="50" ry="42" fill="#d47030"/>
+                  <path d="M55,72 Q100,55 145,72 Q100,60 55,72Z" fill="#c8732a"/>
+                  <!-- Eyes: lively -->
+                  <circle cx="82" cy="90" r="12" fill="#f5f0dc"/>
+                  <circle cx="118" cy="90" r="12" fill="#f5f0dc"/>
+                  <circle cx="82" cy="90" r="6" fill="#2d1406"/>
+                  <circle cx="118" cy="90" r="6" fill="#2d1406"/>
+                  <circle cx="85" cy="87" r="2" fill="white"/>
+                  <circle cx="121" cy="87" r="2" fill="white"/>
+                  <!-- Mustache -->
+                  <path d="M82,115 Q100,122 118,115" stroke="#2d1406" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <!-- Smile -->
+                  <path d="M85,130 Q100,142 115,130" stroke="#2d1406" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- Costume detail -->
+                  <path d="M50,165 Q100,182 150,165 L148,220 Q100,235 52,220Z" fill="#b05020"/>
+                  <line x1="100" y1="165" x2="100" y2="220" stroke="#c8732a" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="deity-info">
+                <h3 class="deity-name">Beta</h3>
+                <p class="deity-role">बेत — The Sacred Attendant</p>
+              </div>
+            </div>
+            <div class="deity-back">
+              <h3>Beta</h3>
+              <p>Beta is the attendant and companion figure in the dance — a half-divine, half-human character who bridges the mortal and sacred worlds. Often depicted with an expressive, almost comedic mask, Beta interacts with spectators, making the divine procession accessible and joyful to all who watch.</p>
+              <span class="deity-badge">Divine Attendant</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Hover hint -->
+      <p class="deity-hint reveal">✦ Hover over each card to discover their story</p>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY SECTION ========== -->
+  <section id="gallery" class="section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">Visual Archive</p>
+        <h2 class="section-title">Gallery</h2>
+        <div class="ornament-line"><span></span><span class="ornament-diamond"></span><span></span></div>
+        <p class="section-intro">Glimpses of sacred colour, movement, and devotion from the lanes of Kilagal.</p>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Gallery items — placeholder images with thematic colours and labels -->
+        <div class="gallery-item reveal tall" data-caption="Bhairav mask consecration before the procession" data-index="0">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#5a0e1a,#8b1a2e);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="140" rx="60" ry="75" fill="#8b1a2e" opacity="0.6"/><circle cx="80" cy="128" r="14" fill="#f5c878" opacity="0.8"/><circle cx="120" cy="128" r="14" fill="#f5c878" opacity="0.8"/><path d="M60,60 L80,25 L100,55 L120,25 L140,60" stroke="#f5c878" stroke-width="2" fill="none" opacity="0.7"/></svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Bhairav mask consecration before the procession</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-caption="Dhime drummers leading the festival procession" data-index="1">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#3a1a08,#7a3a10);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="120" rx="70" ry="35" fill="#c8732a" opacity="0.5"/><ellipse cx="100" cy="85" rx="70" ry="35" fill="#c8732a" opacity="0.3"/><line x1="100" y1="50" x2="100" y2="155" stroke="#f5c878" stroke-width="3" opacity="0.6"/></svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Dhime drummers leading the festival procession</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-caption="Marigold offerings at the Kilagal courtyard shrine" data-index="2">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#5a4000,#c87820);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="100" cy="100" r="60" fill="#f5a020" opacity="0.4"/><circle cx="100" cy="100" r="40" fill="#f5c020" opacity="0.4"/><circle cx="100" cy="100" r="20" fill="#f5e020" opacity="0.5"/></svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Marigold offerings at the Kilagal courtyard shrine</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal wide" data-caption="The full procession winds through ancient lanes of Kilagal during Indra Jatra" data-index="3">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#1a2a40,#2a4a70);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0" y="120" width="400" height="80" fill="#2a1a08" opacity="0.5"/>
+                <!-- Buildings -->
+                <rect x="20" y="60" width="50" height="65" fill="#5a3010" opacity="0.7"/><path d="M15,62 L45,40 L75,62" fill="#8b1a2e" opacity="0.7"/>
+                <rect x="100" y="70" width="60" height="55" fill="#5a3010" opacity="0.7"/><path d="M95,72 L130,48 L165,72" fill="#8b1a2e" opacity="0.7"/>
+                <rect x="200" y="55" width="70" height="70" fill="#5a3010" opacity="0.7"/><path d="M195,57 L235,30 L275,57" fill="#8b1a2e" opacity="0.7"/>
+                <rect x="305" y="65" width="55" height="60" fill="#5a3010" opacity="0.7"/>
+                <!-- Figures -->
+                <ellipse cx="160" cy="130" rx="12" ry="20" fill="#c8732a" opacity="0.8"/>
+                <ellipse cx="200" cy="125" rx="14" ry="22" fill="#8b1a2e" opacity="0.8"/>
+                <ellipse cx="240" cy="130" rx="12" ry="20" fill="#c8732a" opacity="0.8"/>
+              </svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">The full procession winds through ancient lanes of Kilagal during Indra Jatra</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal tall" data-caption="Kumari mask — serene gold on crimson lacquer" data-index="4">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#2d5a3d,#3a7a50);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg"><ellipse cx="100" cy="150" rx="55" ry="68" fill="#d4956a" opacity="0.6"/><ellipse cx="80" cy="135" rx="11" ry="8" fill="#f5f0dc" opacity="0.9"/><ellipse cx="120" cy="135" rx="11" ry="8" fill="#f5f0dc" opacity="0.9"/><path d="M55,85 L65,58 L80,82 L100,55 L120,82 L135,58 L145,85" fill="#f5c878" opacity="0.7"/></svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Kumari mask — serene gold on crimson lacquer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-caption="Children watching the sacred procession from temple steps" data-index="5">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#3a2010,#6a4020);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <rect x="20" y="130" width="160" height="70" fill="#5a3010" opacity="0.5"/>
+                <circle cx="80" cy="115" r="18" fill="#d4956a" opacity="0.8"/>
+                <circle cx="120" cy="118" r="16" fill="#d4956a" opacity="0.8"/>
+                <rect x="62" y="133" width="36" height="45" fill="#c8732a" opacity="0.7"/>
+                <rect x="104" y="136" width="32" height="42" fill="#8b1a2e" opacity="0.7"/>
+              </svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Children watching the sacred procession from temple steps</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-caption="Ritual preparation of masks and costumes at guthi hall" data-index="6">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#1a1a3a,#2a2a6a);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="60" width="120" height="90" rx="5" fill="#4a4a8a" opacity="0.5"/><circle cx="100" cy="105" r="30" fill="#c8732a" opacity="0.5"/><rect x="60" y="80" width="80" height="5" fill="#f5c878" opacity="0.6"/></svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Ritual preparation of masks and costumes at guthi hall</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" data-caption="Oil lamps illuminate the evening procession route" data-index="7">
+          <div class="gallery-img-wrap" style="background: linear-gradient(145deg,#1a0a00,#5a2a00);">
+            <div class="gallery-placeholder-art">
+              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="60" cy="130" r="8" fill="#f5c878" opacity="0.9"/><circle cx="100" cy="110" r="10" fill="#f5c878" opacity="0.9"/><circle cx="140" cy="125" r="8" fill="#f5c878" opacity="0.9"/>
+                <path d="M60,110 Q62,95 60,85" stroke="#c8732a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <path d="M100,90 Q102,72 100,60" stroke="#c8732a" stroke-width="4" fill="none" stroke-linecap="round"/>
+                <path d="M140,108 Q142,90 140,78" stroke="#c8732a" stroke-width="3" fill="none" stroke-linecap="round"/>
+                <rect x="50" y="130" width="20" height="30" rx="2" fill="#5a2a00" opacity="0.8"/>
+                <rect x="90" y="110" width="20" height="55" rx="2" fill="#5a2a00" opacity="0.8"/>
+                <rect x="130" y="125" width="20" height="40" rx="2" fill="#5a2a00" opacity="0.8"/>
+              </svg>
+            </div>
+            <div class="gallery-overlay">
+              <span class="gallery-caption">Oil lamps illuminate the evening procession route</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">✕</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+    <div class="lightbox-content" id="lightboxContent">
+      <div class="lightbox-image-wrap" id="lightboxImage"></div>
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <!-- ========== TIMELINE SECTION ========== -->
+  <section id="timeline" class="section section-alt">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">During Indra Jatra</p>
+        <h2 class="section-title">Festival Journey</h2>
+        <div class="ornament-line"><span></span><span class="ornament-diamond"></span><span></span></div>
+        <p class="section-intro">From pre-dawn preparations to the final offering — follow the sacred arc of Dī Pyākhan.</p>
+      </div>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="13" fill="#f5c878"/><circle cx="15" cy="15" r="7" fill="#c8732a"/></svg>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-time">Pre-Dawn · 4:00 AM</span>
+            <h3>Purification &amp; Consecration</h3>
+            <p>Before the city wakes, guthi members gather at the <em>aganchhen</em> (the sacred preparation hall). Masks are brought out, ritually bathed in fragrant water, and consecrated with mantras. Performers undergo fasting and purification rites — transforming from men into vessels of the divine.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-right reveal">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="13" fill="#f5c878"/><circle cx="15" cy="15" r="7" fill="#c8732a"/></svg>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-time">Morning · 7:00 AM</span>
+            <h3>Costuming &amp; Masking</h3>
+            <p>The elaborate costumes — silks, brocades, and traditional Newar fabrics — are donned with ritual care. The most sacred moment: when the mask is placed over the performer's face, he enters a meditative state, surrendering his individual self so the deity may inhabit him. A priest offers final blessings.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="13" fill="#f5c878"/><circle cx="15" cy="15" r="7" fill="#c8732a"/></svg>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-time">Midday · 12:00 PM</span>
+            <h3>The Dhime Awakens</h3>
+            <p>The great <strong>dhime</strong> drum begins its sacred rhythm, and the <em>naykhī</em> (cymbals) answer in call and response. The sound is said to carry prayers to the heavens. Spectators fill the ancient lanes; marigold petals and red powder are scattered as the dancers begin their preliminary movements in the inner courtyard.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-right reveal">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="13" fill="#f5c878"/><circle cx="15" cy="15" r="7" fill="#c8732a"/></svg>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-time">Afternoon · 3:00 PM</span>
+            <h3>The Grand Procession</h3>
+            <p>Bhairav leads the procession out into the streets of Kilagal, followed by the full cast of deities and characters. The route is ancient and fixed — winding past shrines, beneath carved <em>torana</em> gateways, and through the heart of the community. Each stop corresponds to a shrine where offerings are made and blessings bestowed.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="13" fill="#f5c878"/><circle cx="15" cy="15" r="7" fill="#c8732a"/></svg>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-time">Evening · 6:30 PM</span>
+            <h3>Performance at the Square</h3>
+            <p>As evening falls, the dancers gather at the main <em>tol</em> (open square) for the centrepiece performance. Oil lamps are lit along the edges. The full choreography unfolds — each deity enacting their mythological story in stylised movement, speaking to the community through gesture and dance vocabulary passed down for centuries.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-right reveal">
+          <div class="timeline-dot">
+            <svg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"><circle cx="15" cy="15" r="13" fill="#c8732a"/><circle cx="15" cy="15" r="7" fill="#f5c878"/></svg>
+          </div>
+          <div class="timeline-content">
+            <span class="timeline-time">Night · 9:00 PM</span>
+            <h3>Unmasking &amp; Gratitude</h3>
+            <p>The final act is the ritual unmasking — done with prayers and offerings, formally releasing the deity's presence from the performer's body. The masks are then wrapped in sacred cloth and stored until next year's Indra Jatra. The guthi gathers for a communal meal, celebrating another year of sacred duty fulfilled.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MUSIC & INSTRUMENTS ========== -->
+  <section id="music" class="section">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">The Sound of the Sacred</p>
+        <h2 class="section-title">Music &amp; Instruments</h2>
+        <div class="ornament-line"><span></span><span class="ornament-diamond"></span><span></span></div>
+        <p class="section-intro">Traditional Newar music is the heartbeat of Dī Pyākhan — inseparable from movement and meaning.</p>
+      </div>
+
+      <div class="instruments-grid">
+        <!-- Dhime -->
+        <div class="instrument-card reveal">
+          <div class="instrument-icon">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="50" cy="40" rx="40" ry="20" fill="none" stroke="#c8732a" stroke-width="2.5"/>
+              <line x1="10" y1="40" x2="90" y2="40" stroke="#c8732a" stroke-width="2"/>
+              <ellipse cx="50" cy="40" rx="40" ry="20" fill="#c8732a" opacity="0.1"/>
+              <line x1="10" y1="40" x2="5" y2="55" stroke="#8b1a2e" stroke-width="3" stroke-linecap="round"/>
+              <line x1="10" y1="40" x2="5" y2="25" stroke="#8b1a2e" stroke-width="3" stroke-linecap="round"/>
+              <line x1="90" y1="40" x2="95" y2="55" stroke="#8b1a2e" stroke-width="3" stroke-linecap="round"/>
+              <line x1="90" y1="40" x2="95" y2="25" stroke="#8b1a2e" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Dhime</h3>
+          <p>The <strong>dhime</strong> is the principal ritual drum of the Newar community — a large two-headed drum carried horizontally and beaten with a curved stick. Its deep, resonant boom is the pulse that guides the deities' movements and announces the sacred procession through the streets.</p>
+        </div>
+        <!-- Naykhī -->
+        <div class="instrument-card reveal" style="transition-delay:0.15s">
+          <div class="instrument-icon">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="30" cy="40" r="22" fill="none" stroke="#c8732a" stroke-width="2.5"/>
+              <circle cx="30" cy="40" r="12" fill="none" stroke="#c8732a" stroke-width="1.5"/>
+              <circle cx="70" cy="40" r="22" fill="none" stroke="#c8732a" stroke-width="2.5"/>
+              <circle cx="70" cy="40" r="12" fill="none" stroke="#c8732a" stroke-width="1.5"/>
+              <line x1="52" y1="40" x2="48" y2="40" stroke="#8b1a2e" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Naykhī</h3>
+          <p>The <strong>naykhī</strong> (large cymbals) provide the rhythmic accent that gives Newar devotional music its characteristic shimmer. Clashed together in call-and-response with the dhime, they mark key moments in the choreography and signal transitions between scenes in the sacred dance narrative.</p>
+        </div>
+        <!-- Bansuri -->
+        <div class="instrument-card reveal" style="transition-delay:0.3s">
+          <div class="instrument-icon">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+              <line x1="10" y1="30" x2="90" y2="50" stroke="#c8732a" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="20" cy="32.5" r="4" fill="#8b1a2e" opacity="0.8"/>
+              <circle cx="33" cy="35" r="3.5" fill="#8b1a2e" opacity="0.8"/>
+              <circle cx="46" cy="37.5" r="3.5" fill="#8b1a2e" opacity="0.8"/>
+              <circle cx="59" cy="40" r="3.5" fill="#8b1a2e" opacity="0.8"/>
+              <circle cx="72" cy="42.5" r="3.5" fill="#8b1a2e" opacity="0.8"/>
+            </svg>
+          </div>
+          <h3>Muralī</h3>
+          <p>The <strong>muralī</strong> (Newar flute) weaves melodic lines above the percussion bed — evoking the lightness of the divine and the poetic quality of Newar music. Its notes guide the softer, lyrical sections of the dance, particularly those embodying Kumari's serene presence.</p>
+        </div>
+        <!-- Pūngi -->
+        <div class="instrument-card reveal" style="transition-delay:0.45s">
+          <div class="instrument-icon">
+            <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="25" cy="35" rx="18" ry="12" fill="none" stroke="#c8732a" stroke-width="2"/>
+              <path d="M25,47 L35,70" stroke="#c8732a" stroke-width="4" stroke-linecap="round"/>
+              <path d="M25,47 L20,72" stroke="#c8732a" stroke-width="3" stroke-linecap="round"/>
+              <path d="M43,35 L75,35" stroke="#c8732a" stroke-width="3" stroke-linecap="round"/>
+              <path d="M75,35 L75,55" stroke="#c8732a" stroke-width="5" stroke-linecap="round"/>
+              <path d="M75,35 L80,20" stroke="#c8732a" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Pūngi Bāja</h3>
+          <p>Various <strong>pūngi bāja</strong> (traditional wind instruments) add harmonic texture to the ensemble. Together with percussion, they create the complete sonic landscape of Dī Pyākhan — a sound that can only be experienced in the streets of Kilagal during those charged evenings of Indra Jatra.</p>
+        </div>
+      </div>
+
+      <!-- Audio player UI -->
+      <div class="audio-player-wrap reveal">
+        <div class="audio-player" id="audioPlayer">
+          <div class="audio-player-header">
+            <span class="audio-icon">♪</span>
+            <div>
+              <p class="audio-title">Dhime Rhythm — Dī Pyākhan Procession</p>
+              <p class="audio-sub">Traditional Newar Devotional Music · Kilagal, Kathmandu</p>
+            </div>
+          </div>
+          <!-- Rhythm Visualizer -->
+          <div class="visualizer" id="visualizer" aria-hidden="true">
+            <div class="viz-bars" id="vizBars"></div>
+          </div>
+          <!-- Controls -->
+          <div class="audio-controls">
+            <button class="audio-btn" id="playBtn" aria-label="Play rhythm visualizer">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+            </button>
+            <div class="audio-progress-wrap">
+              <div class="audio-progress" id="audioProgress">
+                <div class="audio-progress-fill" id="audioProgressFill"></div>
+              </div>
+            </div>
+            <span class="audio-time" id="audioTime">0:00</span>
+          </div>
+          <p class="audio-note">
+            <em>Note: This is an interactive rhythm visualizer representing the traditional dhime drum pattern. For authentic recordings, visit the Smithsonian Folkways or the University of Washington ethnomusicology archive.</em>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRESERVATION SECTION ========== -->
+  <section id="preservation" class="section section-alt">
+    <div class="section-container">
+      <div class="section-header reveal">
+        <p class="section-eyebrow">For Tomorrow</p>
+        <h2 class="section-title">Preserving the Living Tradition</h2>
+        <div class="ornament-line"><span></span><span class="ornament-diamond"></span><span></span></div>
+      </div>
+
+      <div class="preservation-layout">
+        <div class="preservation-text reveal">
+          <h3>A Tradition at the Crossroads</h3>
+          <p>Like many intangible cultural heritages, Kilagha Dī Pyākhan faces the pressures of modernity. Urban migration draws younger Jyapu Newars to distant cities; the intricate knowledge of dance movements, musical compositions, and ritual protocols risks being lost between generations. The masks gather dust in halls where once they danced.</p>
+          <p>Yet the tradition endures — because of community.</p>
+
+          <h3 style="margin-top:2rem;">The Guthi System</h3>
+          <p>The traditional <strong>guthi</strong> — a uniquely Newar communal institution — remains the living backbone of preservation. Members contribute time, resources, and knowledge to maintain the tradition. Annual gatherings, apprenticeship of young performers, and collective decision-making ensure the dance cannot belong to any single individual: it belongs to Kilagal.</p>
+
+          <h3 style="margin-top:2rem;">Teaching the Young</h3>
+          <p>Preservation begins with storytelling. Elders sit with grandchildren and describe the deities, their stories, and what each movement means. Young men begin learning the drum rhythms before they are old enough to wear the masks. This oral and embodied transmission — body to body, heartbeat to heartbeat — is the most powerful archive a culture can possess.</p>
+        </div>
+
+        <div class="preservation-cards">
+          <div class="preservation-card reveal">
+            <div class="pcard-number">01</div>
+            <h4>Documentation</h4>
+            <p>Community-led video and audio documentation of performances, elders' testimonies, and ritual protocols for future generations.</p>
+          </div>
+          <div class="preservation-card reveal" style="transition-delay:0.15s">
+            <div class="pcard-number">02</div>
+            <h4>Apprenticeship</h4>
+            <p>Young men from Kilagal are formally mentored by senior performers in the guthi's structured apprenticeship programme.</p>
+          </div>
+          <div class="preservation-card reveal" style="transition-delay:0.3s">
+            <div class="pcard-number">03</div>
+            <h4>School Outreach</h4>
+            <p>Local schools include Dī Pyākhan in cultural curricula; performance demonstrations bring the tradition into classrooms.</p>
+          </div>
+          <div class="preservation-card reveal" style="transition-delay:0.45s">
+            <div class="pcard-number">04</div>
+            <h4>Mask Conservation</h4>
+            <p>Ancient masks undergo conservation treatment in partnership with Nepal's Department of Archaeology to preserve their sacred materials.</p>
+          </div>
+          <div class="preservation-card reveal" style="transition-delay:0.6s">
+            <div class="pcard-number">05</div>
+            <h4>Community Fund</h4>
+            <p>A community-managed cultural fund supports costume repair, instrument replacement, and the costs of annual performance.</p>
+          </div>
+          <div class="preservation-card reveal" style="transition-delay:0.75s">
+            <div class="pcard-number">06</div>
+            <h4>Digital Archive</h4>
+            <p>A growing digital archive of photographs, oral histories, and musical recordings is maintained by the Kilagal Guthi for open access.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="preservation-cta reveal">
+        <p>"To preserve a culture is not to freeze it in amber — it is to give it roots deep enough to grow."</p>
+        <div class="cta-buttons">
+          <a href="#contact" class="btn-primary">Support the Guthi</a>
+          <a href="#gallery" class="btn-secondary">Explore the Archive</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="contact">
+    <!-- Traditional Newar pattern border -->
+    <div class="footer-border-pattern" aria-hidden="true">
+      <svg viewBox="0 0 1200 30" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <pattern id="newar-pattern" x="0" y="0" width="40" height="30" patternUnits="userSpaceOnUse">
+          <rect width="40" height="30" fill="#2d1406"/>
+          <path d="M0,15 L10,5 L20,15 L30,5 L40,15" stroke="#c8732a" stroke-width="1.5" fill="none"/>
+          <path d="M0,15 L10,25 L20,15 L30,25 L40,15" stroke="#c8732a" stroke-width="1.5" fill="none"/>
+          <circle cx="20" cy="15" r="2.5" fill="#f5c878"/>
+          <circle cx="0" cy="15" r="2.5" fill="#f5c878"/>
+          <circle cx="40" cy="15" r="2.5" fill="#f5c878"/>
+        </pattern>
+        <rect width="1200" height="30" fill="url(#newar-pattern)"/>
+      </svg>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-brand">
+        <div class="footer-logo-text">किलागल दी प्याखं</div>
+        <div class="footer-logo-sub">Kilagha Dī Pyākhan</div>
+        <p class="footer-tagline">A living sacred dance tradition of the Jyapu Newar community, Kilagal, Kathmandu, Nepal.</p>
+        <div class="footer-social">
+          <a href="#" class="social-link" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-1.96C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.4 19.54C5.12 20 12 20 12 20s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="none" stroke="currentColor" stroke-width="2"/><polygon points="9.75,15.02 15.5,12 9.75,8.98" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#about">About the Tradition</a></li>
+          <li><a href="#deities">Deities &amp; Characters</a></li>
+          <li><a href="#gallery">Photo Gallery</a></li>
+          <li><a href="#timeline">Festival Timeline</a></li>
+          <li><a href="#music">Music &amp; Instruments</a></li>
+          <li><a href="#preservation">Preservation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Connect</h4>
+        <p><strong>Kilagal Guthi</strong><br/>Kilagal, Kathmandu 44600<br/>Bagmati Province, Nepal</p>
+        <p style="margin-top:1rem"><a href="mailto:kilaghapyakhan@guthi.np">kilaghapyakhan@guthi.np</a></p>
+        <p style="margin-top:0.5rem">+977 1 XXXXXXX</p>
+      </div>
+
+      <div class="footer-credits">
+        <h4>Credits &amp; Acknowledgements</h4>
+        <p>This website is dedicated with deep reverence to the <strong>Jyapu Newar community of Kilagal</strong> and the generations of guthi members who have kept this sacred tradition alive.</p>
+        <p style="margin-top:0.75rem">Special gratitude to the elders, mask-makers, musicians, and dancers who share their living heritage with the world.</p>
+        <p style="margin-top:0.75rem; opacity:0.6; font-size:0.8rem">Built with respect for the living tradition of Kilagha Dī Pyākhan.</p>
+      </div>
+    </div>
+
+    <!-- Footer pattern bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-inner">
+        <p>© 2025 Kilagha Dī Pyākhan Cultural Heritage · Kilagal, Kathmandu, Nepal</p>
+        <p class="footer-bottom-deva">किलागल दी प्याखं · सांस्कृतिक सम्पदा</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><polyline points="18,15 12,9 6,15" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
