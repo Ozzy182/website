@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Pregnancy Guide</title>
+
+<style>
+:root {
+    --primary: #d6336c;
+    --primary-dark: #b52357;
+    --primary-light: #fff0f5;
+    --secondary: #ffb3c1;
+    --background: #f4f7fb;
+    --text: #333;
+    --muted: #68707c;
+    --green: #16803c;
+    --green-light: #edf9f1;
+    --orange: #bf6500;
+    --orange-light: #fff7e6;
+    --red: #c62828;
+    --red-light: #fff0f0;
+    --border: #e4e8ee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.65;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+/* Header */
+
+header {
+    background: linear-gradient(135deg, #ff8299, #ffc1cd);
+    color: white;
+    text-align: center;
+    padding: 48px 20px 42px;
+}
+
+header h1 {
+    font-size: clamp(32px, 6vw, 48px);
+    line-height: 1.2;
+}
+
+header p {
+    margin-top: 12px;
+    font-size: 18px;
+}
+
+.current-stage {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    font-weight: bold;
+}
+
+/* Navigation */
+
+nav {
+    background: white;
+    position: sticky;
+    top: 0;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    z-index: 20;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--primary-dark);
+}
+
+/* Main layout */
+
+.container {
+    width: min(1180px, calc(100% - 30px));
+    margin: auto;
+    padding: 30px 0 50px;
+}
+
+.card {
+    background: white;
+    margin-bottom: 25px;
+    padding: 26px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(36, 45, 60, 0.08);
+}
+
+h2 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+h3 {
+    margin: 20px 0 10px;
+}
+
+p + p {
+    margin-top: 10px;
+}
+
+ul {
+    padding-left: 22px;
+}
+
+li {
+    margin-bottom: 9px;
+}
+
+/* Trimester tabs */
+
+.trimester-section {
+    margin-bottom: 30px;
+}
+
+.trimester-heading {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.trimester-heading p {
+    color: var(--muted);
+}
+
+.trimester-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.trimester-tab {
+    border: 2px solid transparent;
+    background: white;
+    color: var(--primary);
+    padding: 18px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(36, 45, 60, 0.07);
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.trimester-tab:hover {
+    transform: translateY(-2px);
+    border-color: var(--secondary);
+}
+
+.trimester-tab.active {
+    color: white;
+    background: linear-gradient(135deg, var(--primary), #ef6689);
+    border-color: var(--primary);
+}
+
+.trimester-tab .tab-title {
+    display: block;
+    font-size: 18px;
+}
+
+.trimester-tab .tab-weeks {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.trimester-panel {
+    display: none;
+    animation: fadeIn 0.25s ease;
+}
+
+.trimester-panel.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.trimester-banner {
+    padding: 23px;
+    margin-bottom: 20px;
+    color: white;
+    background: linear-gradient(135deg, #d6336c, #ec7191);
+    border-radius: 18px;
+}
+
+.trimester-banner h2 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+/* Symptom cards */
+
+.symptom-intro {
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+
+.symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.symptom {
+    padding: 18px;
+    background: var(--green-light);
+    border: 1px solid #caead4;
+    border-radius: 14px;
+}
+
+.symptom h3 {
+    color: var(--green);
+    margin: 0 0 6px;
+    font-size: 17px;
+}
+
+.symptom p {
+    color: #41504a;
+    font-size: 15px;
+}
+
+.reassurance {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f2f5ff;
+    border-left: 6px solid #657ad3;
+    border-radius: 10px;
+}
+
+.reassurance h3 {
+    color: #3d4f9f;
+    margin: 0 0 8px;
+}
+
+/* Information boxes */
+
+.info-box {
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
+
+.info-box h3 {
+    margin: 0 0 8px;
+}
+
+.info-box.common {
+    background: var(--green-light);
+    border-left: 6px solid var(--green);
+}
+
+.info-box.check {
+    background: var(--orange-light);
+    border-left: 6px solid #ed9a20;
+}
+
+.info-box.urgent {
+    background: var(--red-light);
+    border-left: 6px solid var(--red);
+}
+
+.good {
+    color: var(--green);
+    font-weight: bold;
+}
+
+.bad {
+    color: var(--red);
+    font-weight: bold;
+}
+
+/* Checklists */
+
+.checklist {
+    list-style: none;
+    padding-left: 0;
+}
+
+.checklist li {
+    position: relative;
+    padding: 12px 12px 12px 43px;
+    margin-bottom: 9px;
+    background: #f8f9fb;
+    border-radius: 10px;
+}
+
+.checklist li::before {
+    content: "☐";
+    position: absolute;
+    left: 14px;
+    top: 9px;
+    color: var(--primary);
+    font-size: 21px;
+}
+
+/* Two-column areas */
+
+.columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.mini-card {
+    padding: 20px;
+    background: #fafbfc;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.mini-card h3 {
+    color: var(--primary);
+    margin-top: 0;
+}
+
+/* Tables */
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    min-width: 600px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 13px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background: var(--secondary);
+}
+
+/* Emergency section */
+
+.emergency {
+    background: var(--red-light);
+    border: 2px solid #f2b5b5;
+}
+
+.emergency h2 {
+    color: var(--red);
+}
+
+.emergency-call {
+    padding: 15px;
+    margin-bottom: 18px;
+    background: white;
+    border-radius: 10px;
+    color: var(--red);
+    font-weight: bold;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    padding: 35px 20px;
+    background: #222;
+    color: white;
+}
+
+footer p {
+    max-width: 850px;
+    margin: 10px auto 0;
+    color: #ddd;
+    font-size: 14px;
+}
+
+footer .sources {
+    margin-top: 15px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* Mobile */
+
+@media (max-width: 750px) {
+    header {
+        padding: 36px 18px;
+    }
+
+    nav {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    nav a {
+        white-space: nowrap;
+    }
+
+    .container {
+        width: min(100% - 20px, 1180px);
+        padding-top: 20px;
+    }
+
+    .card {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .trimester-tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .trimester-tab {
+        text-align: left;
+        padding: 14px 16px;
+    }
+
+    .trimester-tab .tab-title,
+    .trimester-tab .tab-weeks {
+        display: inline;
+    }
+
+    .trimester-tab .tab-weeks {
+        margin-left: 6px;
+    }
+
+    .symptom-grid,
+    .columns {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🤰 Our Pregnancy Guide</h1>
+    <p>A simple guide to support Mom and Baby through every trimester</p>
+
+    <div class="current-stage" id="currentStage">
+        💗 Current stage: First Trimester
+    </div>
+</header>
+
+<nav aria-label="Page navigation">
+    <a href="#trimester-guide">Trimesters</a>
+    <a href="#daily">Daily Checklist</a>
+    <a href="#nutrition">Nutrition</a>
+    <a href="#exercise">Exercise</a>
+    <a href="#medicine">Medicine</a>
+    <a href="#warning">Urgent Signs</a>
+    <a href="#hospital">Hospital Bag</a>
+</nav>
+
+<main class="container">
+
+    <!-- Trimester Tabs -->
+
+    <section class="trimester-section" id="trimester-guide">
+
+        <div class="trimester-heading">
+            <h2>Pregnancy by Trimester</h2>
+            <p>
+                Select a trimester to see common changes, symptoms and reminders.
+            </p>
+        </div>
+
+        <div class="trimester-tabs" role="tablist" aria-label="Pregnancy trimesters">
+
+            <button
+                type="button"
+                class="trimester-tab active"
+                id="trimester-tab-1"
+                role="tab"
+                aria-selected="true"
+                aria-controls="trimester-1"
+                data-trimester="1"
+            >
+                <span class="tab-title">First Trimester</span>
+                <span class="tab-weeks">Weeks 1–13</span>
+            </button>
+
+            <button
+                type="button"
+                class="trimester-tab"
+                id="trimester-tab-2"
+                role="tab"
+                aria-selected="false"
+                aria-controls="trimester-2"
+                data-trimester="2"
+                tabindex="-1"
+            >
+                <span class="tab-title">Second Trimester</span>
+                <span class="tab-weeks">Weeks 14–27</span>
+            </button>
+
+            <button
+                type="button"
+                class="trimester-tab"
+                id="trimester-tab-3"
+                role="tab"
+                aria-selected="false"
+                aria-controls="trimester-3"
+                data-trimester="3"
+                tabindex="-1"
+            >
+                <span class="tab-title">Third Trimester</span>
+                <span class="tab-weeks">Week 28–Birth</span>
+            </button>
+
+        </div>
+
+        <!-- First Trimester -->
+
+        <section
+            class="trimester-panel active"
+            id="trimester-1"
+            role="tabpanel"
+            aria-labelledby="trimester-tab-1"
+        >
+
+            <div class="trimester-banner">
+                <h2>🌱 First Trimester</h2>
+                <p>
+                    Your wife is currently in this stage. Her body is going through
+                    major hormonal and physical changes.
+                </p>
+            </div>
+
+            <div class="card">
+
+                <h2>Common First-Trimester Symptoms</h2>
+
+                <p class="symptom-intro">
+                    These symptoms are commonly experienced during early pregnancy.
+                    Every pregnancy is different, so she may experience many, a few,
+                    or none of them.
+                </p>
+
+                <div class="symptom-grid">
+
+                    <article class="symptom">
+                        <h3>😴 Tiredness</h3>
+                        <p>
+                            Feeling unusually tired or needing more sleep is very
+                            common, especially during the first 12 weeks.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🤢 Nausea or Vomiting</h3>
+                        <p>
+                            “Morning sickness” can happen at any time of day or night,
+                            not only in the morning.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>💗 Tender Breasts</h3>
+                        <p>
+                            Breasts may feel sore, heavy, swollen or sensitive.
+                            Nipples may also become darker.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🚻 Frequent Urination</h3>
+                        <p>
+                            She may need to urinate more frequently, including during
+                            the night.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🎭 Mood Changes</h3>
+                        <p>
+                            Hormonal changes may cause emotional ups and downs,
+                            irritability, worry or crying more easily.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>👃 Stronger Sense of Smell</h3>
+                        <p>
+                            Familiar smells may suddenly feel stronger or unpleasant.
+                            Food likes and dislikes may also change.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🎈 Bloating and Gas</h3>
+                        <p>
+                            Hormonal changes can slow digestion and cause bloating,
+                            gas, constipation or indigestion.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🔥 Heartburn</h3>
+                        <p>
+                            Indigestion or a burning feeling in the chest can happen,
+                            even during early pregnancy.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🩹 Mild Cramping</h3>
+                        <p>
+                            Mild cramps similar to period pains can occur as the body
+                            changes. Severe or one-sided pain needs medical advice.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>💧 Vaginal Discharge</h3>
+                        <p>
+                            More clear or milky-white discharge can be normal when
+                            there is no strong smell, itching, soreness or irritation.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🤕 Mild Headaches or Dizziness</h3>
+                        <p>
+                            Hormonal and circulation changes can cause occasional
+                            headaches or lightheadedness.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>✨ Few or No Symptoms</h3>
+                        <p>
+                            Some people have very mild symptoms or no obvious symptoms
+                            during early pregnancy.
+                        </p>
+                    </article>
+
+                </div>
+
+                <div class="reassurance">
+                    <h3>💙 A reminder for both of you</h3>
+                    <p>
+                        Symptoms may be stronger on some days and milder on others.
+                        Pregnancy experiences are different for every person.
+                    </p>
+                    <p>
+                        However, do not dismiss something that feels severe, unusual,
+                        persistent or worrying. Contact her healthcare provider whenever
+                        you are unsure.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Symptoms to Mention to Her Healthcare Provider</h2>
+
+                <p>
+                    These do not always mean something is seriously wrong, but it is
+                    safer to ask for medical advice:
+                </p>
+
+                <ul>
+                    <li>Any vaginal spotting or bleeding</li>
+                    <li>Persistent abdominal or pelvic pain</li>
+                    <li>Pain mainly on one side of the lower abdomen</li>
+                    <li>Pain or burning while urinating</li>
+                    <li>Discharge with a bad smell, itching or soreness</li>
+                    <li>Frequent dizziness</li>
+                    <li>Vomiting that makes eating or drinking difficult</li>
+                    <li>A headache that is persistent or getting worse</li>
+                    <li>Any symptom that feels unusual or worrying</li>
+                </ul>
+
+                <div class="info-box check">
+                    <h3>Light spotting</h3>
+                    <p>
+                        Light spotting can happen in early pregnancy and does not
+                        automatically mean pregnancy loss. However, she should still
+                        inform her obstetrician, midwife or healthcare provider about
+                        bleeding during pregnancy.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>First-Trimester Priorities</h2>
+
+                <ul class="checklist">
+                    <li>Arrange prenatal care and attend appointments.</li>
+                    <li>Take the prenatal vitamin recommended by her provider.</li>
+                    <li>Ask the provider about folic acid, iron and vitamin D.</li>
+                    <li>Review all medicines and supplements with the provider.</li>
+                    <li>Avoid alcohol, smoking and recreational drugs.</li>
+                    <li>Eat safe, balanced meals and stay hydrated.</li>
+                    <li>Allow extra time for rest and sleep.</li>
+                    <li>Ask the provider which prenatal tests are recommended.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <!-- Second Trimester -->
+
+        <section
+            class="trimester-panel"
+            id="trimester-2"
+            role="tabpanel"
+            aria-labelledby="trimester-tab-2"
+            hidden
+        >
+
+            <div class="trimester-banner">
+                <h2>🌼 Second Trimester</h2>
+                <p>
+                    Many people begin to feel more energetic, and the pregnancy becomes
+                    more physically noticeable.
+                </p>
+            </div>
+
+            <div class="card">
+
+                <h2>Common Second-Trimester Changes</h2>
+
+                <div class="symptom-grid">
+
+                    <article class="symptom">
+                        <h3>👶 Baby Movement</h3>
+                        <p>
+                            The first movements may feel like fluttering, bubbles or
+                            gentle tapping.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🤰 Growing Belly</h3>
+                        <p>
+                            The uterus and abdomen grow as the baby develops.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🦴 Back or Hip Discomfort</h3>
+                        <p>
+                            Changes in posture and body weight may cause mild aches.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🧴 Skin Changes</h3>
+                        <p>
+                            Stretch marks, darker skin patches or a dark line on the
+                            abdomen may appear.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🔥 Heartburn or Constipation</h3>
+                        <p>
+                            Digestive discomfort may continue as pregnancy progresses.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🦵 Leg Cramps</h3>
+                        <p>
+                            Some people experience calf or foot cramps, especially at
+                            night.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Second-Trimester Priorities</h2>
+
+                <ul class="checklist">
+                    <li>Attend all prenatal appointments.</li>
+                    <li>Complete recommended scans and screening tests.</li>
+                    <li>Continue appropriate physical activity.</li>
+                    <li>Eat balanced meals and drink enough water.</li>
+                    <li>Discuss baby movement expectations with the provider.</li>
+                    <li>Ask about sleeping position and back-pain prevention.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <!-- Third Trimester -->
+
+        <section
+            class="trimester-panel"
+            id="trimester-3"
+            role="tabpanel"
+            aria-labelledby="trimester-tab-3"
+            hidden
+        >
+
+            <div class="trimester-banner">
+                <h2>🌸 Third Trimester</h2>
+                <p>
+                    The baby grows rapidly, appointments become more frequent and
+                    preparation for birth begins.
+                </p>
+            </div>
+
+            <div class="card">
+
+                <h2>Common Third-Trimester Changes</h2>
+
+                <div class="symptom-grid">
+
+                    <article class="symptom">
+                        <h3>😮‍💨 Mild Shortness of Breath</h3>
+                        <p>
+                            The growing uterus may make normal activity feel more
+                            tiring. Sudden or severe breathing difficulty is urgent.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🚻 Frequent Urination</h3>
+                        <p>
+                            Pressure from the baby may increase the need to urinate.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🛏️ Sleep Difficulty</h3>
+                        <p>
+                            Finding a comfortable position may become more difficult.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🔥 Heartburn</h3>
+                        <p>
+                            Pressure on the stomach may make indigestion more noticeable.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>🦶 Mild Foot or Ankle Swelling</h3>
+                        <p>
+                            Mild gradual swelling can occur. Sudden swelling of the
+                            face or hands needs prompt medical attention.
+                        </p>
+                    </article>
+
+                    <article class="symptom">
+                        <h3>〰️ Practice Contractions</h3>
+                        <p>
+                            Irregular tightening may occur. Regular, painful or
+                            increasingly frequent contractions should be assessed.
+                        </p>
+                    </article>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>Third-Trimester Priorities</h2>
+
+                <ul class="checklist">
+                    <li>Attend increasingly frequent prenatal appointments.</li>
+                    <li>Learn what is normal for the baby’s movement.</li>
+                    <li>Ask the provider when to call about reduced movement.</li>
+                    <li>Learn the signs of labor and water breaking.</li>
+                    <li>Prepare the hospital bag.</li>
+                    <li>Prepare transport and emergency contact information.</li>
+                    <li>Install the infant car seat when required.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+    </section>
+
+    <!-- Daily Checklist -->
+
+    <section class="card" id="daily">
+
+        <h2>✔ Daily Care Checklist</h2>
+
+        <ul class="checklist">
+            <li>Take the prenatal vitamin recommended by her healthcare provider.</li>
+            <li>Drink water regularly throughout the day.</li>
+            <li>Eat fruits, vegetables, whole grains and protein.</li>
+            <li>Eat small meals if nausea or heartburn is a problem.</li>
+            <li>Rest whenever the body needs it.</li>
+            <li>Do gentle activity if approved by the healthcare provider.</li>
+            <li>Avoid alcohol, smoking and recreational drugs.</li>
+            <li>Note any new or concerning symptoms.</li>
+        </ul>
+
+    </section>
+
+    <!-- Nutrition -->
+
+    <section class="card" id="nutrition">
+
+        <h2>🥗 Pregnancy Nutrition</h2>
+
+        <div class="columns">
+
+            <div class="mini-card">
+                <h3>Good Food Choices</h3>
+
+                <ul>
+                    <li class="good">Green leafy vegetables</li>
+                    <li class="good">Broccoli, carrots and sweet potatoes</li>
+                    <li class="good">Fully cooked eggs</li>
+                    <li class="good">Pasteurized milk and yogurt</li>
+                    <li class="good">Pasteurized cheese</li>
+                    <li class="good">Fully cooked chicken and lean meat</li>
+                    <li class="good">Low-mercury fish</li>
+                    <li class="good">Beans, lentils and chickpeas</li>
+                    <li class="good">Brown rice, oats and whole grains</li>
+                    <li class="good">Fresh, thoroughly washed fruit</li>
+                    <li class="good">Nuts and seeds</li>
+                </ul>
+            </div>
+
+            <div class="mini-card">
+                <h3>Foods and Substances to Avoid</h3>
+
+                <ul>
+                    <li class="bad">Alcohol</li>
+                    <li class="bad">Smoking and secondhand smoke</li>
+                    <li class="bad">Raw or undercooked fish</li>
+                    <li class="bad">Raw or undercooked meat</li>
+                    <li class="bad">Raw or partly cooked eggs where unsafe</li>
+                    <li class="bad">Unpasteurized milk or cheese</li>
+                    <li class="bad">Raw shellfish</li>
+                    <li class="bad">High-mercury fish</li>
+                    <li class="bad">More caffeine than her provider recommends</li>
+                    <li class="bad">Unapproved herbal products or supplements</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="info-box check">
+            <h3>Spicy food</h3>
+            <p>
+                Spicy food is not usually harmful to the baby, but it may increase
+                heartburn, nausea or indigestion for the mother.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Exercise -->
+
+    <section class="card" id="exercise">
+
+        <h2>🏃 Exercise and Movement</h2>
+
+        <div class="columns">
+
+            <div class="mini-card">
+                <h3>Common Pregnancy-Friendly Activities</h3>
+
+                <ul>
+                    <li>Walking</li>
+                    <li>Prenatal yoga</li>
+                    <li>Swimming</li>
+                    <li>Gentle stretching</li>
+                    <li>Pelvic-floor exercises</li>
+                </ul>
+            </div>
+
+            <div class="mini-card">
+                <h3>Activities Usually Avoided</h3>
+
+                <ul>
+                    <li>Contact sports</li>
+                    <li>Scuba diving</li>
+                    <li>Activities with a high risk of falling</li>
+                    <li>Overheating</li>
+                    <li>Exercises specifically restricted by her provider</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="info-box check">
+            <h3>Exercise safely</h3>
+            <p>
+                Her healthcare provider should confirm which activities are suitable,
+                especially if the pregnancy has complications or activity restrictions.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Medicine -->
+
+    <section class="card" id="medicine">
+
+        <h2>💊 Medicines and Supplements</h2>
+
+        <ul>
+            <li>
+                Check with a qualified healthcare provider before taking prescription
+                medicines, over-the-counter medicines or painkillers.
+            </li>
+            <li>Take prenatal vitamins as recommended.</li>
+            <li>Discuss herbal teas, traditional remedies and supplements.</li>
+            <li>Do not stop an important prescribed medicine without medical advice.</li>
+            <li>Ask which vaccinations are recommended during pregnancy.</li>
+        </ul>
+
+    </section>
+
+    <!-- Urgent Signs -->
+
+    <section class="card emergency" id="warning">
+
+        <h2>🚨 Get Urgent Medical Help</h2>
+
+        <div class="emergency-call">
+            Contact her maternity provider, local emergency service or nearest hospital
+            immediately when a serious symptom occurs.
+        </div>
+
+        <ul>
+            <li>Heavy vaginal bleeding or passing tissue</li>
+            <li>Severe abdominal, pelvic, shoulder or one-sided pain</li>
+            <li>Fainting or severe, persistent dizziness</li>
+            <li>Chest pain, difficulty breathing or a very fast heartbeat</li>
+            <li>A severe headache that does not go away or becomes worse</li>
+            <li>Blurred vision, flashing lights, blind spots or other vision changes</li>
+            <li>A temperature of 38°C / 100.4°F or higher</li>
+            <li>Severe vomiting or inability to keep liquids down</li>
+            <li>Signs of dehydration, such as very little urine or a very dry mouth</li>
+            <li>Sudden or extreme swelling of the face or hands</li>
+            <li>A gush or continuous leaking of fluid from the vagina</li>
+            <li>Regular painful contractions before the expected time</li>
+            <li>Later in pregnancy, the baby moves significantly less than usual</li>
+            <li>Thoughts of harming herself or the baby</li>
+            <li>Any strong feeling that something is seriously wrong</li>
+        </ul>
+
+    </section>
+
+    <!-- Hospital Bag -->
+
+    <section class="card" id="hospital">
+
+        <h2>👜 Hospital Bag Checklist</h2>
+
+        <ul class="checklist">
+            <li>Identification and insurance documents</li>
+            <li>Hospital records and paperwork</li>
+            <li>Comfortable clothes</li>
+            <li>Nursing bra</li>
+            <li>Phone and charger</li>
+            <li>Toiletries</li>
+            <li>Baby clothes</li>
+            <li>Baby blanket</li>
+            <li>Diapers and wipes</li>
+            <li>Infant car seat when required</li>
+            <li>Snacks and water where permitted</li>
+            <li>Important contact information</li>
+        </ul>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <h3>Healthy Mom ❤️ Healthy Baby</h3>
+
+    <p>
+        This website provides general educational information and does not diagnose
+        medical conditions or replace advice from an obstetrician, midwife or other
+        qualified healthcare professional.
+    </p>
+
+    <p class="sources">
+        Medical content reviewed against general guidance from the NHS, ACOG and CDC.
+    </p>
+
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const tabs = Array.from(
+        document.querySelectorAll(".trimester-tab")
+    );
+
+    const panels = Array.from(
+        document.querySelectorAll(".trimester-panel")
+    );
+
+    const currentStage = document.getElementById("currentStage");
+
+    const trimesterNames = {
+        1: "First Trimester",
+        2: "Second Trimester",
+        3: "Third Trimester"
+    };
+
+    function activateTrimester(selectedTab) {
+        const trimesterNumber = selectedTab.dataset.trimester;
+        const targetPanel = document.getElementById(
+            "trimester-" + trimesterNumber
+        );
+
+        tabs.forEach(function (tab) {
+            const isActive = tab === selectedTab;
+
+            tab.classList.toggle("active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+            tab.setAttribute("tabindex", isActive ? "0" : "-1");
+        });
+
+        panels.forEach(function (panel) {
+            const isActive = panel === targetPanel;
+
+            panel.classList.toggle("active", isActive);
+            panel.hidden = !isActive;
+        });
+
+        currentStage.textContent =
+            "💗 Viewing: " + trimesterNames[trimesterNumber];
+    }
+
+    tabs.forEach(function (tab, index) {
+        tab.addEventListener("click", function () {
+            activateTrimester(tab);
+        });
+
+        tab.addEventListener("keydown", function (event) {
+            let nextIndex = null;
+
+            if (event.key === "ArrowRight") {
+                nextIndex = (index + 1) % tabs.length;
+            }
+
+            if (event.key === "ArrowLeft") {
+                nextIndex = (index - 1 + tabs.length) % tabs.length;
+            }
+
+            if (event.key === "Home") {
+                nextIndex = 0;
+            }
+
+            if (event.key === "End") {
+                nextIndex = tabs.length - 1;
+            }
+
+            if (nextIndex !== null) {
+                event.preventDefault();
+                tabs[nextIndex].focus();
+                activateTrimester(tabs[nextIndex]);
+            }
+        });
+    });
+
+    /* Always begin with the first trimester active. */
+    activateTrimester(tabs[0]);
+});
+</script>
+
+</body>
+</html>
