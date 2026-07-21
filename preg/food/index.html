@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A categorized pregnancy food guide with practical ideas for fruits, vegetables, proteins, grains, dairy, fish, snacks and drinks, plus foods to limit or avoid.">
+<title>Pregnancy Food Guide | Our Pregnancy Journey</title>
+
+<style>
+:root {
+    --pink: #d94f78;
+    --pink-dark: #ad3159;
+    --pink-soft: #fff1f5;
+    --rose: #ffb8c9;
+    --purple: #7357a7;
+    --purple-soft: #f4f0ff;
+    --green: #247a4d;
+    --green-soft: #eef9f3;
+    --amber: #9a5a00;
+    --amber-soft: #fff7e7;
+    --red: #b4232c;
+    --red-soft: #fff0f1;
+    --blue: #315f9d;
+    --blue-soft: #eef5ff;
+    --ink: #2e3038;
+    --muted: #68707d;
+    --line: #e7e9ef;
+    --page: #f5f7fb;
+    --white: #fff;
+    --shadow: 0 14px 35px rgba(46, 48, 56, 0.08);
+    --radius: 20px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.65;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+}
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 55px 20px 48px;
+    background: linear-gradient(135deg, #d94f78 0%, #ee7898 55%, #f7a7b9 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,.13);
+}
+
+.hero::before {
+    width: 270px;
+    height: 270px;
+    top: -120px;
+    left: -80px;
+}
+
+.hero::after {
+    width: 220px;
+    height: 220px;
+    right: -70px;
+    bottom: -120px;
+}
+
+.hero__inner {
+    position: relative;
+    z-index: 1;
+    width: min(850px, 100%);
+    margin: 0 auto;
+}
+
+.hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 14px;
+    padding: 7px 13px;
+    border: 1px solid rgba(255,255,255,.45);
+    border-radius: 999px;
+    background: rgba(255,255,255,.16);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 7vw, 52px);
+    line-height: 1.12;
+}
+
+.hero p {
+    max-width: 710px;
+    margin: 15px auto 0;
+    font-size: clamp(16px, 2.5vw, 19px);
+}
+
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 14px 18px;
+    overflow-x: auto;
+    background: rgba(255,255,255,.96);
+    border-bottom: 1px solid var(--line);
+    box-shadow: 0 4px 15px rgba(46,48,56,.05);
+    backdrop-filter: blur(8px);
+}
+
+.top-nav a {
+    flex: 0 0 auto;
+    color: var(--pink-dark);
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.top-nav a:hover,
+.top-nav a:focus-visible {
+    text-decoration: underline;
+}
+
+.page {
+    width: min(1180px, calc(100% - 28px));
+    margin: 0 auto;
+    padding: 34px 0 55px;
+}
+
+.intro {
+    display: grid;
+    grid-template-columns: 1.35fr .65fr;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.card {
+    padding: 24px;
+    border: 1px solid rgba(231,233,239,.9);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.card h2 {
+    margin-bottom: 9px;
+    color: var(--pink-dark);
+    font-size: 25px;
+    line-height: 1.25;
+}
+
+.card p + p {
+    margin-top: 8px;
+}
+
+.quick-rule {
+    background: linear-gradient(135deg, var(--green), #3c9667);
+    color: var(--white);
+}
+
+.quick-rule h2 {
+    color: var(--white);
+}
+
+.quick-rule ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.quick-rule li {
+    margin-bottom: 6px;
+}
+
+.controls {
+    margin-bottom: 24px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.search-wrap {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.search-wrap span {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.search-input {
+    width: 100%;
+    padding: 13px 15px 13px 44px;
+    border: 2px solid var(--line);
+    border-radius: 13px;
+    background: #fbfcfe;
+    color: var(--ink);
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--pink);
+    box-shadow: 0 0 0 4px rgba(217,79,120,.12);
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+}
+
+.filter-button {
+    padding: 8px 13px;
+    border: 1px solid #e3c0cc;
+    border-radius: 999px;
+    background: var(--pink-soft);
+    color: var(--pink-dark);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.filter-button:hover,
+.filter-button:focus-visible {
+    border-color: var(--pink);
+}
+
+.filter-button.active {
+    border-color: var(--pink-dark);
+    background: var(--pink);
+    color: var(--white);
+}
+
+.results-line {
+    margin-top: 13px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.category-section {
+    margin-bottom: 28px;
+}
+
+.category-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.category-icon {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 15px;
+    background: var(--pink-soft);
+    font-size: 25px;
+}
+
+.category-heading h2 {
+    color: var(--pink-dark);
+    font-size: clamp(24px, 4vw, 31px);
+    line-height: 1.2;
+}
+
+.category-heading p {
+    color: var(--muted);
+}
+
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.food-card {
+    position: relative;
+    min-height: 210px;
+    padding: 19px;
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    background: var(--white);
+    box-shadow: 0 8px 22px rgba(46,48,56,.06);
+    transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.food-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 13px 28px rgba(46,48,56,.09);
+}
+
+.food-card h3 {
+    padding-right: 72px;
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.25;
+}
+
+.food-card p {
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.food-card__examples {
+    margin-top: 12px;
+    padding-top: 11px;
+    border-top: 1px solid var(--line);
+    color: #454b56;
+    font-size: 14px;
+}
+
+.status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+
+.status--good {
+    background: var(--green-soft);
+    color: var(--green);
+}
+
+.status--safe {
+    background: var(--blue-soft);
+    color: var(--blue);
+}
+
+.status--limit {
+    background: var(--amber-soft);
+    color: var(--amber);
+}
+
+.status--avoid {
+    background: var(--red-soft);
+    color: var(--red);
+}
+
+.safety-box {
+    margin-top: 34px;
+    padding: 25px;
+    border: 2px solid #efc1c5;
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, #fff 0%, #fff5f5 100%);
+    box-shadow: var(--shadow);
+}
+
+.safety-box h2 {
+    color: var(--red);
+}
+
+.safety-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.safety-list {
+    padding: 18px;
+    border: 1px solid #f0ced1;
+    border-radius: 15px;
+    background: var(--white);
+}
+
+.safety-list h3 {
+    margin-bottom: 8px;
+    color: var(--red);
+}
+
+.safety-list ul {
+    padding-left: 20px;
+}
+
+.safety-list li {
+    margin-bottom: 7px;
+}
+
+.empty-state {
+    display: none;
+    padding: 30px;
+    border: 1px dashed #d1d6df;
+    border-radius: 16px;
+    background: var(--white);
+    color: var(--muted);
+    text-align: center;
+}
+
+footer {
+    padding: 38px 20px;
+    background: #282933;
+    color: var(--white);
+    text-align: center;
+}
+
+footer p {
+    max-width: 860px;
+    margin: 10px auto 0;
+    color: #d7d9e0;
+    font-size: 14px;
+}
+
+.source-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 16px;
+}
+
+.source-links a {
+    color: #ffd3df;
+    font-size: 13px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .food-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .intro {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 620px) {
+    .hero {
+        padding-top: 43px;
+    }
+
+    .top-nav {
+        justify-content: flex-start;
+    }
+
+    .food-grid,
+    .safety-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .controls,
+    .safety-box {
+        padding: 19px;
+    }
+
+    .food-card {
+        min-height: auto;
+    }
+}
+</style>
+</head>
+
+<body>
+<header class="hero">
+    <div class="hero__inner">
+        <div class="hero__eyebrow">Food ideas for Mom and Baby</div>
+        <h1>🥗 Pregnancy Food Guide</h1>
+        <p>Browse practical food ideas by category, learn how to prepare them safely, and quickly see which foods should be limited or avoided.</p>
+    </div>
+</header>
+
+<nav class="top-nav" aria-label="Page navigation">
+    <a href="/preg">Pregnancy Guide</a>
+    <a href="#food-categories">Food Categories</a>
+    <a href="#foods-to-avoid">Limit or Avoid</a>
+</nav>
+
+<main class="page">
+    <section class="intro" aria-label="Food guide introduction">
+        <article class="card">
+            <h2>Build balanced meals, not a “perfect” diet</h2>
+            <p>Use this page as a practical idea list. Aim for a mix of vegetables and fruit, whole grains or other starchy foods, protein foods, calcium-rich foods and healthy fats.</p>
+            <p>Individual needs can differ because of allergies, diabetes, anemia, nausea, cultural diet, medicines or pregnancy complications. Her healthcare provider should give the final advice.</p>
+        </article>
+
+        <aside class="card quick-rule">
+            <h2>Four food-safety habits</h2>
+            <ul>
+                <li>Clean hands and produce</li>
+                <li>Separate raw and cooked foods</li>
+                <li>Cook foods thoroughly</li>
+                <li>Chill perishable foods promptly</li>
+            </ul>
+        </aside>
+    </section>
+
+    <section id="food-categories">
+        <div class="controls">
+            <div class="search-wrap">
+                <span aria-hidden="true">🔎</span>
+                <label for="foodSearch" hidden>Search food items</label>
+                <input class="search-input" id="foodSearch" type="search" placeholder="Search foods, for example: banana, salmon, yogurt…" autocomplete="off">
+            </div>
+
+            <div class="filters" role="group" aria-label="Filter food categories">
+                <button class="filter-button active" type="button" data-filter="all">All foods</button>
+                <button class="filter-button" type="button" data-filter="fruit-veg">Fruit & vegetables</button>
+                <button class="filter-button" type="button" data-filter="grains">Grains & starches</button>
+                <button class="filter-button" type="button" data-filter="protein">Protein</button>
+                <button class="filter-button" type="button" data-filter="dairy">Dairy & calcium</button>
+                <button class="filter-button" type="button" data-filter="fish">Fish & seafood</button>
+                <button class="filter-button" type="button" data-filter="snacks">Snacks</button>
+                <button class="filter-button" type="button" data-filter="drinks">Drinks</button>
+            </div>
+
+            <p class="results-line" id="resultsLine" aria-live="polite"></p>
+        </div>
+
+        <section class="category-section" data-category-section="fruit-veg">
+            <div class="category-heading">
+                <div class="category-icon">🥦</div>
+                <div>
+                    <h2>Fruit & Vegetables</h2>
+                    <p>Choose different colors and wash produce thoroughly before eating or cutting.</p>
+                </div>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card" data-category="fruit-veg" data-search="leafy greens spinach kale broccoli folate iron vegetables">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Leafy green vegetables</h3>
+                    <p>Useful in curries, soups, stir-fries, omelets and salads when washed carefully.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> spinach, kale, broccoli, bok choy, mustard greens</div>
+                </article>
+
+                <article class="food-card" data-category="fruit-veg" data-search="orange vegetables sweet potato carrot pumpkin squash">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Orange vegetables</h3>
+                    <p>Roast, steam, boil or add to soups for an easy source of energy and nutrients.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> sweet potato, carrot, pumpkin, squash</div>
+                </article>
+
+                <article class="food-card" data-category="fruit-veg" data-search="vitamin c fruit orange kiwi guava strawberry bell pepper tomato">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Vitamin-C-rich produce</h3>
+                    <p>Pairs well with plant-based iron foods such as beans, lentils and leafy greens.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> oranges, kiwi, guava, strawberries, bell peppers, tomatoes</div>
+                </article>
+
+                <article class="food-card" data-category="fruit-veg" data-search="banana apple pear berries fruit snack nausea">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Easy everyday fruit</h3>
+                    <p>Fresh, frozen or canned fruit can be convenient. Choose options without lots of added sugar.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> banana, apple, pear, berries, mango</div>
+                </article>
+
+                <article class="food-card" data-category="fruit-veg" data-search="avocado healthy fats folate toast salad">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Avocado</h3>
+                    <p>Add to toast, rice bowls, wraps or salads for healthy fats and a creamy texture.</p>
+                    <div class="food-card__examples"><strong>Serving ideas:</strong> avocado toast, guacamole, sliced avocado</div>
+                </article>
+
+                <article class="food-card" data-category="fruit-veg" data-search="precut melon salad sprouts raw produce wash safety">
+                    <span class="status status--safe">Prepare safely</span>
+                    <h3>Raw and ready-to-eat produce</h3>
+                    <p>Wash whole produce under running water. Keep pre-cut fruit and packaged salads refrigerated and use before the use-by date.</p>
+                    <div class="food-card__examples"><strong>Extra care:</strong> melon, bagged salad, fresh herbs, raw sprouts</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category-section="grains">
+            <div class="category-heading">
+                <div class="category-icon">🌾</div>
+                <div>
+                    <h2>Whole Grains & Starchy Foods</h2>
+                    <p>These foods provide energy and can be easier to tolerate when nausea is present.</p>
+                </div>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card" data-category="grains" data-search="oats oatmeal porridge whole grain breakfast">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Oats and porridge</h3>
+                    <p>Top with fruit, yogurt, milk, nuts or seeds for a flexible breakfast.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> oatmeal, overnight oats, oat porridge</div>
+                </article>
+
+                <article class="food-card" data-category="grains" data-search="rice brown rice quinoa barley millet buckwheat grains">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Rice and whole grains</h3>
+                    <p>Combine with vegetables, beans, eggs, meat or fish to build a balanced bowl.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> brown rice, quinoa, barley, millet, buckwheat</div>
+                </article>
+
+                <article class="food-card" data-category="grains" data-search="bread whole grain roti chapati pasta noodles starch">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Bread, roti and pasta</h3>
+                    <p>Whole-grain choices add fiber, but familiar refined options may be easier during strong nausea.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> whole-grain bread, roti, chapati, whole-wheat pasta</div>
+                </article>
+
+                <article class="food-card" data-category="grains" data-search="potato sweet potato corn starchy vegetables">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Starchy vegetables</h3>
+                    <p>Bake, boil or mash and add a protein food and vegetables.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> potato, sweet potato, corn, yam</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category-section="protein">
+            <div class="category-heading">
+                <div class="category-icon">🍳</div>
+                <div>
+                    <h2>Protein Foods</h2>
+                    <p>Use a variety of animal and plant proteins, prepared thoroughly and safely.</p>
+                </div>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card" data-category="protein" data-search="beans lentils chickpeas peas tofu tempeh plant protein">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Beans, lentils and soy foods</h3>
+                    <p>Affordable choices for soups, curries, salads, rice bowls and snacks.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> lentils, chickpeas, kidney beans, tofu, tempeh, edamame</div>
+                </article>
+
+                <article class="food-card" data-category="protein" data-search="egg eggs omelet boiled cooked pasteurized">
+                    <span class="status status--safe">Prepare safely</span>
+                    <h3>Eggs</h3>
+                    <p>Cook eggs until the white and yolk are firm, or use pasteurized eggs for recipes that remain raw or lightly cooked.</p>
+                    <div class="food-card__examples"><strong>Ideas:</strong> hard-boiled eggs, fully cooked omelet, scrambled eggs</div>
+                </article>
+
+                <article class="food-card" data-category="protein" data-search="chicken turkey poultry meat lean cooked">
+                    <span class="status status--safe">Prepare safely</span>
+                    <h3>Chicken and turkey</h3>
+                    <p>Cook poultry thoroughly and keep raw juices away from ready-to-eat foods.</p>
+                    <div class="food-card__examples"><strong>Ideas:</strong> chicken soup, roasted chicken, turkey meatballs</div>
+                </article>
+
+                <article class="food-card" data-category="protein" data-search="beef pork lamb meat iron fully cooked">
+                    <span class="status status--safe">Prepare safely</span>
+                    <h3>Lean red meat</h3>
+                    <p>Can provide protein and iron. Avoid raw or undercooked meat.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> lean beef, pork, lamb</div>
+                </article>
+
+                <article class="food-card" data-category="protein" data-search="nuts seeds peanut butter almond walnut chia sesame">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Nuts, seeds and nut butters</h3>
+                    <p>Convenient additions to toast, oatmeal, yogurt and fruit when there is no allergy.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> peanuts, almonds, walnuts, chia, sesame, peanut butter</div>
+                </article>
+
+                <article class="food-card" data-category="protein" data-search="deli meat ham salami hot dog sausage steaming listeria">
+                    <span class="status status--safe">Prepare safely</span>
+                    <h3>Deli meats and hot dogs</h3>
+                    <p>Safer when reheated until steaming hot. Keep chilled and avoid eating past the use-by date.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> sliced turkey, ham, hot dogs, cooked sausage</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category-section="dairy">
+            <div class="category-heading">
+                <div class="category-icon">🥛</div>
+                <div>
+                    <h2>Dairy & Calcium-Rich Foods</h2>
+                    <p>Choose pasteurized products, or use fortified alternatives when dairy is unsuitable.</p>
+                </div>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card" data-category="dairy" data-search="milk pasteurized dairy calcium">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Pasteurized milk</h3>
+                    <p>Use on its own, in porridge, smoothies or cooking.</p>
+                    <div class="food-card__examples"><strong>Options:</strong> dairy milk, lactose-free milk</div>
+                </article>
+
+                <article class="food-card" data-category="dairy" data-search="yogurt greek yogurt pasteurized calcium protein">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Pasteurized yogurt</h3>
+                    <p>A convenient snack with fruit, oats, nuts or seeds.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> plain yogurt, Greek yogurt, kefir made from pasteurized milk</div>
+                </article>
+
+                <article class="food-card" data-category="dairy" data-search="cheese cheddar mozzarella cottage cheese pasteurized">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Pasteurized cheeses</h3>
+                    <p>Check the label. Hard cheeses and pasteurized options are generally simpler choices.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> cheddar, mozzarella, cottage cheese, cream cheese</div>
+                </article>
+
+                <article class="food-card" data-category="dairy" data-search="plant milk soy milk oat milk fortified calcium vitamin d">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Fortified plant alternatives</h3>
+                    <p>Choose unsweetened products fortified with calcium and vitamin D when possible.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> fortified soy milk, oat milk, pea-protein milk</div>
+                </article>
+
+                <article class="food-card" data-category="dairy" data-search="soft cheese brie camembert blue cheese unpasteurized listeria">
+                    <span class="status status--safe">Check carefully</span>
+                    <h3>Soft and blue cheeses</h3>
+                    <p>Rules vary by product and country. Check whether the cheese is pasteurized and follow local pregnancy guidance; cooking until steaming hot can reduce risk for some products.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> brie, camembert, blue cheese, queso fresco</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category-section="fish">
+            <div class="category-heading">
+                <div class="category-icon">🐟</div>
+                <div>
+                    <h2>Fish & Seafood</h2>
+                    <p>Choose lower-mercury fish and cook seafood thoroughly.</p>
+                </div>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card" data-category="fish" data-search="salmon sardines trout anchovies herring lower mercury omega 3">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Lower-mercury oily fish</h3>
+                    <p>FDA and ACOG guidance supports 2–3 servings of lower-mercury fish per week during pregnancy.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> salmon, sardines, trout, anchovies, herring</div>
+                </article>
+
+                <article class="food-card" data-category="fish" data-search="shrimp prawns pollock cod tilapia catfish lower mercury seafood">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Other lower-mercury seafood</h3>
+                    <p>Cook until opaque and steaming hot. Frozen and canned options can be convenient.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> shrimp, pollock, cod, tilapia, catfish</div>
+                </article>
+
+                <article class="food-card" data-category="fish" data-search="canned light tuna albacore tuna mercury limit">
+                    <span class="status status--limit">Check serving limits</span>
+                    <h3>Tuna</h3>
+                    <p>Mercury levels vary by type. Canned light tuna is generally lower than albacore or bigeye tuna; follow the current FDA chart or local guidance.</p>
+                    <div class="food-card__examples"><strong>Check label:</strong> light tuna, albacore/white tuna, bigeye tuna</div>
+                </article>
+
+                <article class="food-card" data-category="fish" data-search="sushi sashimi raw fish oysters shellfish ceviche smoked fish">
+                    <span class="status status--avoid">Avoid raw</span>
+                    <h3>Raw or undercooked seafood</h3>
+                    <p>Avoid raw fish and shellfish during pregnancy. Cold-smoked or cured fish may also require special precautions depending on local guidance.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> sashimi, raw sushi, oysters, ceviche</div>
+                </article>
+
+                <article class="food-card" data-category="fish" data-search="shark swordfish king mackerel marlin orange roughy tilefish bigeye tuna high mercury">
+                    <span class="status status--avoid">High mercury</span>
+                    <h3>Fish to avoid</h3>
+                    <p>Avoid fish listed as highest in mercury by local authorities.</p>
+                    <div class="food-card__examples"><strong>FDA examples:</strong> shark, swordfish, king mackerel, marlin, orange roughy, tilefish, bigeye tuna</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category-section="snacks">
+            <div class="category-heading">
+                <div class="category-icon">🍎</div>
+                <div>
+                    <h2>Simple Snacks & Nausea-Friendly Ideas</h2>
+                    <p>Small, frequent snacks may be easier than large meals, especially in early pregnancy.</p>
+                </div>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card" data-category="snacks" data-search="crackers toast rice cakes nausea plain snack">
+                    <span class="status status--good">Simple option</span>
+                    <h3>Plain dry foods</h3>
+                    <p>Keep a small portion nearby for mornings or periods of nausea.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> crackers, toast, rice cakes, dry cereal</div>
+                </article>
+
+                <article class="food-card" data-category="snacks" data-search="fruit yogurt snack banana berries">
+                    <span class="status status--good">Balanced snack</span>
+                    <h3>Fruit with yogurt</h3>
+                    <p>Combines carbohydrate, protein and calcium in a small portion.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> banana and yogurt, berries and Greek yogurt</div>
+                </article>
+
+                <article class="food-card" data-category="snacks" data-search="apple peanut butter toast nut butter snack">
+                    <span class="status status--good">Balanced snack</span>
+                    <h3>Fruit or toast with nut butter</h3>
+                    <p>A portable option that may keep hunger away longer than fruit alone.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> apple and peanut butter, toast and almond butter</div>
+                </article>
+
+                <article class="food-card" data-category="snacks" data-search="hummus vegetables pita chickpeas snack">
+                    <span class="status status--good">Balanced snack</span>
+                    <h3>Hummus with vegetables or pita</h3>
+                    <p>Use refrigerated hummus before its use-by date and keep it chilled.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> carrot sticks, cucumber, bell pepper, whole-grain pita</div>
+                </article>
+
+                <article class="food-card" data-category="snacks" data-search="ginger nausea tea candy biscuits">
+                    <span class="status status--limit">Check ingredients</span>
+                    <h3>Ginger foods or drinks</h3>
+                    <p>Some people find ginger helpful for nausea. Check sugar, caffeine and supplement-strength products with the healthcare provider.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> ginger tea, ginger biscuits, fresh ginger in meals</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="category-section" data-category-section="drinks">
+            <div class="category-heading">
+                <div class="category-icon">💧</div>
+                <div>
+                    <h2>Drinks</h2>
+                    <p>Regular fluids are important, especially with vomiting, heat or activity.</p>
+                </div>
+            </div>
+
+            <div class="food-grid">
+                <article class="food-card" data-category="drinks" data-search="water hydration sparkling water lemon">
+                    <span class="status status--good">Best everyday choice</span>
+                    <h3>Water</h3>
+                    <p>Sip regularly. Chilled water, sparkling water or water with lemon may be easier during nausea.</p>
+                    <div class="food-card__examples"><strong>Ideas:</strong> plain water, lemon water, unsweetened sparkling water</div>
+                </article>
+
+                <article class="food-card" data-category="drinks" data-search="milk smoothie pasteurized fruit yogurt drink">
+                    <span class="status status--good">Good choice</span>
+                    <h3>Milk and homemade smoothies</h3>
+                    <p>Use pasteurized milk or fortified alternatives, washed produce and clean equipment.</p>
+                    <div class="food-card__examples"><strong>Ideas:</strong> milk, yogurt smoothie, fortified soy drink</div>
+                </article>
+
+                <article class="food-card" data-category="drinks" data-search="coffee tea caffeine 200 mg cola chocolate energy drink">
+                    <span class="status status--limit">Limit caffeine</span>
+                    <h3>Coffee, tea and caffeinated drinks</h3>
+                    <p>ACOG advises keeping caffeine below 200 mg per day from all sources. Check serving size because caffeine varies widely.</p>
+                    <div class="food-card__examples"><strong>Sources:</strong> coffee, tea, cola, chocolate, energy drinks</div>
+                </article>
+
+                <article class="food-card" data-category="drinks" data-search="herbal tea supplements herbs pregnancy">
+                    <span class="status status--safe">Check first</span>
+                    <h3>Herbal teas and supplements</h3>
+                    <p>“Natural” does not automatically mean pregnancy-safe. Ask the healthcare provider about specific herbs and concentrated products.</p>
+                    <div class="food-card__examples"><strong>Check:</strong> herbal blends, powders, tonics, traditional remedies</div>
+                </article>
+
+                <article class="food-card" data-category="drinks" data-search="alcohol wine beer spirits avoid pregnancy">
+                    <span class="status status--avoid">Avoid</span>
+                    <h3>Alcohol</h3>
+                    <p>Avoid alcohol during pregnancy. Choose alcohol-free alternatives, but check labels because some products may still contain small amounts.</p>
+                    <div class="food-card__examples"><strong>Examples:</strong> wine, beer, spirits, cocktails</div>
+                </article>
+            </div>
+        </section>
+
+        <div class="empty-state" id="emptyState">
+            <h2>No matching foods found</h2>
+            <p>Try another search term or select “All foods.”</p>
+        </div>
+    </section>
+
+    <section class="safety-box" id="foods-to-avoid">
+        <h2>⚠️ Foods to Avoid or Handle Carefully</h2>
+        <p>Pregnancy increases the risk of serious illness from some foodborne germs. These reminders are intentionally cautious and should be adjusted to local medical guidance.</p>
+
+        <div class="safety-grid">
+            <article class="safety-list">
+                <h3>Avoid</h3>
+                <ul>
+                    <li>Alcohol</li>
+                    <li>Raw or undercooked meat, poultry, fish, shellfish and eggs</li>
+                    <li>Unpasteurized milk and foods made from it</li>
+                    <li>Fish identified locally as highest in mercury</li>
+                    <li>Raw sprouts unless thoroughly cooked</li>
+                    <li>Liver and liver products unless her provider specifically advises otherwise</li>
+                </ul>
+            </article>
+
+            <article class="safety-list">
+                <h3>Handle carefully</h3>
+                <ul>
+                    <li>Wash fruit, vegetables and herbs thoroughly</li>
+                    <li>Reheat deli meats and hot dogs until steaming hot</li>
+                    <li>Keep refrigerated foods cold and respect use-by dates</li>
+                    <li>Check soft cheeses, smoked fish and prepared salads against local guidance</li>
+                    <li>Keep total caffeine below the limit advised by her provider</li>
+                    <li>Check local advisories for fish caught by family or friends</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <h3>Healthy Mom ❤️ Healthy Baby</h3>
+    <p>This page is for general education and meal planning. It does not replace personal advice from an obstetrician, midwife, dietitian or other qualified healthcare professional.</p>
+    <div class="source-links" aria-label="Food guidance sources">
+        <a href="https://www.acog.org/womens-health/faqs/healthy-eating-during-pregnancy" target="_blank" rel="noopener noreferrer">ACOG Healthy Eating</a>
+        <a href="https://www.fda.gov/food/consumers/advice-about-eating-fish" target="_blank" rel="noopener noreferrer">FDA Fish Advice</a>
+        <a href="https://www.cdc.gov/food-safety/foods/pregnant-women.html" target="_blank" rel="noopener noreferrer">CDC Food Safety</a>
+        <a href="https://www.nhs.uk/pregnancy/keeping-well/foods-to-avoid/" target="_blank" rel="noopener noreferrer">NHS Foods to Avoid</a>
+    </div>
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = [...document.querySelectorAll(".filter-button")];
+    const foodCards = [...document.querySelectorAll(".food-card")];
+    const categorySections = [...document.querySelectorAll(".category-section")];
+    const searchInput = document.getElementById("foodSearch");
+    const resultsLine = document.getElementById("resultsLine");
+    const emptyState = document.getElementById("emptyState");
+
+    let activeFilter = "all";
+
+    function normalize(value) {
+        return value.toLowerCase().trim();
+    }
+
+    function updateFoods() {
+        const query = normalize(searchInput.value);
+        let visibleCount = 0;
+
+        foodCards.forEach(card => {
+            const categoryMatches = activeFilter === "all" || card.dataset.category === activeFilter;
+            const searchText = normalize(`${card.textContent} ${card.dataset.search || ""}`);
+            const searchMatches = !query || searchText.includes(query);
+            const visible = categoryMatches && searchMatches;
+
+            card.hidden = !visible;
+            if (visible) visibleCount += 1;
+        });
+
+        categorySections.forEach(section => {
+            const hasVisibleCards = [...section.querySelectorAll(".food-card")].some(card => !card.hidden);
+            section.hidden = !hasVisibleCards;
+        });
+
+        emptyState.style.display = visibleCount === 0 ? "block" : "none";
+        resultsLine.textContent = `${visibleCount} food item${visibleCount === 1 ? "" : "s"} shown`;
+    }
+
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            activeFilter = button.dataset.filter;
+
+            filterButtons.forEach(item => {
+                const active = item === button;
+                item.classList.toggle("active", active);
+                item.setAttribute("aria-pressed", String(active));
+            });
+
+            updateFoods();
+        });
+    });
+
+    searchInput.addEventListener("input", updateFoods);
+    updateFoods();
+});
+</script>
+</body>
+</html>
