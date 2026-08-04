@@ -107,7 +107,11 @@ a {
     font-size: 14px;
     font-weight: 700;
 }
-
+.time-display{
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0;
+}
 .hero h1 {
     font-size: clamp(34px, 7vw, 54px);
     line-height: 1.12;
@@ -685,6 +689,9 @@ footer p {
     <div class="hero__inner">
         <div class="hero__eyebrow">Made with love for Mom and Baby</div>
         <h1>🤰 Our Pregnancy Journey</h1>
+        <div class="time-display">
+            <span class="time" id="pregnancy-time">Month 1 | 6 weeks 6 days</span>
+        </div>
         <p>A practical trimester-by-trimester guide for common changes, important reminders and knowing when to seek help.</p>
         <div class="current-stage" id="currentStage">💗 Current stage: First Trimester</div>
     </div>
@@ -1173,6 +1180,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     activateTab(initialTab, false);
 });
+</script>
+
+<script>
+    // First day of last menstrual period (LMP)
+    const pregnancyStart = new Date('2026-06-17');
+
+    function updatePregnancyTime() {
+        const today = new Date();
+
+        const diffDays = Math.floor((today - pregnancyStart) / (1000 * 60 * 60 * 24));
+
+        const weeks = Math.floor(diffDays / 7);
+        const days = diffDays % 7;
+
+        // Pregnancy month based on obstetric convention
+        let month;
+        if (weeks <= 4) month = 1;
+        else if (weeks <= 8) month = 2;
+        else if (weeks <= 13) month = 3;
+        else if (weeks <= 17) month = 4;
+        else if (weeks <= 22) month = 5;
+        else if (weeks <= 27) month = 6;
+        else if (weeks <= 31) month = 7;
+        else if (weeks <= 35) month = 8;
+        else month = 9;
+
+        document.getElementById('pregnancy-time').textContent =
+            `Month ${month} | ${weeks} weeks ${days} days`;
+    }
+
+    updatePregnancyTime();
 </script>
 </body>
 </html>
