@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Website Pages</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: #f5f6f8;
+            color: #222;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 28px;
+        }
+
+        .count {
+            margin-bottom: 30px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        .page-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .page {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 16px 18px;
+
+            background: #fff;
+            border: 1px solid #e4e6e8;
+            border-radius: 8px;
+
+            text-decoration: none;
+            color: #222;
+
+            transition:
+                border-color .2s,
+                box-shadow .2s,
+                transform .2s;
+        }
+
+        .page:hover {
+            border-color: #aaa;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, .06);
+            transform: translateY(-1px);
+        }
+
+        .page-content {
+            min-width: 0;
+        }
+
+        .page-title {
+            font-weight: 600;
+        }
+
+        .page-url {
+            margin-top: 3px;
+            color: #777;
+            font-family: monospace;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .arrow {
+            flex-shrink: 0;
+            color: #999;
+            font-size: 20px;
+        }
+
+        .loading {
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #e4e6e8;
+            border-radius: 8px;
+            color: #777;
+        }
+
+        .error {
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .error strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 25px 15px;
+            }
+
+            .page {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Website Pages</h1>
+
+    <div class="count" id="count">
+        Loading...
+    </div>
+
+    <div class="page-list" id="pageList">
+        <div class="loading">
+            Loading website pages...
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+
+/*
+|--------------------------------------------------------------------------
+| SETTINGS
+|--------------------------------------------------------------------------
+|
+| Change these 3 values.
+|
+*/
+
+const githubOwner = 'YOUR_GITHUB_USERNAME';
+const githubRepo  = 'YOUR_REPOSITORY_NAME';
+const githubBranch = 'main';
+
+
+/*
+|--------------------------------------------------------------------------
+| EXCLUDED FOLDERS
+|--------------------------------------------------------------------------
+*/
+
+const excludedFolders = [
+    'assets',
+    'list',
+    '.github',
+    '.vscode',
+    '.git',
+    'node_modules'
+];
+
+
+/*
+|--------------------------------------------------------------------------
+| HELPERS
+|--------------------------------------------------------------------------
+*/
+
+function isExcluded(path) {
+
+    const parts = path.split('/');
+
+    return parts.some(part => {
+
+        // Explicit excluded folders
+        if (excludedFolders.includes(part)) {
+            return true;
+        }
+
+        // Ignore hidden folders such as .git, .idea, etc.
+        if (part.startsWith('.')) {
+            return true;
+        }
+
+        return false;
+
+    });
+}
+
+
+function getBasePath() {
+
+    /*
+     * Custom domain:
+     *
+     * example.com/list/
+     * becomes:
+     * ""
+     *
+     *
+     * GitHub project page:
+     *
+     * username.github.io/my-repo/list/
+     * becomes:
+     * /my-repo
+     */
+
+    const pathname = window.location.pathname;
+
+    const listPosition = pathname.indexOf('/list');
+
+    if (listPosition === -1) {
+        return '';
+    }
+
+    return pathname.substring(0, listPosition);
+}
+
+
+function makeWebsiteUrl(path) {
+
+    const basePath = getBasePath();
+
+    if (path === '/') {
+        return basePath + '/';
+    }
+
+    return basePath + path;
+}
+
+
+function makeTitle(url) {
+
+    if (url === '/') {
+        return 'Homepage';
+    }
+
+    let title = url
+        .replace(/^\/|\/$/g, '')
+        .replace(/\.html?$/i, '')
+        .replace(/[-_]/g, ' ');
+
+    return title;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| LOAD REPOSITORY
+|--------------------------------------------------------------------------
+*/
+
+async function loadPages() {
+
+    const pageList = document.getElementById('pageList');
+    const count = document.getElementById('count');
+
+    try {
+
+        const apiUrl =
+            'https://api.github.com/repos/' +
+            encodeURIComponent(githubOwner) +
+            '/' +
+            encodeURIComponent(githubRepo) +
+            '/git/trees/' +
+            encodeURIComponent(githubBranch) +
+            '?recursive=1';
+
+
+        const response = await fetch(apiUrl, {
+            headers: {
+                'Accept': 'application/vnd.github+json'
+            }
+        });
+
+
+        if (!response.ok) {
+            throw new Error(
+                'GitHub API returned HTTP ' + response.status
+            );
+        }
+
+
+        const data = await response.json();
+
+
+        if (!data.tree) {
+            throw new Error('Repository tree could not be loaded.');
+        }
+
+
+        const pages = new Map();
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | HOMEPAGE
+        |--------------------------------------------------------------------------
+        */
+
+        const hasHomepage = data.tree.some(item => {
+
+            if (item.type !== 'blob') {
+                return false;
+            }
+
+            return (
+                item.path === 'index.html' ||
+                item.path === 'index.htm'
+            );
+
+        });
+
+
+        if (hasHomepage) {
+
+            pages.set('/', {
+                title: 'Homepage',
+                url: '/'
+            });
+
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | FIND PAGES
+        |--------------------------------------------------------------------------
+        */
+
+        data.tree.forEach(item => {
+
+            if (item.type !== 'blob') {
+                return;
+            }
+
+
+            const path = item.path;
+
+
+            /*
+             * Ignore excluded folders.
+             */
+            if (isExcluded(path)) {
+                return;
+            }
+
+
+            /*
+             * Only HTML pages.
+             *
+             * GitHub Pages does not execute PHP,
+             * so PHP files are intentionally ignored.
+             */
+            if (!/\.html?$/i.test(path)) {
+                return;
+            }
+
+
+            /*
+             * Root homepage handled separately.
+             */
+            if (
+                path === 'index.html' ||
+                path === 'index.htm'
+            ) {
+                return;
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | FOLDER INDEX
+            |--------------------------------------------------------------------------
+            |
+            | bali/index.html
+            |
+            | becomes:
+            |
+            | /bali/
+            |
+            */
+
+            if (
+                path.endsWith('/index.html') ||
+                path.endsWith('/index.htm')
+            ) {
+
+                const folder = path.substring(
+                    0,
+                    path.lastIndexOf('/')
+                );
+
+                const url = '/' + folder + '/';
+
+                pages.set(url, {
+                    title: makeTitle(url),
+                    url: url
+                });
+
+                return;
+            }
+
+
+            /*
+            |--------------------------------------------------------------------------
+            | NORMAL HTML FILE
+            |--------------------------------------------------------------------------
+            |
+            | about.html
+            |
+            | becomes:
+            |
+            | /about.html
+            |
+            |
+            | bali/hotel.html
+            |
+            | becomes:
+            |
+            | /bali/hotel.html
+            |
+            */
+
+            const url = '/' + path;
+
+            pages.set(url, {
+                title: makeTitle(url),
+                url: url
+            });
+
+        });
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | SORT
+        |--------------------------------------------------------------------------
+        */
+
+        const sortedPages = Array.from(pages.values()).sort(
+            (a, b) => {
+
+                if (a.url === '/') return -1;
+                if (b.url === '/') return 1;
+
+                return a.url.localeCompare(
+                    b.url,
+                    undefined,
+                    {
+                        numeric: true,
+                        sensitivity: 'base'
+                    }
+                );
+
+            }
+        );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | OUTPUT
+        |--------------------------------------------------------------------------
+        */
+
+        pageList.innerHTML = '';
+
+
+        sortedPages.forEach(page => {
+
+            const link = document.createElement('a');
+
+            link.className = 'page';
+
+            link.href = makeWebsiteUrl(page.url);
+
+            link.target = '_blank';
+
+            link.rel = 'noopener';
+
+
+            const content = document.createElement('div');
+
+            content.className = 'page-content';
+
+
+            const title = document.createElement('div');
+
+            title.className = 'page-title';
+            title.textContent = page.title;
+
+
+            const url = document.createElement('div');
+
+            url.className = 'page-url';
+            url.textContent = page.url;
+
+
+            const arrow = document.createElement('div');
+
+            arrow.className = 'arrow';
+            arrow.textContent = '→';
+
+
+            content.appendChild(title);
+            content.appendChild(url);
+
+            link.appendChild(content);
+            link.appendChild(arrow);
+
+            pageList.appendChild(link);
+
+        });
+
+
+        count.textContent =
+            sortedPages.length +
+            (sortedPages.length === 1 ? ' page' : ' pages');
+
+
+        if (sortedPages.length === 0) {
+
+            pageList.innerHTML =
+                '<div class="loading">No pages found.</div>';
+
+        }
+
+
+    } catch (error) {
+
+        console.error(error);
+
+        count.textContent = 'Unable to load pages';
+
+        pageList.innerHTML = `
+            <div class="error">
+                <strong>Unable to load repository.</strong>
+                Check the GitHub username, repository name and branch
+                inside list/index.html.
+            </div>
+        `;
+
+    }
+
+}
+
+
+loadPages();
+
+</script>
+
+</body>
+</html>
