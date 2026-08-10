@@ -36,8 +36,8 @@
             font-size: 28px;
         }
 
-        .count {
-            margin-bottom: 30px;
+        .description {
+            margin: 0 0 30px;
             color: #777;
             font-size: 14px;
         }
@@ -60,8 +60,8 @@
             border: 1px solid #e4e6e8;
             border-radius: 8px;
 
-            text-decoration: none;
             color: #222;
+            text-decoration: none;
 
             transition:
                 border-color .2s,
@@ -80,14 +80,15 @@
         }
 
         .page-title {
+            font-size: 16px;
             font-weight: 600;
         }
 
         .page-url {
-            margin-top: 3px;
+            margin-top: 4px;
             color: #777;
-            font-family: monospace;
             font-size: 13px;
+            font-family: monospace;
             word-break: break-all;
         }
 
@@ -97,7 +98,7 @@
             font-size: 20px;
         }
 
-        .loading {
+        .status {
             padding: 20px;
             background: #fff;
             border: 1px solid #e4e6e8;
@@ -105,25 +106,13 @@
             color: #777;
         }
 
-        .error {
-            padding: 20px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-        }
-
-        .error strong {
-            display: block;
-            margin-bottom: 8px;
-        }
-
         @media (max-width: 600px) {
             body {
                 padding: 25px 15px;
             }
 
-            .page {
-                align-items: flex-start;
+            h1 {
+                font-size: 24px;
             }
         }
     </style>
@@ -135,13 +124,13 @@
 
     <h1>Website Pages</h1>
 
-    <div class="count" id="count">
-        Loading...
-    </div>
+    <p class="description" id="pageCount">
+        Loading pages...
+    </p>
 
     <div class="page-list" id="pageList">
-        <div class="loading">
-            Loading website pages...
+        <div class="status">
+            Loading...
         </div>
     </div>
 
@@ -149,424 +138,72 @@
 
 
 <script>
-
-/*
-|--------------------------------------------------------------------------
-| SETTINGS
-|--------------------------------------------------------------------------
-|
-| Change these 3 values.
-|
-*/
-
-const githubOwner = 'Ozzy182';
-const githubRepo  = 'website';
-const githubBranch = 'main';
-
-
-/*
-|--------------------------------------------------------------------------
-| EXCLUDED FOLDERS
-|--------------------------------------------------------------------------
-*/
-
-const excludedFolders = [
-    'assets',
-    'list',
-    '.github',
-    '.vscode',
-    '.git',
-    'node_modules'
-];
-
-
-/*
-|--------------------------------------------------------------------------
-| HELPERS
-|--------------------------------------------------------------------------
-*/
-
-function isExcluded(path) {
-
-    const parts = path.split('/');
-
-    return parts.some(part => {
-
-        // Explicit excluded folders
-        if (excludedFolders.includes(part)) {
-            return true;
-        }
-
-        // Ignore hidden folders such as .git, .idea, etc.
-        if (part.startsWith('.')) {
-            return true;
-        }
-
-        return false;
-
-    });
-}
-
-
-function getBasePath() {
-
-    /*
-     * Custom domain:
-     *
-     * example.com/list/
-     * becomes:
-     * ""
-     *
-     *
-     * GitHub project page:
-     *
-     * username.github.io/my-repo/list/
-     * becomes:
-     * /my-repo
-     */
-
-    const pathname = window.location.pathname;
-
-    const listPosition = pathname.indexOf('/list');
-
-    if (listPosition === -1) {
-        return '';
-    }
-
-    return pathname.substring(0, listPosition);
-}
-
-
-function makeWebsiteUrl(path) {
-
-    const basePath = getBasePath();
-
-    if (path === '/') {
-        return basePath + '/';
-    }
-
-    return basePath + path;
-}
-
-
-function makeTitle(url) {
-
-    if (url === '/') {
-        return 'Homepage';
-    }
-
-    let title = url
-        .replace(/^\/|\/$/g, '')
-        .replace(/\.html?$/i, '')
-        .replace(/[-_]/g, ' ');
-
-    return title;
-}
-
-
-/*
-|--------------------------------------------------------------------------
-| LOAD REPOSITORY
-|--------------------------------------------------------------------------
-*/
-
-async function loadPages() {
-
     const pageList = document.getElementById('pageList');
-    const count = document.getElementById('count');
+    const pageCount = document.getElementById('pageCount');
 
-    try {
-
-        const apiUrl =
-            'https://api.github.com/repos/' +
-            encodeURIComponent(githubOwner) +
-            '/' +
-            encodeURIComponent(githubRepo) +
-            '/git/trees/' +
-            encodeURIComponent(githubBranch) +
-            '?recursive=1';
-
-
-        const response = await fetch(apiUrl, {
-            headers: {
-                'Accept': 'application/vnd.github+json'
-            }
-        });
-
-
-        if (!response.ok) {
-            throw new Error(
-                'GitHub API returned HTTP ' + response.status
-            );
-        }
-
-
-        const data = await response.json();
-
-
-        if (!data.tree) {
-            throw new Error('Repository tree could not be loaded.');
-        }
-
-
-        const pages = new Map();
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | HOMEPAGE
-        |--------------------------------------------------------------------------
-        */
-
-        const hasHomepage = data.tree.some(item => {
-
-            if (item.type !== 'blob') {
-                return false;
+    fetch('./list.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Could not load list.json');
             }
 
-            return (
-                item.path === 'index.html' ||
-                item.path === 'index.htm'
-            );
+            return response.json();
+        })
+        .then(pages => {
 
-        });
+            pageList.innerHTML = '';
 
+            pages.forEach(page => {
 
-        if (hasHomepage) {
+                const link = document.createElement('a');
 
-            pages.set('/', {
-                title: 'Homepage',
-                url: '/'
+                link.className = 'page';
+                link.href = page.url;
+                link.target = '_blank';
+                link.rel = 'noopener noreferrer';
+
+                link.innerHTML = `
+                    <div class="page-content">
+                        <div class="page-title">${escapeHtml(page.title)}</div>
+                        <div class="page-url">${escapeHtml(page.url)}</div>
+                    </div>
+
+                    <div class="arrow">→</div>
+                `;
+
+                pageList.appendChild(link);
             });
 
-        }
 
+            pageCount.textContent =
+                `${pages.length} ${pages.length === 1 ? 'page' : 'pages'}`;
 
-        /*
-        |--------------------------------------------------------------------------
-        | FIND PAGES
-        |--------------------------------------------------------------------------
-        */
+        })
+        .catch(error => {
 
-        data.tree.forEach(item => {
+            console.error(error);
 
-            if (item.type !== 'blob') {
-                return;
-            }
+            pageCount.textContent = 'Error';
 
-
-            const path = item.path;
-
-
-            /*
-             * Ignore excluded folders.
-             */
-            if (isExcluded(path)) {
-                return;
-            }
-
-
-            /*
-             * Only HTML pages.
-             *
-             * GitHub Pages does not execute PHP,
-             * so PHP files are intentionally ignored.
-             */
-            if (!/\.html?$/i.test(path)) {
-                return;
-            }
-
-
-            /*
-             * Root homepage handled separately.
-             */
-            if (
-                path === 'index.html' ||
-                path === 'index.htm'
-            ) {
-                return;
-            }
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | FOLDER INDEX
-            |--------------------------------------------------------------------------
-            |
-            | bali/index.html
-            |
-            | becomes:
-            |
-            | /bali/
-            |
-            */
-
-            if (
-                path.endsWith('/index.html') ||
-                path.endsWith('/index.htm')
-            ) {
-
-                const folder = path.substring(
-                    0,
-                    path.lastIndexOf('/')
-                );
-
-                const url = '/' + folder + '/';
-
-                pages.set(url, {
-                    title: makeTitle(url),
-                    url: url
-                });
-
-                return;
-            }
-
-
-            /*
-            |--------------------------------------------------------------------------
-            | NORMAL HTML FILE
-            |--------------------------------------------------------------------------
-            |
-            | about.html
-            |
-            | becomes:
-            |
-            | /about.html
-            |
-            |
-            | bali/hotel.html
-            |
-            | becomes:
-            |
-            | /bali/hotel.html
-            |
-            */
-
-            const url = '/' + path;
-
-            pages.set(url, {
-                title: makeTitle(url),
-                url: url
-            });
+            pageList.innerHTML = `
+                <div class="status">
+                    Unable to load list.json
+                </div>
+            `;
 
         });
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | SORT
-        |--------------------------------------------------------------------------
-        */
+    function escapeHtml(value) {
 
-        const sortedPages = Array.from(pages.values()).sort(
-            (a, b) => {
-
-                if (a.url === '/') return -1;
-                if (b.url === '/') return 1;
-
-                return a.url.localeCompare(
-                    b.url,
-                    undefined,
-                    {
-                        numeric: true,
-                        sensitivity: 'base'
-                    }
-                );
-
-            }
-        );
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | OUTPUT
-        |--------------------------------------------------------------------------
-        */
-
-        pageList.innerHTML = '';
-
-
-        sortedPages.forEach(page => {
-
-            const link = document.createElement('a');
-
-            link.className = 'page';
-
-            link.href = makeWebsiteUrl(page.url);
-
-            link.target = '_blank';
-
-            link.rel = 'noopener';
-
-
-            const content = document.createElement('div');
-
-            content.className = 'page-content';
-
-
-            const title = document.createElement('div');
-
-            title.className = 'page-title';
-            title.textContent = page.title;
-
-
-            const url = document.createElement('div');
-
-            url.className = 'page-url';
-            url.textContent = page.url;
-
-
-            const arrow = document.createElement('div');
-
-            arrow.className = 'arrow';
-            arrow.textContent = '→';
-
-
-            content.appendChild(title);
-            content.appendChild(url);
-
-            link.appendChild(content);
-            link.appendChild(arrow);
-
-            pageList.appendChild(link);
-
-        });
-
-
-        count.textContent =
-            sortedPages.length +
-            (sortedPages.length === 1 ? ' page' : ' pages');
-
-
-        if (sortedPages.length === 0) {
-
-            pageList.innerHTML =
-                '<div class="loading">No pages found.</div>';
-
-        }
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        count.textContent = 'Unable to load pages';
-
-        pageList.innerHTML = `
-            <div class="error">
-                <strong>Unable to load repository.</strong>
-                Check the GitHub username, repository name and branch
-                inside list/index.html.
-            </div>
-        `;
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#039;');
 
     }
-
-}
-
-
-loadPages();
-
 </script>
 
 </body>

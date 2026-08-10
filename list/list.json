@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Homepage",
+        "url": "/"
+    },
+    {
+        "title": "Bali",
+        "url": "/bali/"
+    },
+    {
+        "title": "Pregnancy",
+        "url": "/preg/"
+    },
+    {
+        "title": "About Us",
+        "url": "/about/"
+    },
+    {
+        "title": "Contact",
+        "url": "/contact/"
+    }
+]
