@@ -110,7 +110,10 @@ button { color: inherit; }
     letter-spacing: .06em;
     backdrop-filter: blur(18px);
 }
-
+.topbar__labelbox{
+    display: flex;
+    align-items: center;
+}
 .topbar__label {
     color: var(--muted-2);
     font-size: .7rem;
