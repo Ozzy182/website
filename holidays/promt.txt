@@ -1,0 +1,75 @@
+Generate the complete list of Nepal government/public holidays for Nepali year [YEAR in BS].
+
+I need the output as JSON only.
+
+Requirements:
+
+1. Use the official Government of Nepal / Ministry of Home Affairs holiday notice as the primary and authoritative source.
+2. Search the web to find the official holiday notice for [YEAR BS]. Do not rely solely on third-party calendar websites.
+3. [YEAR BS] runs approximately from April [START YEAR AD] to April [END YEAR AD]. Convert every holiday date from Bikram Sambat (BS) to the corresponding Gregorian/English (AD) date.
+4. The JSON must contain exactly these three fields:
+   - "date"
+   - "name"
+   - "localName"
+5. "date" must always use the format:
+   YYYY-MM-DD
+6. "name" must be the English name of the holiday.
+7. "localName" must be the official/common Nepali name written in Devanagari.
+8. Add ONE entry for EVERY holiday date.
+9. If a holiday lasts multiple days, create a separate JSON entry for every individual date.
+
+   For example, if Dashain is a 3-day holiday:
+
+   {
+       "date": "2027-10-XX",
+       "name": "Dashain",
+       "localName": "दशैं"
+   },
+   {
+       "date": "2027-10-XX",
+       "name": "Dashain",
+       "localName": "दशैं"
+   },
+   {
+       "date": "2027-10-XX",
+       "name": "Dashain",
+       "localName": "दशैं"
+   }
+
+10. If multiple holidays occur on the same date, DO NOT create duplicate date entries. Combine their names into one entry.
+
+   Example:
+
+   {
+       "date": "2027-XX-XX",
+       "name": "Holiday A / Holiday B",
+       "localName": "छुट्टी A / छुट्टी B"
+   }
+
+11. Some holidays may be officially listed but have their date announced later, such as Islamic holidays or festivals dependent on moon sighting. DO NOT guess their dates.
+12. For any officially listed holiday whose date is not yet determined, include it in the JSON with an empty date:
+
+   {
+       "date": "",
+       "name": "Eid al-Fitr",
+       "localName": "ईद उल फित्र"
+   }
+
+13. Do not omit holidays just because their date is unknown.
+14. Include all government/public holidays specified in the official notice, including holidays that apply to particular communities, religions, ethnic groups, women, or specific locations if they are included in the government's official public holiday list.
+15. Do NOT include regular weekly Saturdays unless the official notice specifically identifies them as an additional holiday.
+16. Do NOT invent or estimate dates.
+17. Verify the Gregorian conversion carefully. Cross-check dates against at least one reliable Nepali calendar/government source where possible.
+18. Preserve the official holiday coverage. Do not arbitrarily remove holidays because they are regional, community-specific, or religious.
+19. Sort the final JSON chronologically by the "date" field. Put entries with an empty date at the end.
+20. Return ONLY valid JSON. Do not include explanations, Markdown fences, comments, citations, or text before or after the JSON.
+
+The final structure must be exactly:
+
+[
+    {
+        "date": "YYYY-MM-DD",
+        "name": "Holiday Name",
+        "localName": "नेपाली नाम"
+    }
+]

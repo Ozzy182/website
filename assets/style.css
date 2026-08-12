@@ -592,3 +592,669 @@ button { color: inherit; }
         transition-duration: .01ms !important;
     }
 }
+
+
+/* calender page  */
+/* ========================================
+   HOLIDAY PAGE
+======================================== */
+
+.holiday {
+    padding-top: 8px;
+}
+
+
+/* ========================================
+   PAGE HEADER
+======================================== */
+
+.holiday-head {
+    margin: 8px 2px 22px;
+}
+
+.holiday-head__eyebrow {
+    margin: 0 0 8px;
+    color: var(--accent-hot);
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.holiday-head__row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.holiday-head__title {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(2rem, 10vw, 2.8rem);
+    line-height: .95;
+    font-weight: 850;
+    letter-spacing: -.055em;
+}
+
+.holiday-head__text {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: .82rem;
+    line-height: 1.5;
+}
+
+.holiday-today-button {
+    flex: 0 0 auto;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    color: var(--text);
+    background: rgba(255, 255, 255, .045);
+    font-size: .72rem;
+    font-weight: 750;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ========================================
+   CALENDAR CARD
+======================================== */
+
+.holiday-calendar {
+    padding: 18px 15px 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(242, 125, 50, .12),
+            transparent 34%
+        ),
+        rgba(255, 255, 255, .035);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, .22);
+}
+
+
+/* ========================================
+   CALENDAR HEADER
+======================================== */
+
+.holiday-calendar__header {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.holiday-calendar__heading {
+    text-align: center;
+}
+
+.holiday-calendar__heading strong {
+    display: block;
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -.025em;
+}
+
+.holiday-calendar__heading span {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted-2);
+    font-size: .69rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+}
+
+.holiday-calendar__nav {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    color: #b9b3ac;
+    background: rgba(255, 255, 255, .035);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.holiday-calendar__nav svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* ========================================
+   FILTERS
+======================================== */
+
+.holiday-filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 18px;
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, .055);
+    border-radius: 14px;
+    background: rgba(0, 0, 0, .16);
+}
+
+.holiday-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 34px;
+    padding: 0 8px;
+    border: 0;
+    border-radius: 10px;
+    color: var(--muted-2);
+    background: transparent;
+    font-size: .68rem;
+    font-weight: 750;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.holiday-filter.is-active {
+    color: var(--text);
+    background: rgba(255, 255, 255, .075);
+}
+
+.holiday-filter__dot {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 6px;
+    border-radius: 50%;
+}
+
+.holiday-filter__dot--jp {
+    background: var(--accent);
+}
+
+.holiday-filter__dot--np {
+    background: #6078d8;
+}
+
+
+/* ========================================
+   WEEK DAYS
+======================================== */
+
+.holiday-weekdays,
+.holiday-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.holiday-weekdays {
+    margin-bottom: 5px;
+}
+
+.holiday-weekdays span {
+    display: grid;
+    place-items: center;
+    min-height: 27px;
+    color: #66615c;
+    font-size: .61rem;
+    font-weight: 750;
+    text-transform: uppercase;
+}
+
+
+/* ========================================
+   CALENDAR DAYS
+======================================== */
+
+.holiday-days {
+    row-gap: 3px;
+}
+
+.holiday-day {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    padding: 3px;
+    border: 0;
+    border-radius: 13px;
+    color: #bcb7b0;
+    background: transparent;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.holiday-day--empty {
+    pointer-events: none;
+}
+
+.holiday-day__number {
+    display: grid;
+    place-items: center;
+    width: 27px;
+    height: 27px;
+    border-radius: 10px;
+    font-size: .76rem;
+    font-weight: 650;
+}
+
+.holiday-day.has-holiday {
+    color: var(--text);
+}
+
+.holiday-day.is-today .holiday-day__number {
+    color: #181719;
+    background: var(--text);
+    font-weight: 850;
+}
+
+.holiday-day.is-selected {
+    background: rgba(242, 125, 50, .10);
+}
+
+.holiday-day.is-selected .holiday-day__number {
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(242, 125, 50, .65);
+}
+
+
+/* ========================================
+   HOLIDAY DOTS
+======================================== */
+
+.holiday-day__markers {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    display: flex;
+    gap: 3px;
+    transform: translateX(-50%);
+}
+
+.holiday-day__marker {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+}
+
+.holiday-day__marker--jp {
+    background: var(--accent);
+    box-shadow:
+        0 0 7px
+        rgba(242, 125, 50, .55);
+}
+
+.holiday-day__marker--np {
+    background: #6078d8;
+    box-shadow:
+        0 0 7px
+        rgba(96, 120, 216, .5);
+}
+
+
+/* ========================================
+   STATUS
+======================================== */
+
+.holiday-calendar__status {
+    min-height: 0;
+    margin-top: 8px;
+    color: var(--muted-2);
+    font-size: .68rem;
+    text-align: center;
+}
+
+.holiday-calendar__status:empty {
+    display: none;
+}
+
+
+/* ========================================
+   HOLIDAY LIST
+======================================== */
+
+.holiday-list-wrap {
+    margin-top: 26px;
+}
+
+.holiday-list-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2px 11px;
+}
+
+.holiday-list-head h2 {
+    margin: 0;
+    color: var(--muted-2);
+    font-size: .69rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.holiday-list-head > span {
+    display: grid;
+    place-items: center;
+    min-width: 25px;
+    height: 25px;
+    padding: 0 7px;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    color: var(--muted);
+    background: rgba(255, 255, 255, .035);
+    font-size: .65rem;
+    font-weight: 800;
+}
+
+.holiday-list {
+    display: grid;
+    gap: 8px;
+}
+
+
+/* ========================================
+   HOLIDAY ITEM
+======================================== */
+
+.holiday-item {
+    display: grid;
+    grid-template-columns: 65px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 72px;
+    padding: 11px 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    color: var(--text);
+    background: rgba(255, 255, 255, .035);
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.holiday-item.is-selected {
+    border-color: rgba(242, 125, 50, .34);
+    background:
+        linear-gradient(
+            90deg,
+            rgba(242, 125, 50, .08),
+            rgba(255, 255, 255, .035)
+        );
+}
+
+.holiday-item__date {
+    color: var(--muted);
+    font-size: .69rem;
+    font-weight: 750;
+    line-height: 1.25;
+}
+
+.holiday-item__content {
+    min-width: 0;
+}
+
+.holiday-item__content strong {
+    display: block;
+    color: var(--text);
+    font-size: .82rem;
+    line-height: 1.3;
+    font-weight: 750;
+}
+
+.holiday-item__content small {
+    display: block;
+    margin-top: 3px;
+    overflow: hidden;
+    color: var(--muted-2);
+    font-size: .67rem;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.holiday-item__country {
+    padding: 5px 7px;
+    border-radius: 8px;
+    font-size: .57rem;
+    font-weight: 850;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.holiday-item__country--jp {
+    color: var(--accent-hot);
+    background: rgba(242, 125, 50, .09);
+}
+
+.holiday-item__country--np {
+    color: #93a5ee;
+    background: rgba(96, 120, 216, .11);
+}
+
+
+/* ========================================
+   EMPTY
+======================================== */
+
+.holiday-empty {
+    padding: 24px 15px;
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-md);
+    color: var(--muted-2);
+    font-size: .76rem;
+    text-align: center;
+}
+
+
+/* ========================================
+   INTERACTION
+======================================== */
+
+.holiday-calendar__nav:focus-visible,
+.holiday-filter:focus-visible,
+.holiday-today-button:focus-visible,
+.holiday-day:focus-visible,
+.holiday-item:focus-visible {
+    outline: 3px solid rgba(242, 125, 50, .45);
+    outline-offset: 2px;
+}
+
+
+@media (hover: hover) and (pointer: fine) {
+
+    .holiday-calendar__nav:hover,
+    .holiday-today-button:hover {
+        background: rgba(255, 255, 255, .075);
+    }
+
+    .holiday-day:hover:not(.holiday-day--empty) {
+        background: rgba(255, 255, 255, .05);
+    }
+
+    .holiday-item:hover {
+        border-color: rgba(255, 255, 255, .14);
+        background: rgba(255, 255, 255, .055);
+    }
+
+}
+/* ========================================
+   UNCERTAIN HOLIDAYS
+======================================== */
+
+.holiday-uncertain {
+    margin-top: 18px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, .025);
+    overflow: hidden;
+}
+
+.holiday-uncertain[hidden] {
+    display: none;
+}
+
+
+/* ========================================
+   SUMMARY / TOGGLE
+======================================== */
+
+.holiday-uncertain__summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+
+    padding: 16px;
+
+    list-style: none;
+
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.holiday-uncertain__summary::-webkit-details-marker {
+    display: none;
+}
+
+.holiday-uncertain__title {
+    color: var(--muted-2);
+
+    font-size: .69rem;
+    font-weight: 800;
+
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.holiday-uncertain__meta {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+
+/* ========================================
+   COUNT
+======================================== */
+
+.holiday-uncertain__count {
+    display: grid;
+    place-items: center;
+
+    min-width: 25px;
+    height: 25px;
+
+    padding: 0 7px;
+
+    border: 1px solid var(--line);
+    border-radius: 9px;
+
+    color: var(--muted);
+    background: rgba(255, 255, 255, .035);
+
+    font-size: .65rem;
+    font-weight: 800;
+}
+
+
+/* ========================================
+   CHEVRON
+======================================== */
+
+.holiday-uncertain__chevron {
+    display: grid;
+    place-items: center;
+
+    color: var(--muted-2);
+
+    transition: transform .2s ease;
+}
+
+.holiday-uncertain__chevron svg {
+    width: 17px;
+    height: 17px;
+
+    fill: none;
+    stroke: currentColor;
+
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.holiday-uncertain[open] .holiday-uncertain__chevron {
+    transform: rotate(180deg);
+}
+
+
+/* ========================================
+   COLLAPSIBLE BODY
+======================================== */
+
+.holiday-uncertain__body {
+    padding: 0 16px 16px;
+
+    border-top: 1px solid rgba(255, 255, 255, .05);
+}
+
+.holiday-uncertain__hint {
+    margin: 13px 0;
+
+    color: var(--muted-2);
+
+    font-size: .72rem;
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   UNCERTAIN HOLIDAY ITEM
+======================================== */
+
+.holiday-item--uncertain {
+    cursor: default;
+}
+
+.holiday-item--uncertain .holiday-item__date {
+    color: var(--accent-hot);
+    font-weight: 800;
+}
+
+
+/* ========================================
+   HOVER / FOCUS
+======================================== */
+
+.holiday-uncertain__summary:focus-visible {
+    outline: 3px solid rgba(242, 125, 50, .45);
+    outline-offset: -3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    .holiday-uncertain__summary:hover {
+        background: rgba(255, 255, 255, .035);
+    }
+
+}

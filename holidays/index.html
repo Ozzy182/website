@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0c0c0d">
+    <title>Ozosh Maharjan</title>
+    <meta name="description" content="I enjoy good things, interesting ideas, and new experiences.">
+
+    <!-- favicons  -->
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ozosh Maharjan">
+    <meta property="og:description" content="I enjoy good things, interesting ideas, and new experiences.">
+    <meta property="og:image" content="https://ozoshmaharjan.com.np/assets/img/og-image.png">
+    <meta property="og:url" content="https://ozoshmaharjan.com.np/">
+
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+    <main class="shell">
+        <header class="topbar reveal">
+            <a class="monogram" href="/" aria-label="Ozosh Maharjan home">
+                <img src="/assets/img/logo-white.png" alt="OM">
+            </a>
+            <div class="topbar__labelbox">
+                <span class="topbar__label">NEPAL</span>
+                <svg width="20" height="20" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                    class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet">
+                    <path fill="#22408B" d="M27.796 19L8 5v26h19.796L15.918 19z"></path>
+                    <path fill="#DD2F45" d="M25 18L9 7.196V30h16L13.574 18z"></path>
+                    <path fill="#FFF"
+                        d="M14.291 24.041l.586-.816l-1 .098l.1-1l-.817.586l-.414-.916l-.414.916l-.817-.586l.099 1l-1-.098l.586.816l-.916.414l.916.414l-.586.816l1-.098l-.099 1l.817-.586l.414.916l.414-.916l.817.586l-.1-1l1 .098l-.586-.816l.916-.414zm-1.546-7.147l.001.002l.001-.002l.018.002c1.468 0 2.66-1.13 2.784-2.567a3.2 3.2 0 0 1-1.595 1.442l-.175-.244l.611-.276l-.611-.276l.391-.545l-.668.066l.067-.668l-.546.391l-.276-.612l-.276.612l-.546-.391l.067.668l-.668-.066l.391.545l-.611.276l.611.276l-.167.233a3.203 3.203 0 0 1-1.566-1.431a2.795 2.795 0 0 0 2.763 2.565z">
+                    </path>
+                </svg>
+            </div>
+        </header>
+
+        <section class="holiday" aria-labelledby="holiday-title">
+
+            <!-- ========================================
+         PAGE HEADER
+    ======================================== -->
+
+            <header class="holiday-head reveal reveal-delay-1">
+
+                <p class="holiday-head__eyebrow">
+                    Japan × Nepal
+                </p>
+
+                <div class="holiday-head__row">
+
+                    <div>
+
+                        <h1 class="holiday-head__title" id="holiday-title">
+                            Holiday Calendar
+                        </h1>
+
+                        <p class="holiday-head__text">
+                            Public holidays in Japan and Nepal.
+                        </p>
+
+                    </div>
+
+                    <button class="holiday-today-button" id="holidayTodayButton" type="button">
+                        Today
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- ========================================
+         CALENDAR
+    ======================================== -->
+
+            <div class="holiday-calendar reveal reveal-delay-2">
+
+
+                <!-- Calendar navigation -->
+
+                <div class="holiday-calendar__header">
+
+                    <button class="holiday-calendar__nav" id="holidayPrevMonth" type="button"
+                        aria-label="Previous month">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+
+                    </button>
+
+
+                    <div class="holiday-calendar__heading">
+
+                        <strong id="holidayMonthLabel"></strong>
+
+                        <span id="holidayYearLabel"></span>
+
+                    </div>
+
+
+                    <button class="holiday-calendar__nav" id="holidayNextMonth" type="button" aria-label="Next month">
+
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" />
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <!-- ========================================
+             COUNTRY FILTER
+        ======================================== -->
+
+                <div class="holiday-filters" aria-label="Holiday filter">
+
+                    <button class="holiday-filter is-active" type="button" data-holiday-filter="all">
+                        All
+                    </button>
+
+
+                    <button class="holiday-filter" type="button" data-holiday-filter="JP">
+
+                        <span class="holiday-filter__dot holiday-filter__dot--jp"></span>
+
+                        Japan
+
+                    </button>
+
+
+                    <button class="holiday-filter" type="button" data-holiday-filter="NP">
+
+                        <span class="holiday-filter__dot holiday-filter__dot--np"></span>
+
+                        Nepal
+
+                    </button>
+
+                </div>
+
+
+                <!-- ========================================
+             WEEKDAYS
+        ======================================== -->
+
+                <div class="holiday-weekdays" aria-hidden="true">
+
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+
+                </div>
+
+
+                <!-- ========================================
+             CALENDAR DAYS
+        ======================================== -->
+
+                <div class="holiday-days" id="holidayCalendarDays" aria-live="polite"></div>
+
+
+                <!-- Loading / errors -->
+
+                <div class="holiday-calendar__status" id="holidayCalendarStatus" aria-live="polite"></div>
+
+            </div>
+
+
+            <!-- ========================================
+         CONFIRMED HOLIDAYS
+    ======================================== -->
+
+            <div class="holiday-list-wrap reveal reveal-delay-3">
+
+                <div class="holiday-list-head">
+
+                    <h2>
+                        Holidays this month
+                    </h2>
+
+                    <span id="holidayCount">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div class="holiday-list" id="holidayList"></div>
+
+            </div>
+
+
+            <!-- ========================================
+         UNCERTAIN HOLIDAYS
+    ======================================== -->
+
+            <details class="holiday-uncertain reveal reveal-delay-3" id="holidayUncertainWrap" hidden>
+
+                <summary class="holiday-uncertain__summary">
+
+                    <span class="holiday-uncertain__title">
+                        Uncertain Holidays
+                    </span>
+
+
+                    <span class="holiday-uncertain__meta">
+
+                        <span class="holiday-uncertain__count" id="holidayUncertainCount">
+                            0
+                        </span>
+
+
+                        <span class="holiday-uncertain__chevron" aria-hidden="true">
+
+                            <svg viewBox="0 0 24 24">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+
+                        </span>
+
+                    </span>
+
+                </summary>
+
+
+                <div class="holiday-uncertain__body">
+
+                    <p class="holiday-uncertain__hint">
+                        These holidays are expected this year, but their official dates have not been confirmed yet.
+                    </p>
+
+
+                    <div class="holiday-list" id="holidayUncertainList"></div>
+
+                </div>
+
+            </details>
+
+        </section>
+
+        <script>
+            (() => {
+
+                /* ========================================
+                   SETTINGS
+                ======================================== */
+
+                const JAPAN_API_BASE =
+                    'https://date.nager.at/Api/v3/PublicHolidays';
+
+                const NEPAL_JSON_URL =
+                    '/holidays/nepalholiday.json';
+
+
+                /* ========================================
+                   ELEMENTS
+                ======================================== */
+
+                const monthLabel =
+                    document.getElementById('holidayMonthLabel');
+
+                const yearLabel =
+                    document.getElementById('holidayYearLabel');
+
+                const calendarDays =
+                    document.getElementById('holidayCalendarDays');
+
+                const calendarStatus =
+                    document.getElementById('holidayCalendarStatus');
+
+                const holidayList =
+                    document.getElementById('holidayList');
+
+                const holidayCount =
+                    document.getElementById('holidayCount');
+
+                const prevButton =
+                    document.getElementById('holidayPrevMonth');
+
+                const nextButton =
+                    document.getElementById('holidayNextMonth');
+
+                const todayButton =
+                    document.getElementById('holidayTodayButton');
+
+                const filterButtons =
+                    document.querySelectorAll('[data-holiday-filter]');
+
+
+                /* ========================================
+                   UNCERTAIN HOLIDAY ELEMENTS
+                ======================================== */
+
+                const uncertainWrap =
+                    document.getElementById('holidayUncertainWrap');
+
+                const uncertainCount =
+                    document.getElementById('holidayUncertainCount');
+
+                const uncertainList =
+                    document.getElementById('holidayUncertainList');
+
+
+                /* ========================================
+                   STATE
+                ======================================== */
+
+                const today =
+                    new Date();
+
+                const actualCurrentYear =
+                    today.getFullYear();
+
+                let currentDate =
+                    new Date(
+                        actualCurrentYear,
+                        today.getMonth(),
+                        1
+                    );
+
+                let selectedDate = '';
+
+                let activeFilter = 'all';
+
+                const japanCache =
+                    new Map();
+
+                let nepalHolidayData =
+                    null;
+
+
+                /* ========================================
+                   DATE HELPERS
+                ======================================== */
+
+                const monthNames = [
+                    'January',
+                    'February',
+                    'March',
+                    'April',
+                    'May',
+                    'June',
+                    'July',
+                    'August',
+                    'September',
+                    'October',
+                    'November',
+                    'December'
+                ];
+
+
+                function dateKey(
+                    year,
+                    month,
+                    day
+                ) {
+
+                    return [
+                        year,
+                        String(month + 1).padStart(2, '0'),
+                        String(day).padStart(2, '0')
+                    ].join('-');
+
+                }
+
+
+                function todayKey() {
+
+                    return dateKey(
+                        today.getFullYear(),
+                        today.getMonth(),
+                        today.getDate()
+                    );
+
+                }
+
+
+                function parseDate(date) {
+
+                    const [
+                        year,
+                        month,
+                        day
+                    ] = date
+                        .split('-')
+                        .map(Number);
+
+                    return new Date(
+                        year,
+                        month - 1,
+                        day
+                    );
+
+                }
+
+
+                function formatHolidayDate(date) {
+
+                    return new Intl.DateTimeFormat(
+                        'en-US',
+                        {
+                            weekday: 'short',
+                            month: 'short',
+                            day: 'numeric'
+                        }
+                    ).format(
+                        parseDate(date)
+                    );
+
+                }
+
+
+                function isValidHolidayDate(date) {
+
+                    return (
+                        typeof date === 'string' &&
+                        /^\d{4}-\d{2}-\d{2}$/.test(date)
+                    );
+
+                }
+
+
+                /* ========================================
+                   JAPAN API
+                ======================================== */
+
+                async function getJapanHolidays(year) {
+
+                    if (japanCache.has(year)) {
+
+                        return japanCache.get(year);
+
+                    }
+
+
+                    const response =
+                        await fetch(
+                            `${JAPAN_API_BASE}/${year}/JP`
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            'Japan holiday API could not be loaded.'
+                        );
+
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    const holidays =
+                        data.map(
+                            holiday => ({
+
+                                date:
+                                    holiday.date,
+
+                                name:
+                                    holiday.name,
+
+                                localName:
+                                    holiday.localName || '',
+
+                                countryCode:
+                                    'JP',
+
+                                uncertain:
+                                    false
+
+                            })
+                        );
+
+
+                    japanCache.set(
+                        year,
+                        holidays
+                    );
+
+
+                    return holidays;
+
+                }
+
+
+                /* ========================================
+                   NEPAL JSON
+                ======================================== */
+
+                async function getNepalHolidayData() {
+
+                    if (nepalHolidayData !== null) {
+
+                        return nepalHolidayData;
+
+                    }
+
+
+                    const response =
+                        await fetch(
+                            NEPAL_JSON_URL
+                        );
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            'Nepal holiday JSON could not be loaded.'
+                        );
+
+                    }
+
+
+                    const data =
+                        await response.json();
+
+
+                    /*
+                     * Supports:
+                     *
+                     * [
+                     *     {...},
+                     *     {...}
+                     * ]
+                     *
+                     * or:
+                     *
+                     * {
+                     *     "holidays": [...]
+                     * }
+                     */
+
+                    const rows =
+                        Array.isArray(data)
+                            ? data
+                            : data.holidays;
+
+
+                    if (!Array.isArray(rows)) {
+
+                        throw new Error(
+                            'Invalid Nepal holiday JSON format.'
+                        );
+
+                    }
+
+
+                    const known = [];
+
+                    const uncertain = [];
+
+
+                    rows.forEach(
+                        holiday => {
+
+                            /*
+                             * Skip entries without a name.
+                             */
+
+                            if (
+                                !holiday ||
+                                !holiday.name
+                            ) {
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * CONFIRMED DATE
+                             */
+
+                            if (
+                                isValidHolidayDate(
+                                    holiday.date
+                                )
+                            ) {
+
+                                known.push({
+
+                                    date:
+                                        holiday.date,
+
+                                    name:
+                                        holiday.name,
+
+                                    localName:
+                                        holiday.localName || '',
+
+                                    countryCode:
+                                        'NP',
+
+                                    uncertain:
+                                        false
+
+                                });
+
+
+                                return;
+
+                            }
+
+
+                            /*
+                             * UNKNOWN / UNCERTAIN DATE
+                             *
+                             * No year is required in JSON.
+                             *
+                             * These are considered uncertain
+                             * holidays for the actual current year.
+                             */
+
+                            uncertain.push({
+
+                                date:
+                                    '',
+
+                                name:
+                                    holiday.name,
+
+                                localName:
+                                    holiday.localName || '',
+
+                                countryCode:
+                                    'NP',
+
+                                uncertain:
+                                    true
+
+                            });
+
+                        }
+                    );
+
+
+                    nepalHolidayData = {
+                        known,
+                        uncertain
+                    };
+
+
+                    return nepalHolidayData;
+
+                }
+
+
+                /* ========================================
+                   GET HOLIDAYS FOR YEAR
+                ======================================== */
+
+                async function getHolidayData(year) {
+
+                    const [
+                        japan,
+                        nepal
+                    ] = await Promise.all([
+
+                        getJapanHolidays(year),
+
+                        getNepalHolidayData()
+
+                    ]);
+
+
+                    /*
+                     * Nepal confirmed holidays
+                     * belonging to the viewed year.
+                     */
+
+                    const nepalKnownForYear =
+                        nepal.known.filter(
+                            holiday =>
+                                holiday.date.startsWith(
+                                    `${year}-`
+                                )
+                        );
+
+
+                    /*
+                     * Unknown Nepal holidays only
+                     * belong to the actual current year.
+                     *
+                     * Example:
+                     *
+                     * Actual year = 2026
+                     *
+                     * Viewing 2026:
+                     * show uncertain holidays
+                     *
+                     * Viewing 2027:
+                     * hide uncertain holidays
+                     */
+
+                    const nepalUncertainForYear =
+                        year === actualCurrentYear
+                            ? nepal.uncertain
+                            : [];
+
+
+                    return {
+
+                        known: [
+                            ...japan,
+                            ...nepalKnownForYear
+                        ].sort(
+                            (a, b) =>
+                                a.date.localeCompare(
+                                    b.date
+                                )
+                        ),
+
+                        uncertain:
+                            nepalUncertainForYear
+
+                    };
+
+                }
+
+
+                /* ========================================
+                   COUNTRY FILTER
+                ======================================== */
+
+                function applyFilter(holidays) {
+
+                    if (
+                        activeFilter === 'all'
+                    ) {
+
+                        return holidays;
+
+                    }
+
+
+                    return holidays.filter(
+                        holiday =>
+                            holiday.countryCode ===
+                            activeFilter
+                    );
+
+                }
+
+
+                /* ========================================
+                   RENDER CALENDAR
+                ======================================== */
+
+                async function renderCalendar() {
+
+                    const year =
+                        currentDate.getFullYear();
+
+                    const month =
+                        currentDate.getMonth();
+
+
+                    monthLabel.textContent =
+                        monthNames[month];
+
+                    yearLabel.textContent =
+                        year;
+
+
+                    calendarStatus.textContent =
+                        'Loading holidays…';
+
+
+                    calendarDays.innerHTML =
+                        '';
+
+                    holidayList.innerHTML =
+                        '';
+
+
+                    /*
+                     * Reset uncertain list while loading.
+                     */
+
+                    if (uncertainList) {
+
+                        uncertainList.innerHTML =
+                            '';
+
+                    }
+
+
+                    if (uncertainWrap) {
+
+                        uncertainWrap.hidden =
+                            true;
+
+                    }
+
+
+                    try {
+
+                        const holidayData =
+                            await getHolidayData(
+                                year
+                            );
+
+
+                        /*
+                         * Apply Japan / Nepal / All filter.
+                         */
+
+                        const holidays =
+                            applyFilter(
+                                holidayData.known
+                            );
+
+
+                        const uncertainHolidays =
+                            applyFilter(
+                                holidayData.uncertain
+                            );
+
+
+                        calendarStatus.textContent =
+                            '';
+
+
+                        /* ========================================
+                           BUILD HOLIDAY MAP
+                        ======================================== */
+
+                        const holidayMap =
+                            new Map();
+
+
+                        holidays.forEach(
+                            holiday => {
+
+                                if (
+                                    !holidayMap.has(
+                                        holiday.date
+                                    )
+                                ) {
+
+                                    holidayMap.set(
+                                        holiday.date,
+                                        []
+                                    );
+
+                                }
+
+
+                                holidayMap
+                                    .get(
+                                        holiday.date
+                                    )
+                                    .push(
+                                        holiday
+                                    );
+
+                            }
+                        );
+
+
+                        /* ========================================
+                           CALENDAR STRUCTURE
+                        ======================================== */
+
+                        const firstDay =
+                            new Date(
+                                year,
+                                month,
+                                1
+                            ).getDay();
+
+
+                        const daysInMonth =
+                            new Date(
+                                year,
+                                month + 1,
+                                0
+                            ).getDate();
+
+
+                        const totalCells =
+                            Math.ceil(
+                                (
+                                    firstDay +
+                                    daysInMonth
+                                ) / 7
+                            ) * 7;
+
+
+                        /* ========================================
+                           RENDER DAYS
+                        ======================================== */
+
+                        for (
+                            let cell = 0;
+                            cell < totalCells;
+                            cell++
+                        ) {
+
+                            const day =
+                                cell -
+                                firstDay +
+                                1;
+
+
+                            /*
+                             * Empty calendar cells.
+                             */
+
+                            if (
+                                day < 1 ||
+                                day > daysInMonth
+                            ) {
+
+                                const blank =
+                                    document.createElement(
+                                        'div'
+                                    );
+
+
+                                blank.className =
+                                    'holiday-day holiday-day--empty';
+
+
+                                calendarDays.appendChild(
+                                    blank
+                                );
+
+
+                                continue;
+
+                            }
+
+
+                            const key =
+                                dateKey(
+                                    year,
+                                    month,
+                                    day
+                                );
+
+
+                            const dayHolidays =
+                                holidayMap.get(
+                                    key
+                                ) || [];
+
+
+                            const button =
+                                document.createElement(
+                                    'button'
+                                );
+
+
+                            button.type =
+                                'button';
+
+                            button.className =
+                                'holiday-day';
+
+
+                            /*
+                             * Today.
+                             */
+
+                            if (
+                                key === todayKey()
+                            ) {
+
+                                button.classList.add(
+                                    'is-today'
+                                );
+
+                            }
+
+
+                            /*
+                             * Selected date.
+                             */
+
+                            if (
+                                key === selectedDate
+                            ) {
+
+                                button.classList.add(
+                                    'is-selected'
+                                );
+
+                            }
+
+
+                            /*
+                             * Date containing holiday.
+                             */
+
+                            if (
+                                dayHolidays.length
+                            ) {
+
+                                button.classList.add(
+                                    'has-holiday'
+                                );
+
+                            }
+
+
+                            button.dataset.date =
+                                key;
+
+
+                            button.setAttribute(
+                                'aria-label',
+                                buildDateAriaLabel(
+                                    key,
+                                    dayHolidays
+                                )
+                            );
+
+
+                            /* ========================================
+                               DAY NUMBER
+                            ======================================== */
+
+                            const number =
+                                document.createElement(
+                                    'span'
+                                );
+
+
+                            number.className =
+                                'holiday-day__number';
+
+
+                            number.textContent =
+                                day;
+
+
+                            button.appendChild(
+                                number
+                            );
+
+
+                            /* ========================================
+                               COUNTRY DOTS
+                            ======================================== */
+
+                            if (
+                                dayHolidays.length
+                            ) {
+
+                                const markers =
+                                    document.createElement(
+                                        'span'
+                                    );
+
+
+                                markers.className =
+                                    'holiday-day__markers';
+
+
+                                /*
+                                 * Only one marker per country,
+                                 * even if multiple holidays occur
+                                 * on the same date.
+                                 */
+
+                                const countries =
+                                    [
+                                        ...new Set(
+                                            dayHolidays.map(
+                                                holiday =>
+                                                    holiday.countryCode
+                                            )
+                                        )
+                                    ];
+
+
+                                countries.forEach(
+                                    country => {
+
+                                        const dot =
+                                            document.createElement(
+                                                'span'
+                                            );
+
+
+                                        dot.className =
+                                            'holiday-day__marker ' +
+                                            (
+                                                country === 'JP'
+                                                    ? 'holiday-day__marker--jp'
+                                                    : 'holiday-day__marker--np'
+                                            );
+
+
+                                        markers.appendChild(
+                                            dot
+                                        );
+
+                                    }
+                                );
+
+
+                                button.appendChild(
+                                    markers
+                                );
+
+                            }
+
+
+                            /* ========================================
+                               DAY CLICK
+                            ======================================== */
+
+                            button.addEventListener(
+                                'click',
+                                () => {
+
+                                    selectedDate =
+                                        key;
+
+
+                                    renderCalendar();
+
+                                }
+                            );
+
+
+                            calendarDays.appendChild(
+                                button
+                            );
+
+                        }
+
+
+                        /* ========================================
+                           NORMAL HOLIDAY LIST
+                        ======================================== */
+
+                        renderHolidayList(
+                            holidays,
+                            year,
+                            month
+                        );
+
+
+                        /* ========================================
+                           UNCERTAIN HOLIDAY LIST
+                        ======================================== */
+
+                        renderUncertainList(
+                            uncertainHolidays
+                        );
+
+
+                    } catch (error) {
+
+                        console.error(
+                            error
+                        );
+
+
+                        calendarStatus.textContent =
+                            'Unable to load holiday data.';
+
+
+                        holidayList.innerHTML = `
+                <div class="holiday-empty">
+                    Holiday data is currently unavailable.
+                </div>
+            `;
+
+
+                        if (uncertainWrap) {
+
+                            uncertainWrap.hidden =
+                                true;
+
+                        }
+
+                    }
+
+                }
+
+
+                /* ========================================
+                   ACCESSIBLE DAY LABEL
+                ======================================== */
+
+                function buildDateAriaLabel(
+                    date,
+                    holidays
+                ) {
+
+                    const formatted =
+                        new Intl.DateTimeFormat(
+                            'en-US',
+                            {
+                                weekday:
+                                    'long',
+
+                                month:
+                                    'long',
+
+                                day:
+                                    'numeric',
+
+                                year:
+                                    'numeric'
+                            }
+                        ).format(
+                            parseDate(date)
+                        );
+
+
+                    if (
+                        !holidays.length
+                    ) {
+
+                        return formatted;
+
+                    }
+
+
+                    return (
+                        formatted +
+                        '. ' +
+                        holidays
+                            .map(
+                                holiday =>
+                                    holiday.name +
+                                    ', ' +
+                                    (
+                                        holiday.countryCode === 'JP'
+                                            ? 'Japan'
+                                            : 'Nepal'
+                                    )
+                            )
+                            .join('. ')
+                    );
+
+                }
+
+
+                /* ========================================
+                   NORMAL MONTH HOLIDAY LIST
+                ======================================== */
+
+                function renderHolidayList(
+                    holidays,
+                    year,
+                    month
+                ) {
+
+                    const prefix =
+                        `${year}-${String(
+                            month + 1
+                        ).padStart(
+                            2,
+                            '0'
+                        )}`;
+
+
+                    const monthHolidays =
+                        holidays.filter(
+                            holiday =>
+                                holiday.date.startsWith(
+                                    prefix
+                                )
+                        );
+
+
+                    holidayCount.textContent =
+                        monthHolidays.length
+                            ? `${monthHolidays.length}`
+                            : '0';
+
+
+                    /*
+                     * No confirmed holidays.
+                     */
+
+                    if (
+                        !monthHolidays.length
+                    ) {
+
+                        holidayList.innerHTML = `
+                <div class="holiday-empty">
+                    No holidays this month.
+                </div>
+            `;
+
+
+                        return;
+
+                    }
+
+
+                    holidayList.innerHTML =
+                        '';
+
+
+                    monthHolidays.forEach(
+                        holiday => {
+
+                            const item =
+                                document.createElement(
+                                    'button'
+                                );
+
+
+                            item.type =
+                                'button';
+
+                            item.className =
+                                'holiday-item';
+
+
+                            if (
+                                holiday.date ===
+                                selectedDate
+                            ) {
+
+                                item.classList.add(
+                                    'is-selected'
+                                );
+
+                            }
+
+
+                            const countryName =
+                                holiday.countryCode === 'JP'
+                                    ? 'Japan'
+                                    : 'Nepal';
+
+
+                            item.innerHTML = `
+                    <span class="holiday-item__date">
+                        ${formatHolidayDate(
+                                holiday.date
+                            )}
+                    </span>
+
+                    <span class="holiday-item__content">
+
+                        <strong>
+                            ${escapeHTML(
+                                holiday.name
+                            )}
+                        </strong>
+
+                        ${holiday.localName &&
+                                    holiday.localName !==
+                                    holiday.name
+
+                                    ? `
+                                    <small>
+                                        ${escapeHTML(
+                                        holiday.localName
+                                    )}
+                                    </small>
+                                `
+
+                                    : ''
+                                }
+
+                    </span>
+
+                    <span
+                        class="
+                            holiday-item__country
+                            holiday-item__country--${holiday.countryCode.toLowerCase()}
+                        "
+                    >
+                        ${countryName}
+                    </span>
+                `;
+
+
+                            item.addEventListener(
+                                'click',
+                                () => {
+
+                                    selectedDate =
+                                        holiday.date;
+
+
+                                    renderCalendar();
+
+                                }
+                            );
+
+
+                            holidayList.appendChild(
+                                item
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* ========================================
+                   UNCERTAIN HOLIDAY LIST
+                ======================================== */
+
+                function renderUncertainList(
+                    holidays
+                ) {
+
+                    /*
+                     * Safety in case uncertain HTML
+                     * hasn't been added yet.
+                     */
+
+                    if (
+                        !uncertainWrap ||
+                        !uncertainList ||
+                        !uncertainCount
+                    ) {
+
+                        return;
+
+                    }
+
+
+                    uncertainList.innerHTML =
+                        '';
+
+
+                    /*
+                     * Hide entire section if:
+                     *
+                     * - there are no uncertain holidays
+                     * - viewing another year
+                     * - Japan filter is selected
+                     */
+
+                    if (
+                        !holidays.length
+                    ) {
+
+                        uncertainWrap.hidden =
+                            true;
+
+                        uncertainCount.textContent =
+                            '0';
+
+
+                        return;
+
+                    }
+
+
+                    /*
+                     * Show collapsible section.
+                     */
+
+                    uncertainWrap.hidden =
+                        false;
+
+
+                    uncertainCount.textContent =
+                        String(
+                            holidays.length
+                        );
+
+
+                    holidays.forEach(
+                        holiday => {
+
+                            const item =
+                                document.createElement(
+                                    'div'
+                                );
+
+
+                            item.className =
+                                'holiday-item holiday-item--uncertain';
+
+
+                            const countryName =
+                                holiday.countryCode === 'JP'
+                                    ? 'Japan'
+                                    : 'Nepal';
+
+
+                            item.innerHTML = `
+                    <span class="holiday-item__date">
+                        Date TBA
+                    </span>
+
+                    <span class="holiday-item__content">
+
+                        <strong>
+                            ${escapeHTML(
+                                holiday.name
+                            )}
+                        </strong>
+
+                        ${holiday.localName &&
+                                    holiday.localName !==
+                                    holiday.name
+
+                                    ? `
+                                    <small>
+                                        ${escapeHTML(
+                                        holiday.localName
+                                    )}
+                                    </small>
+                                `
+
+                                    : ''
+                                }
+
+                    </span>
+
+                    <span
+                        class="
+                            holiday-item__country
+                            holiday-item__country--${holiday.countryCode.toLowerCase()}
+                        "
+                    >
+                        ${countryName}
+                    </span>
+                `;
+
+
+                            uncertainList.appendChild(
+                                item
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* ========================================
+                   BASIC HTML ESCAPING
+                ======================================== */
+
+                function escapeHTML(value) {
+
+                    const div =
+                        document.createElement(
+                            'div'
+                        );
+
+
+                    div.textContent =
+                        String(
+                            value ?? ''
+                        );
+
+
+                    return div.innerHTML;
+
+                }
+
+
+                /* ========================================
+                   PREVIOUS MONTH
+                ======================================== */
+
+                prevButton.addEventListener(
+                    'click',
+                    () => {
+
+                        currentDate =
+                            new Date(
+                                currentDate.getFullYear(),
+                                currentDate.getMonth() - 1,
+                                1
+                            );
+
+
+                        selectedDate =
+                            '';
+
+
+                        renderCalendar();
+
+                    }
+                );
+
+
+                /* ========================================
+                   NEXT MONTH
+                ======================================== */
+
+                nextButton.addEventListener(
+                    'click',
+                    () => {
+
+                        currentDate =
+                            new Date(
+                                currentDate.getFullYear(),
+                                currentDate.getMonth() + 1,
+                                1
+                            );
+
+
+                        selectedDate =
+                            '';
+
+
+                        renderCalendar();
+
+                    }
+                );
+
+
+                /* ========================================
+                   TODAY
+                ======================================== */
+
+                todayButton.addEventListener(
+                    'click',
+                    () => {
+
+                        currentDate =
+                            new Date(
+                                today.getFullYear(),
+                                today.getMonth(),
+                                1
+                            );
+
+
+                        selectedDate =
+                            todayKey();
+
+
+                        renderCalendar();
+
+                    }
+                );
+
+
+                /* ========================================
+                   COUNTRY FILTER
+                ======================================== */
+
+                filterButtons.forEach(
+                    button => {
+
+                        button.addEventListener(
+                            'click',
+                            () => {
+
+                                activeFilter =
+                                    button.dataset.holidayFilter;
+
+
+                                filterButtons.forEach(
+                                    item => {
+
+                                        item.classList.remove(
+                                            'is-active'
+                                        );
+
+                                    }
+                                );
+
+
+                                button.classList.add(
+                                    'is-active'
+                                );
+
+
+                                selectedDate =
+                                    '';
+
+
+                                renderCalendar();
+
+                            }
+                        );
+
+                    }
+                );
+
+
+                /* ========================================
+                   DYNAMIC COPYRIGHT YEAR
+                ======================================== */
+
+                document
+                    .querySelectorAll(
+                        '[data-current-year]'
+                    )
+                    .forEach(
+                        element => {
+
+                            element.textContent =
+                                actualCurrentYear;
+
+                        }
+                    );
+
+
+                /* ========================================
+                   INITIAL LOAD
+                ======================================== */
+
+                renderCalendar();
+
+            })();
+        </script>
+
+        <footer class="footer">© <span data-current-year></span> Ozosh Maharjan</footer>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Primary">
+        <a class="nav-pill" href="/" aria-current="page">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m4 10 8-6 8 6v9a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1v-9Z" />
+            </svg>
+            Home
+        </a>
+        <a class="nav-pill" href="links.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                    d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1" />
+            </svg>
+            Links
+        </a>
+    </nav>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">Email copied</div>
+    <script src="/assets/script.js" defer></script>
+</body>
+
+</html>
