@@ -9,14 +9,20 @@
     },
     {
         "title": "Pregnancy",
-        "url": "/preg/"
+        "url": "/preg/",
+        "subpages": [
+            {
+                "title": "Food Guide",
+                "url": "/preg/food/"
+            }
+        ]
     },
     {
-        "title": "About Us",
-        "url": "/about/"
+        "title": "Watchlist",
+        "url": "/watchlist/"
     },
     {
-        "title": "Contact",
-        "url": "/contact/"
+        "title": "ToDo",
+        "url": "/todo/"
     }
 ]
