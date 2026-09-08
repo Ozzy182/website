@@ -1,0 +1,216 @@
+{
+  "region": "Kathmandu Valley, Nepal",
+  "cinemas": [
+    {
+      "name": "QFX Civil Mall",
+      "location": "Sundhara, Kathmandu",
+      "total_auditoriums": 3,
+      "auditoriums": [
+        {
+          "name": "Auditorium 1",
+          "image_name": "qfx_civil_mall_audi1.jpg",
+          "capacity": 499,
+          "best_seat_area": "Middle to slightly behind center",
+          "recommended_rows": ["K", "L", "M"],
+          "recommended_seats": "Center seats with center 7",
+          "notes": "Good for a large-screen experience; avoid seats too far to the side."
+        },
+        {
+          "name": "Auditorium 2",
+          "image_name": "qfx_civil_mall_audi2.jpg",
+          "capacity": 247,
+          "best_seat_area": "Middle to slightly behind center",
+          "recommended_seats": "Center seats",
+          "notes": "Aim for the horizontal center of the auditorium."
+        },
+        {
+          "name": "Auditorium 3",
+          "image_name": "qfx_civil_mall_audi3.jpg",
+          "capacity": 247,
+          "best_seat_area": "Middle to slightly behind center",
+          "recommended_seats": "Center seats",
+          "notes": "Aim for the horizontal center of the auditorium."
+        }
+      ]
+    },
+    {
+      "name": "QFX Chhaya Center",
+      "location": "Thamel, Kathmandu",
+      "total_auditoriums": 3,
+      "auditoriums": [
+        {
+          "name": "Auditorium 1",
+          "image_name": "qfx_chhaya_center_audi1.jpg",
+          "capacity": 112,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Best balance of viewing angle and distance."
+        },
+        {
+          "name": "Auditorium 2",
+          "image_name": "qfx_chhaya_center_audi2.jpg",
+          "capacity": 150,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the center of the auditorium."
+        },
+        {
+          "name": "Auditorium 3",
+          "image_name": "qfx_chhaya_center_audi3.jpg",
+          "capacity": 110,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the center of the auditorium."
+        }
+      ]
+    },
+    {
+      "name": "QFX Rising Mall",
+      "location": "Teendhara Marg, Durbar Marg, Kathmandu",
+      "total_auditoriums": 2,
+      "auditoriums": [
+        {
+          "name": "Audi 1",
+          "image_name": "qfx_rising_mall_audi1.jpg",
+          "type": "QS Audi",
+          "capacity": 168,
+          "premium": false,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "recommended_position": "Approximately 55-65% of the way from the screen"
+        },
+        {
+          "name": "Audi 2",
+          "image_name": "qfx_rising_mall_audi2.jpg",
+          "type": "QS Premium",
+          "capacity": 77,
+          "premium": true,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Premium auditorium; center seats provide the best overall viewing angle."
+        }
+      ]
+    },
+    {
+      "name": "QFX City Square Mall",
+      "location": "Samakhusi, Kathmandu",
+      "total_auditoriums": 3,
+      "auditoriums": [
+        {
+          "name": "Audi 1",
+          "image_name": "qfx_city_square_mall_audi1.jpg",
+          "capacity": 160,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the middle of the auditorium."
+        },
+        {
+          "name": "Audi 2",
+          "image_name": "qfx_city_square_mall_audi2.jpg",
+          "capacity": 178,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Known seat examples include D11-D14 and C9-C15; exact best seats depend on the current seating layout."
+        },
+        {
+          "name": "Audi 3",
+          "image_name": "qfx_city_square_mall_audi3.jpg",
+          "capacity": 160,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the middle of the auditorium."
+        }
+      ]
+    },
+    {
+      "name": "QFX Labim Mall",
+      "location": "Pulchowk, Lalitpur",
+      "total_auditoriums": 3,
+      "auditoriums": [
+        {
+          "name": "Audi 1",
+          "image_name": "qfx_labim_mall_audi1.jpg",
+          "capacity": 182,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Good balance between screen size, viewing angle, and sound."
+        },
+        {
+          "name": "Audi 2",
+          "image_name": "qfx_labim_mall_audi2.jpg",
+          "capacity": 180,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the center of the auditorium."
+        },
+        {
+          "name": "Audi 3",
+          "image_name": "qfx_labim_mall_audi3.jpg",
+          "capacity": 183,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the center of the auditorium."
+        }
+      ]
+    },
+    {
+      "name": "QFX Bhaktapur",
+      "location": "Bhatbhateni Mall, Madhyapur Thimi, Bhaktapur",
+      "total_auditoriums": 3,
+      "auditoriums": [
+        {
+          "name": "Audi 1",
+          "image_name": "qfx_bhaktapur_audi1.jpg",
+          "capacity": 207,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the middle and horizontal center."
+        },
+        {
+          "name": "Audi 2",
+          "image_name": "qfx_bhaktapur_audi2.jpg",
+          "capacity": 248,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": ["F9", "F10"],
+          "notes": "F9/F10 have been specifically recommended by local cinema-goer discussions."
+        },
+        {
+          "name": "Audi 3",
+          "image_name": "qfx_bhaktapur_audi3.jpg",
+          "capacity": 247,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Choose seats around the middle and horizontal center."
+        }
+      ]
+    },
+    {
+      "name": "Durbar Cinemax",
+      "managed_by": "QFX Cinemas",
+      "location": "Durbar Mall, Durbar Marg, Kathmandu",
+      "total_auditoriums": 2,
+      "auditoriums": [
+        {
+          "name": "Auditorium 1",
+          "image_name": "durbar_cinemax_audi1.jpg",
+          "capacity": 53,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Small auditorium; center seats provide the most balanced viewing angle."
+        },
+        {
+          "name": "Auditorium 2",
+          "image_name": "durbar_cinemax_audi2.jpg",
+          "capacity": 50,
+          "best_seat_area": "Middle-center",
+          "recommended_seats": "Center seats",
+          "notes": "Small auditorium; center seats provide the most balanced viewing angle."
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_cinemas": 7,
+    "total_auditoriums": 19
+  }
+}

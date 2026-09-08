@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0c0c0d">
+    <title>QFX Seat Guide — Ozosh Maharjan</title>
+    <meta name="description" content="QFX cinema seat guide for Kathmandu Valley with auditorium seat maps and recommended seating areas.">
+
+    <link rel="icon" href="/favicon.ico">
+    <meta property="og:title" content="QFX Seat Guide — Ozosh Maharjan">
+    <meta property="og:description" content="QFX cinema seat guide for Kathmandu Valley.">
+    <meta property="og:image" content="https://ozoshmaharjan.com.np/assets/img/og-image.png">
+    <meta property="og:url" content="https://ozoshmaharjan.com.np/qfx/">
+
+    <link rel="stylesheet" href="/assets/style.css">
+
+    <style>
+        .qfx {
+            padding-bottom: 20px;
+        }
+
+        .qfx-head {
+            margin: 8px 0 22px;
+        }
+
+        .qfx-head__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 0 0 10px;
+            color: var(--accent-hot);
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .qfx-head__eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            flex: 0 0 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 6px rgba(242,125,50,.10), 0 0 22px rgba(242,125,50,.65);
+        }
+
+        .qfx-head__title {
+            margin: 0;
+            font-size: clamp(2rem, 10vw, 2.75rem);
+            line-height: .96;
+            letter-spacing: -.055em;
+            font-weight: 850;
+        }
+
+        .qfx-head__text {
+            margin: 12px 0 0;
+            max-width: 34rem;
+            color: var(--muted);
+            font-size: .88rem;
+            line-height: 1.55;
+        }
+
+        .qfx-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 18px 0 0;
+        }
+
+        .qfx-stat {
+            padding: 13px 10px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: rgba(255,255,255,.03);
+            text-align: center;
+        }
+
+        .qfx-stat strong {
+            display: block;
+            color: var(--text);
+            font-size: 1.05rem;
+            line-height: 1;
+            font-weight: 850;
+        }
+
+        .qfx-stat span {
+            display: block;
+            margin-top: 5px;
+            color: var(--muted-2);
+            font-size: .59rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .qfx-panel {
+            margin-top: 16px;
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: var(--radius-lg);
+            background: rgba(255,255,255,.032);
+            box-shadow: 0 18px 48px rgba(0,0,0,.16);
+        }
+
+        .qfx-panel--accent {
+            background:
+                radial-gradient(circle at 100% 0%, rgba(242,125,50,.16), transparent 48%),
+                rgba(255,255,255,.032);
+        }
+
+        .qfx-section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .qfx-section-head h2 {
+            margin: 0;
+            color: var(--muted-2);
+            font-size: .69rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .qfx-section-head__meta {
+            color: var(--muted-2);
+            font-size: .65rem;
+            font-weight: 700;
+        }
+
+        .qfx-fields {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+
+        .qfx-field label {
+            display: block;
+            margin: 0 0 6px 2px;
+            color: var(--muted-2);
+            font-size: .63rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+        }
+
+        .qfx-select,
+        .qfx-input,
+        .qfx-textarea {
+            width: 100%;
+            min-height: 46px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 0 13px;
+            color: var(--text);
+            background: #151517;
+            outline: none;
+            appearance: none;
+        }
+
+        .qfx-select {
+            padding-right: 40px;
+            background-image:
+                linear-gradient(45deg, transparent 50%, #817c76 50%),
+                linear-gradient(135deg, #817c76 50%, transparent 50%);
+            background-position:
+                calc(100% - 18px) 20px,
+                calc(100% - 13px) 20px;
+            background-size: 5px 5px, 5px 5px;
+            background-repeat: no-repeat;
+        }
+
+        .qfx-textarea {
+            min-height: 86px;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            resize: vertical;
+        }
+
+        .qfx-select:focus,
+        .qfx-input:focus,
+        .qfx-textarea:focus {
+            border-color: rgba(242,125,50,.55);
+            box-shadow: 0 0 0 3px rgba(242,125,50,.10);
+        }
+
+        .qfx-recommendation {
+            display: grid;
+            gap: 12px;
+        }
+
+        .qfx-recommendation__hero {
+            position: relative;
+            overflow: hidden;
+            padding: 18px;
+            border: 1px solid rgba(242,125,50,.22);
+            border-radius: 20px;
+            background:
+                radial-gradient(circle at 92% 5%, rgba(255,154,77,.18), transparent 42%),
+                linear-gradient(145deg, rgba(242,125,50,.08), rgba(255,255,255,.025));
+        }
+
+        .qfx-recommendation__label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 8px;
+            color: var(--accent-hot);
+            font-size: .62rem;
+            font-weight: 850;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .qfx-recommendation__label svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .qfx-recommendation__title {
+            margin: 0;
+            font-size: 1.35rem;
+            line-height: 1.12;
+            letter-spacing: -.035em;
+            font-weight: 850;
+        }
+
+        .qfx-recommendation__reason {
+            margin: 8px 0 0;
+            color: var(--muted);
+            font-size: .78rem;
+            line-height: 1.5;
+        }
+
+        .qfx-recommendation__chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 13px;
+        }
+
+        .qfx-chip {
+            display: inline-flex;
+            align-items: center;
+            min-height: 27px;
+            padding: 0 9px;
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 999px;
+            color: #c9c4bd;
+            background: rgba(255,255,255,.04);
+            font-size: .63rem;
+            font-weight: 750;
+        }
+
+        .qfx-chip--accent {
+            border-color: rgba(242,125,50,.19);
+            color: var(--accent-hot);
+            background: rgba(242,125,50,.08);
+        }
+
+        .qfx-auditorium-card {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .qfx-map {
+            position: relative;
+            width: 100%;
+            min-height: 220px;
+            overflow: hidden;
+            color: inherit;
+            background: #111113;
+        }
+
+        .qfx-map img {
+            width: 100%;
+            max-height: 410px;
+            object-fit: contain;
+            background: #3f3f42;
+        }
+
+        .qfx-map__placeholder {
+            display: grid;
+            place-items: center;
+            min-height: 235px;
+            padding: 26px;
+            text-align: center;
+            background:
+                linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px),
+                #111113;
+            background-size: 22px 22px;
+        }
+
+        .qfx-map__placeholder svg {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 11px;
+            fill: none;
+            stroke: #5f5b56;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .qfx-map__placeholder strong {
+            display: block;
+            color: #918b84;
+            font-size: .76rem;
+        }
+
+        .qfx-map__placeholder small {
+            display: block;
+            max-width: 250px;
+            margin: 6px auto 0;
+            color: #5f5b56;
+            font-size: .63rem;
+            line-height: 1.45;
+            word-break: break-all;
+        }
+
+        .qfx-auditorium-card__body {
+            padding: 14px;
+        }
+
+        .qfx-auditorium-card__title-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .qfx-auditorium-card__title {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: -.025em;
+        }
+
+        .qfx-auditorium-card__subtitle {
+            margin: 4px 0 0;
+            color: var(--muted-2);
+            font-size: .68rem;
+            line-height: 1.4;
+        }
+
+        .qfx-premium {
+            flex: 0 0 auto;
+            padding: 5px 7px;
+            border-radius: 8px;
+            color: #ffd1a8;
+            background: rgba(242,125,50,.11);
+            font-size: .56rem;
+            font-weight: 850;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .qfx-spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
+            margin-top: 13px;
+        }
+
+        .qfx-spec {
+            min-width: 0;
+            padding: 10px;
+            border: 1px solid rgba(255,255,255,.055);
+            border-radius: 13px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .qfx-spec span {
+            display: block;
+            color: var(--muted-2);
+            font-size: .56rem;
+            font-weight: 800;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        .qfx-spec strong {
+            display: block;
+            margin-top: 4px;
+            color: #d9d4cd;
+            font-size: .72rem;
+            line-height: 1.35;
+            font-weight: 750;
+        }
+
+        .qfx-note {
+            margin: 11px 0 0;
+            color: var(--muted);
+            font-size: .72rem;
+            line-height: 1.5;
+        }
+
+        .qfx-history-empty {
+            padding: 20px 14px;
+            border: 1px dashed var(--line);
+            border-radius: 16px;
+            color: var(--muted-2);
+            font-size: .73rem;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .qfx-history-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .qfx-history-item {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 12px;
+            align-items: start;
+            padding: 12px;
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: rgba(255,255,255,.025);
+        }
+
+        .qfx-history-item__top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .qfx-history-item__seat {
+            color: var(--text);
+            font-size: .88rem;
+            font-weight: 850;
+        }
+
+        .qfx-history-item__rating {
+            color: var(--accent-hot);
+            font-size: .66rem;
+            letter-spacing: .04em;
+        }
+
+        .qfx-history-item__place {
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: .68rem;
+            line-height: 1.35;
+        }
+
+        .qfx-history-item__note {
+            margin: 5px 0 0;
+            color: var(--muted-2);
+            font-size: .66rem;
+            line-height: 1.45;
+        }
+
+        .qfx-history-item__remove {
+            display: grid;
+            place-items: center;
+            width: 31px;
+            height: 31px;
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            color: #817c76;
+            background: rgba(255,255,255,.025);
+            cursor: pointer;
+        }
+
+        .qfx-history-item__remove svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .qfx-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .qfx-field--full {
+            grid-column: 1 / -1;
+        }
+
+        .qfx-rating {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+        }
+
+        .qfx-rating button {
+            display: grid;
+            place-items: center;
+            min-height: 42px;
+            padding: 0;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            color: #6f6a64;
+            background: #151517;
+            cursor: pointer;
+        }
+
+        .qfx-rating button.is-active {
+            border-color: rgba(242,125,50,.30);
+            color: var(--accent-hot);
+            background: rgba(242,125,50,.08);
+        }
+
+        .qfx-rating button svg {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+        }
+
+        .qfx-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .qfx-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 44px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 0 14px;
+            color: var(--text);
+            background: rgba(255,255,255,.04);
+            font-size: .72rem;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .qfx-button--primary {
+            flex: 1;
+            border-color: rgba(242,125,50,.28);
+            color: #1a1310;
+            background: linear-gradient(180deg, #ff9a4d, #f27d32);
+        }
+
+        .qfx-button svg {
+            width: 15px;
+            height: 15px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.9;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .qfx-status {
+            margin-top: 10px;
+            color: var(--muted-2);
+            font-size: .67rem;
+            line-height: 1.45;
+        }
+
+        .qfx-status:empty {
+            display: none;
+        }
+
+        .qfx-loading {
+            padding: 24px 14px;
+            color: var(--muted-2);
+            font-size: .75rem;
+            text-align: center;
+        }
+
+        .qfx-toast {
+            position: fixed;
+            z-index: 1100;
+            left: 50%;
+            bottom: max(20px, env(safe-area-inset-bottom));
+            transform: translate(-50%, 20px);
+            padding: 10px 13px;
+            border: 1px solid rgba(255,255,255,.10);
+            border-radius: 12px;
+            color: #e8e3dc;
+            background: rgba(25,25,27,.94);
+            box-shadow: 0 16px 42px rgba(0,0,0,.38);
+            font-size: .7rem;
+            font-weight: 750;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .18s ease, transform .18s ease;
+        }
+
+        .qfx-toast.is-visible {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .qfx-select:focus-visible,
+        .qfx-input:focus-visible,
+        .qfx-textarea:focus-visible,
+        .qfx-button:focus-visible,
+        .qfx-history-item__remove:focus-visible,
+        .qfx-rating button:focus-visible {
+            outline: 3px solid rgba(242,125,50,.42);
+            outline-offset: 2px;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .qfx-button:not(.qfx-button--primary):hover,
+            .qfx-history-item__remove:hover,
+            .qfx-rating button:hover {
+                background: rgba(255,255,255,.07);
+            }
+
+            .qfx-button--primary:hover {
+                filter: brightness(1.04);
+            }
+        }
+
+        @media (max-width: 360px) {
+            .qfx-summary {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .qfx-stat:last-child {
+                grid-column: 1 / -1;
+            }
+
+            .qfx-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .qfx-field--full {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="shell">
+        <header class="topbar reveal">
+            <a class="monogram" href="/" aria-label="Ozosh Maharjan home">
+                <img src="/assets/img/logo-white.png" alt="OM">
+            </a>
+            <div class="topbar__labelbox">
+                <span class="topbar__label">QFX GUIDE</span>
+            </div>
+        </header>
+
+        <section class="qfx" aria-labelledby="qfx-title">
+            <header class="qfx-head reveal reveal-delay-1">
+                <p class="qfx-head__eyebrow">Kathmandu Valley</p>
+                <h1 class="qfx-head__title" id="qfx-title">QFX Seat Guide</h1>
+                <p class="qfx-head__text">
+                    Pick a cinema and auditorium to see the seat map, sweet spot, suggested rows and recommended seats for each QFX hall.
+                </p>
+
+                <div class="qfx-summary" aria-label="QFX data summary">
+                    <div class="qfx-stat">
+                        <strong id="qfxCinemaCount">—</strong>
+                        <span>Cinemas</span>
+                    </div>
+                    <div class="qfx-stat">
+                        <strong id="qfxAuditoriumCount">—</strong>
+                        <span>Auditoriums</span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="qfx-panel qfx-panel--accent reveal reveal-delay-2" aria-labelledby="qfx-pick-title">
+                <div class="qfx-section-head">
+                    <h2 id="qfx-pick-title">Choose a hall</h2>
+                    <span class="qfx-section-head__meta" id="qfxLocationLabel"></span>
+                </div>
+
+                <div class="qfx-fields">
+                    <div class="qfx-field">
+                        <label for="qfxCinemaSelect">Cinema</label>
+                        <select class="qfx-select" id="qfxCinemaSelect"></select>
+                    </div>
+                    <div class="qfx-field">
+                        <label for="qfxAuditoriumSelect">Auditorium</label>
+                        <select class="qfx-select" id="qfxAuditoriumSelect"></select>
+                    </div>
+                </div>
+            </section>
+
+            <section class="qfx-panel reveal reveal-delay-2" aria-labelledby="qfx-recommendation-title">
+                <div class="qfx-section-head">
+                    <h2 id="qfx-recommendation-title">Recommendation</h2>
+                </div>
+                <div class="qfx-recommendation" id="qfxRecommendation">
+                    <div class="qfx-loading">Loading recommendation…</div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <div class="qfx-toast" id="qfxToast" role="status" aria-live="polite"></div>
+
+    <script>
+        (() => {
+            'use strict';
+
+            const DATA_URL = './qfx.json';
+            const IMAGE_BASE = './images/';
+
+            const state = {
+                data: null,
+                cinemaIndex: 0,
+                auditoriumIndex: 0
+            };
+
+            const cinemaSelect = document.getElementById('qfxCinemaSelect');
+            const auditoriumSelect = document.getElementById('qfxAuditoriumSelect');
+            const locationLabel = document.getElementById('qfxLocationLabel');
+            const recommendationWrap = document.getElementById('qfxRecommendation');
+            const cinemaCount = document.getElementById('qfxCinemaCount');
+            const auditoriumCount = document.getElementById('qfxAuditoriumCount');
+
+
+            function escapeHtml(value) {
+                return String(value ?? '')
+                    .replaceAll('&', '&amp;')
+                    .replaceAll('<', '&lt;')
+                    .replaceAll('>', '&gt;')
+                    .replaceAll('"', '&quot;')
+                    .replaceAll("'", '&#039;');
+            }
+
+            function formatValue(value, fallback = '—') {
+                if (Array.isArray(value)) return value.join(', ');
+                if (value === false) return 'No';
+                if (value === true) return 'Yes';
+                if (value === null || value === undefined || value === '') return fallback;
+                return String(value);
+            }
+
+            function currentCinema() {
+                return state.data?.cinemas?.[state.cinemaIndex] || null;
+            }
+
+            function currentAuditorium() {
+                return currentCinema()?.auditoriums?.[state.auditoriumIndex] || null;
+            }
+
+            function renderSelectors() {
+                cinemaSelect.innerHTML = state.data.cinemas.map((cinema, index) =>
+                    `<option value="${index}">${escapeHtml(cinema.name)}</option>`
+                ).join('');
+                cinemaSelect.value = String(state.cinemaIndex);
+                renderAuditoriumOptions();
+            }
+
+            function renderAuditoriumOptions() {
+                const cinema = currentCinema();
+                if (!cinema) return;
+
+                if (state.auditoriumIndex >= cinema.auditoriums.length) {
+                    state.auditoriumIndex = 0;
+                }
+
+                auditoriumSelect.innerHTML = cinema.auditoriums.map((auditorium, index) => {
+                    const suffix = auditorium.type ? ` — ${auditorium.type}` : '';
+                    return `<option value="${index}">${escapeHtml(auditorium.name + suffix)}</option>`;
+                }).join('');
+                auditoriumSelect.value = String(state.auditoriumIndex);
+            }
+
+            function renderRecommendation() {
+                const cinema = currentCinema();
+                const auditorium = currentAuditorium();
+                if (!cinema || !auditorium) return;
+
+                locationLabel.textContent = cinema.location || '';
+
+                const imageSrc = IMAGE_BASE + auditorium.image_name;
+                const imageAlt = `${cinema.name} ${auditorium.name} seat map`;
+
+                recommendationWrap.innerHTML = `
+                    <article class="qfx-auditorium-card">
+                        <div class="qfx-map" id="qfxSeatMap">
+                            <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(imageAlt)}" id="qfxSeatMapImage">
+                        </div>
+                        <div class="qfx-auditorium-card__body">
+                            <div class="qfx-auditorium-card__title-row">
+                                <div>
+                                    <h3 class="qfx-auditorium-card__title">${escapeHtml(cinema.name)} · ${escapeHtml(auditorium.name)}</h3>
+                                    <p class="qfx-auditorium-card__subtitle">${escapeHtml(cinema.location || '')}${auditorium.type ? ` · ${escapeHtml(auditorium.type)}` : ''}</p>
+                                </div>
+                                ${auditorium.premium ? '<span class="qfx-premium">Premium</span>' : ''}
+                            </div>
+                            <div class="qfx-spec-grid">
+                                <div class="qfx-spec"><span>Capacity</span><strong>${escapeHtml(formatValue(auditorium.capacity))} seats</strong></div>
+                                <div class="qfx-spec"><span>Sweet spot</span><strong>${escapeHtml(formatValue(auditorium.best_seat_area))}</strong></div>
+                                <div class="qfx-spec"><span>Suggested seats</span><strong>${escapeHtml(formatValue(auditorium.recommended_seats))}</strong></div>
+                                <div class="qfx-spec"><span>Suggested rows</span><strong>${escapeHtml(formatValue(auditorium.recommended_rows, 'Use center rows'))}</strong></div>
+                            </div>
+                            ${auditorium.recommended_position ? `<p class="qfx-note"><strong>Position:</strong> ${escapeHtml(auditorium.recommended_position)}</p>` : ''}
+                            ${auditorium.notes ? `<p class="qfx-note">${escapeHtml(auditorium.notes)}</p>` : ''}
+                        </div>
+                    </article>
+                `;
+
+                const mapWrap = document.getElementById('qfxSeatMap');
+                const mapImage = document.getElementById('qfxSeatMapImage');
+
+                mapImage.addEventListener('error', () => {
+                    mapWrap.innerHTML = `
+                        <div class="qfx-map__placeholder">
+                            <div>
+                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7.5h18v9H3zM6 16.5v2M18 16.5v2M7 11h10M8 8.5v5M12 8.5v5M16 8.5v5"/></svg>
+                                <strong>Seat map not added yet</strong>
+                                <small>Add ${escapeHtml(auditorium.image_name)} to /qfx/images/</small>
+                            </div>
+                        </div>
+                    `;
+                }, { once: true });
+
+            }
+
+            function bindEvents() {
+                cinemaSelect.addEventListener('change', () => {
+                    state.cinemaIndex = Number(cinemaSelect.value) || 0;
+                    state.auditoriumIndex = 0;
+                    renderAuditoriumOptions();
+                    renderRecommendation();
+                });
+
+                auditoriumSelect.addEventListener('change', () => {
+                    state.auditoriumIndex = Number(auditoriumSelect.value) || 0;
+                    renderRecommendation();
+                });
+
+            }
+
+            async function init() {
+                bindEvents();
+
+                try {
+                    const response = await fetch(DATA_URL, { cache: 'no-store' });
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    const data = await response.json();
+
+                    if (!data || !Array.isArray(data.cinemas) || !data.cinemas.length) {
+                        throw new Error('Invalid qfx.json');
+                    }
+
+                    state.data = data;
+                    cinemaCount.textContent = String(data.summary?.total_cinemas ?? data.cinemas.length);
+                    auditoriumCount.textContent = String(
+                        data.summary?.total_auditoriums ??
+                        data.cinemas.reduce((sum, cinema) => sum + (cinema.auditoriums?.length || 0), 0)
+                    );
+
+                    renderSelectors();
+                    renderRecommendation();
+                } catch (error) {
+                    console.error(error);
+                    recommendationWrap.innerHTML = `
+                        <div class="qfx-history-empty">
+                            Could not load <strong>qfx.json</strong>. Make sure this page is served from the website and that qfx.json is in the same /qfx/ folder.
+                        </div>
+                    `;
+                }
+            }
+
+            init();
+        })();
+    </script>
+</body>
+</html>

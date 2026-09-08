@@ -258,7 +258,7 @@
                 ======================================== */
 
                 const JAPAN_API_BASE =
-                    'https://date.nager.at/Api/v3/PublicHolidays';
+                    'https://nagerholidays.com/api/v4/Holidays/JP';
 
                 const NEPAL_JSON_URL =
                     '/holidays/nepalholiday.json';
@@ -447,7 +447,7 @@
 
                     const response =
                         await fetch(
-                            `${JAPAN_API_BASE}/${year}/JP`
+                            `${JAPAN_API_BASE}/${year}`
                         );
 
 
@@ -465,26 +465,36 @@
 
 
                     const holidays =
-                        data.map(
-                            holiday => ({
+                        data
+                            .filter(
+                                holiday =>
+                                    Array.isArray(holiday.holidayTypes) &&
+                                    holiday.holidayTypes.includes('Public')
+                            )
+                            .map(
+                                holiday => ({
 
-                                date:
-                                    holiday.date,
+                                    date:
+                                        holiday.date,
 
-                                name:
-                                    holiday.name,
+                                    name:
+                                        holiday.name,
 
-                                localName:
-                                    holiday.localName || '',
+                                    /*
+                                     * Nager.Holidays API v4 no longer
+                                     * provides localName.
+                                     */
+                                    localName:
+                                        '',
 
-                                countryCode:
-                                    'JP',
+                                    countryCode:
+                                        holiday.countryCode || 'JP',
 
-                                uncertain:
-                                    false
+                                    uncertain:
+                                        false
 
-                            })
-                        );
+                                })
+                            );
 
 
                     japanCache.set(
