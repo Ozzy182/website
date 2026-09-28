@@ -1094,10 +1094,20 @@ footer p {
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
+    // =========================================================
+    // PREGNANCY START DATE
+    // First day of last menstrual period (LMP)
+    // =========================================================
+    const pregnancyStart = new Date(2026, 5, 17); // June 17, 2026
+
+
     const tabs = [...document.querySelectorAll(".tab")];
     const panels = [...document.querySelectorAll(".panel")];
     const currentStage = document.getElementById("currentStage");
+    const pregnancyTime = document.getElementById("pregnancy-time");
     const resetButton = document.getElementById("resetChecks");
+
 
     const names = {
         1: "First Trimester",
@@ -1105,112 +1115,302 @@ document.addEventListener("DOMContentLoaded", () => {
         3: "Third Trimester"
     };
 
-    function activateTab(tab, updateHash = true) {
+
+    // =========================================================
+    // CALCULATE CURRENT PREGNANCY DATE
+    // =========================================================
+    function getPregnancyData() {
+
+        const today = new Date();
+
+        const startDate = new Date(
+            pregnancyStart.getFullYear(),
+            pregnancyStart.getMonth(),
+            pregnancyStart.getDate()
+        );
+
+        const currentDate = new Date(
+            today.getFullYear(),
+            today.getMonth(),
+            today.getDate()
+        );
+
+        const diffDays = Math.floor(
+            (currentDate - startDate) / (1000 * 60 * 60 * 24)
+        );
+
+        const safeDiffDays = Math.max(0, diffDays);
+
+        const weeks = Math.floor(safeDiffDays / 7);
+        const days = safeDiffDays % 7;
+
+
+        // Pregnancy month
+        let month;
+
+        if (weeks <= 4) {
+            month = 1;
+        } else if (weeks <= 8) {
+            month = 2;
+        } else if (weeks <= 13) {
+            month = 3;
+        } else if (weeks <= 17) {
+            month = 4;
+        } else if (weeks <= 22) {
+            month = 5;
+        } else if (weeks <= 27) {
+            month = 6;
+        } else if (weeks <= 31) {
+            month = 7;
+        } else if (weeks <= 35) {
+            month = 8;
+        } else {
+            month = 9;
+        }
+
+
+        // Trimester
+        let trimester;
+
+        if (weeks <= 13) {
+            trimester = 1;
+        } else if (weeks <= 27) {
+            trimester = 2;
+        } else {
+            trimester = 3;
+        }
+
+
+        return {
+            weeks,
+            days,
+            month,
+            trimester
+        };
+    }
+
+
+    // =========================================================
+    // ACTIVATE TAB
+    // =========================================================
+    function activateTab(tab, updateHash = false) {
+
         const trimester = tab.dataset.trimester;
-        const targetPanel = document.getElementById(`trimester-${trimester}`);
+
+        const targetPanel = document.getElementById(
+            `trimester-${trimester}`
+        );
+
 
         tabs.forEach(item => {
+
             const active = item === tab;
+
             item.classList.toggle("active", active);
             item.setAttribute("aria-selected", String(active));
             item.tabIndex = active ? 0 : -1;
         });
 
+
         panels.forEach(panel => {
+
             const active = panel === targetPanel;
+
             panel.classList.toggle("active", active);
             panel.hidden = !active;
         });
 
-        currentStage.textContent = trimester === "1"
-            ? "💗 Current stage: First Trimester"
-            : `📖 Viewing: ${names[trimester]}`;
 
         if (updateHash) {
-            history.replaceState(null, "", `#trimester-${trimester}`);
+
+            history.replaceState(
+                null,
+                "",
+                `#trimester-${trimester}`
+            );
         }
     }
 
+
+    // =========================================================
+    // UPDATE CURRENT PREGNANCY STATUS
+    // =========================================================
+    function updatePregnancyStatus() {
+
+        const data = getPregnancyData();
+
+
+        // Month / week display
+        pregnancyTime.textContent =
+            `Month ${data.month} | ${data.weeks} weeks ${data.days} days`;
+
+
+        // Remove old Current labels
+        document.querySelectorAll(".tab__current").forEach(label => {
+            label.remove();
+        });
+
+
+        // Find correct current trimester tab
+        const currentTab = tabs.find(
+            tab => Number(tab.dataset.trimester) === data.trimester
+        );
+
+
+        if (currentTab) {
+
+            // Automatically open current trimester
+            activateTab(currentTab, false);
+
+
+            // Add Current label
+            const currentBadge = document.createElement("span");
+
+            currentBadge.className = "tab__current";
+            currentBadge.textContent = "Current";
+
+            currentTab.appendChild(currentBadge);
+        }
+
+
+        // Header status
+        currentStage.textContent =
+            `💗 Current stage: ${names[data.trimester]}`;
+    }
+
+
+    // =========================================================
+    // MANUAL TAB CLICK
+    // =========================================================
     tabs.forEach((tab, index) => {
-        tab.addEventListener("click", () => activateTab(tab));
+
+        tab.addEventListener("click", () => {
+
+            activateTab(tab, true);
+
+            const trimester = tab.dataset.trimester;
+
+            const data = getPregnancyData();
+
+
+            if (Number(trimester) === data.trimester) {
+
+                currentStage.textContent =
+                    `💗 Current stage: ${names[trimester]}`;
+
+            } else {
+
+                currentStage.textContent =
+                    `📖 Viewing: ${names[trimester]}`;
+            }
+        });
+
 
         tab.addEventListener("keydown", event => {
+
             let nextIndex = null;
 
-            if (event.key === "ArrowRight") nextIndex = (index + 1) % tabs.length;
-            if (event.key === "ArrowLeft") nextIndex = (index - 1 + tabs.length) % tabs.length;
-            if (event.key === "Home") nextIndex = 0;
-            if (event.key === "End") nextIndex = tabs.length - 1;
+
+            if (event.key === "ArrowRight") {
+                nextIndex = (index + 1) % tabs.length;
+            }
+
+
+            if (event.key === "ArrowLeft") {
+                nextIndex = (index - 1 + tabs.length) % tabs.length;
+            }
+
+
+            if (event.key === "Home") {
+                nextIndex = 0;
+            }
+
+
+            if (event.key === "End") {
+                nextIndex = tabs.length - 1;
+            }
+
 
             if (nextIndex !== null) {
+
                 event.preventDefault();
+
                 tabs[nextIndex].focus();
-                activateTab(tabs[nextIndex]);
+                tabs[nextIndex].click();
             }
         });
     });
 
+
+    // =========================================================
+    // SAVED CHECKLISTS
+    // =========================================================
     document.querySelectorAll(".saved-checklist").forEach(list => {
+
         const listName = list.dataset.list;
-        const inputs = [...list.querySelectorAll('input[type="checkbox"]')];
+
+        const inputs = [
+            ...list.querySelectorAll('input[type="checkbox"]')
+        ];
+
 
         inputs.forEach((input, index) => {
-            const storageKey = `pregnancy-guide:${listName}:${index}`;
-            input.checked = localStorage.getItem(storageKey) === "1";
+
+            const storageKey =
+                `pregnancy-guide:${listName}:${index}`;
+
+
+            input.checked =
+                localStorage.getItem(storageKey) === "1";
+
 
             input.addEventListener("change", () => {
-                localStorage.setItem(storageKey, input.checked ? "1" : "0");
+
+                localStorage.setItem(
+                    storageKey,
+                    input.checked ? "1" : "0"
+                );
             });
         });
     });
 
-    resetButton.addEventListener("click", () => {
-        document.querySelectorAll('.saved-checklist input[type="checkbox"]').forEach(input => {
-            input.checked = false;
+
+    // =========================================================
+    // RESET CHECKLISTS
+    // =========================================================
+    if (resetButton) {
+
+        resetButton.addEventListener("click", () => {
+
+            document
+                .querySelectorAll(
+                    '.saved-checklist input[type="checkbox"]'
+                )
+                .forEach(input => {
+
+                    input.checked = false;
+
+                });
+
+
+            Object.keys(localStorage)
+                .filter(key =>
+                    key.startsWith("pregnancy-guide:")
+                )
+                .forEach(key =>
+                    localStorage.removeItem(key)
+                );
         });
+    }
 
-        Object.keys(localStorage)
-            .filter(key => key.startsWith("pregnancy-guide:"))
-            .forEach(key => localStorage.removeItem(key));
-    });
 
-    const hashMatch = window.location.hash.match(/^#trimester-([123])$/);
-    const initialTrimester = hashMatch ? hashMatch[1] : "1";
-    const initialTab = tabs.find(tab => tab.dataset.trimester === initialTrimester) || tabs[0];
+    // =========================================================
+    // START
+    // =========================================================
+    updatePregnancyStatus();
 
-    activateTab(initialTab, false);
 });
 </script>
 
-<script>
-    // First day of last menstrual period (LMP)
-    const pregnancyStart = new Date('2026-06-17');
-
-    function updatePregnancyTime() {
-        const today = new Date();
-
-        const diffDays = Math.floor((today - pregnancyStart) / (1000 * 60 * 60 * 24));
-
-        const weeks = Math.floor(diffDays / 7);
-        const days = diffDays % 7;
-
-        // Pregnancy month based on obstetric convention
-        let month;
-        if (weeks <= 4) month = 1;
-        else if (weeks <= 8) month = 2;
-        else if (weeks <= 13) month = 3;
-        else if (weeks <= 17) month = 4;
-        else if (weeks <= 22) month = 5;
-        else if (weeks <= 27) month = 6;
-        else if (weeks <= 31) month = 7;
-        else if (weeks <= 35) month = 8;
-        else month = 9;
-
-        document.getElementById('pregnancy-time').textContent =
-            `Month ${month} | ${weeks} weeks ${days} days`;
-    }
-
-    updatePregnancyTime();
-</script>
 </body>
 </html>
